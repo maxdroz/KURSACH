@@ -1,0 +1,11 @@
+F:\ub\CURSACH\ARM\АРМ билиотекаря\АРМ билиотекаря\bin\Debug\АРМ билиотекаря.exe.config
+F:\ub\CURSACH\ARM\АРМ билиотекаря\АРМ билиотекаря\bin\Debug\АРМ билиотекаря.exe
+F:\ub\CURSACH\ARM\АРМ билиотекаря\АРМ билиотекаря\bin\Debug\АРМ билиотекаря.pdb
+F:\ub\CURSACH\ARM\АРМ билиотекаря\АРМ билиотекаря\obj\Debug\АРМ билиотекаря.csprojResolveAssemblyReference.cache
+F:\ub\CURSACH\ARM\АРМ билиотекаря\АРМ билиотекаря\obj\Debug\АРМ_билиотекаря.Form1.resources
+F:\ub\CURSACH\ARM\АРМ билиотекаря\АРМ билиотекаря\obj\Debug\АРМ_билиотекаря.Properties.Resources.resources
+F:\ub\CURSACH\ARM\АРМ билиотекаря\АРМ билиотекаря\obj\Debug\АРМ билиотекаря.csproj.GenerateResource.Cache
+F:\ub\CURSACH\ARM\АРМ билиотекаря\АРМ билиотекаря\obj\Debug\АРМ билиотекаря.exe
+F:\ub\CURSACH\ARM\АРМ билиотекаря\АРМ билиотекаря\obj\Debug\АРМ билиотекаря.pdb
+F:\ub\CURSACH\ARM\АРМ билиотекаря\АРМ билиотекаря\bin\Debug\BD.mdb
+F:\ub\CURSACH\ARM\АРМ билиотекаря\АРМ билиотекаря\obj\Debug\АРМ билиотекаря.csproj.ResolveComReference.cache
