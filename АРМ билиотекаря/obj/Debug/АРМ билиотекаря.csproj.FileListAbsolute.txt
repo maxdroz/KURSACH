@@ -9,3 +9,15 @@ F:\ub\CURSACH\ARM\АРМ билиотекаря\АРМ билиотекаря\ob
 F:\ub\CURSACH\ARM\АРМ билиотекаря\АРМ билиотекаря\obj\Debug\АРМ билиотекаря.pdb
 F:\ub\CURSACH\ARM\АРМ билиотекаря\АРМ билиотекаря\bin\Debug\BD.mdb
 F:\ub\CURSACH\ARM\АРМ билиотекаря\АРМ билиотекаря\obj\Debug\АРМ билиотекаря.csproj.ResolveComReference.cache
+C:\Users\maxim\Desktop\CURSACH\ARM\АРМ билиотекаря\АРМ билиотекаря\obj\Debug\АРМ билиотекаря.csprojAssemblyReference.cache
+C:\Users\maxim\Desktop\CURSACH\ARM\АРМ билиотекаря\АРМ билиотекаря\obj\Debug\АРМ билиотекаря.exe
+C:\Users\maxim\Desktop\CURSACH\ARM\АРМ билиотекаря\АРМ билиотекаря\obj\Debug\АРМ билиотекаря.pdb
+C:\Users\maxim\Desktop\CURSACH\ARM\АРМ билиотекаря\АРМ билиотекаря\bin\Debug\BD.mdb
+C:\Users\maxim\Desktop\CURSACH\ARM\АРМ билиотекаря\АРМ билиотекаря\bin\Debug\АРМ билиотекаря.exe.config
+C:\Users\maxim\Desktop\CURSACH\ARM\АРМ билиотекаря\АРМ билиотекаря\bin\Debug\АРМ билиотекаря.exe
+C:\Users\maxim\Desktop\CURSACH\ARM\АРМ билиотекаря\АРМ билиотекаря\bin\Debug\АРМ билиотекаря.pdb
+C:\Users\maxim\Desktop\CURSACH\ARM\АРМ билиотекаря\АРМ билиотекаря\obj\Debug\АРМ билиотекаря.csproj.ResolveComReference.cache
+C:\Users\maxim\Desktop\CURSACH\ARM\АРМ билиотекаря\АРМ билиотекаря\obj\Debug\АРМ_билиотекаря.Form1.resources
+C:\Users\maxim\Desktop\CURSACH\ARM\АРМ билиотекаря\АРМ билиотекаря\obj\Debug\АРМ_билиотекаря.Properties.Resources.resources
+C:\Users\maxim\Desktop\CURSACH\ARM\АРМ билиотекаря\АРМ билиотекаря\obj\Debug\АРМ билиотекаря.csproj.GenerateResource.cache
+C:\Users\maxim\Desktop\CURSACH\ARM\АРМ билиотекаря\АРМ билиотекаря\obj\Debug\АРМ билиотекаря.csproj.CoreCompileInputs.cache

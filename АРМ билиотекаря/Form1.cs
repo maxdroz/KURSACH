@@ -13,11 +13,14 @@ namespace АРМ_билиотекаря
 {
     public partial class Form1 : Form
     {
+        private bool isResetButton = false;
+        private DatabaseAdapter adapter;
         private bool mouseDown = false;
         private Point startPos;
         public Form1()
         {
             InitializeComponent();
+            adapter = DatabaseAdapter.getInstance();
         }
 
         private void panel1_MouseDown(object sender, MouseEventArgs e)
@@ -52,26 +55,79 @@ namespace АРМ_билиотекаря
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "bDDataSet.books". При необходимости она может быть перемещена или удалена.
+            this.booksTableAdapter.Fill(this.bDDataSet.books);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "bDDataSet.readers". При необходимости она может быть перемещена или удалена.
             this.readersTableAdapter.Fill(this.bDDataSet.readers);
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            updateReadersGrid();
+            if (!isResetButton)
+                updateReadersGrid();
         }
 
         private void updateReadersGrid()
         {
-            
-            OleDbConnection connection = new OleDbConnection(DatabaseAdapter.connectionString);
-            connection.Open();
-            String query = "SELECT * FROM readers WHERE name LIKE '%" + textBox1.Text + "%'";
-            OleDbDataAdapter da = new OleDbDataAdapter(query, connection);
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-            dataGridView2.DataSource = dt;
-            connection.Close();
+            dataGridView2.DataSource = adapter.getFilteredReaders(textBox1.Text,
+                textBox2.Text,
+                textBox3.Text, 
+                textBox6.Text,
+                checkBox1.Checked, dateTimePicker1.Value,
+                textBox5.Text);
+        }
+
+        private void CheckBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if(!isResetButton)
+                updateReadersGrid();
+        }
+
+        private void DateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isResetButton)
+                updateReadersGrid();
+        }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            isResetButton = true;
+            textBox1.Text = "";
+            textBox2.Text = "";
+            textBox3.Text = "";
+            textBox5.Text = "";
+            textBox6.Text = "";
+            checkBox1.Checked = false;
+            isResetButton = false;
+            updateReadersGrid();
+        }
+
+        private void DataGridView2_CellEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            int reader_id = Convert.ToInt32(dataGridView2[0, e.RowIndex].Value);
+            dataGridView1.DataSource = adapter.getReaderBooks(reader_id);
+        }
+
+        private void updateBooksGrid()
+        {
+            dataGridView3.DataSource = adapter.getFilteredBooks(textBox4.Text, textBox7.Text, textBox8.Text, textBox9.Text);
+        }
+
+        private void Button11_Click(object sender, EventArgs e)
+        {
+            isResetButton = true;
+            textBox4.Text = "";
+            textBox7.Text = "";
+            textBox8.Text = "";
+            textBox9.Text = "";
+            isResetButton = false;
+            updateBooksGrid();
+        }
+
+        private void TextBox4_TextChanged(object sender, EventArgs e)
+        {
+            if(!isResetButton)
+                updateBooksGrid();
         }
     }
 }
