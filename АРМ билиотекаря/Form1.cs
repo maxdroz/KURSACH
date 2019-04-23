@@ -90,7 +90,6 @@ namespace АРМ_билиотекаря
             {
                 if (empty == null)
                 {
-                    MessageBox.Show("lol");
                     empty = adapter.getReaderBooks(-1);
                 }
                 dataGridView1.DataSource = empty;
@@ -210,6 +209,12 @@ namespace АРМ_билиотекаря
                 table = tablee;
             }
         }
+
+        //1 - Поиск всех книг
+        //2 - Поиск по читателям
+        //3 - Добавление читателя
+        //4 - Берем книги определенного читателя
+        //5 - Изменение информации о читателе
         public void BackgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
             lock (syncLock)
@@ -219,11 +224,9 @@ namespace АРМ_билиотекаря
                 switch (id)
                 {
                     case 1:
-                        /*dataGridView3.DataSource*/
                         result = adapter.getFilteredBooks(textBox4.Text, textBox7.Text, textBox8.Text, textBox9.Text, textBox11.Text);
                         break;
                     case 2:
-                        /*dataGridView2.DataSource*/
                         result = adapter.getFilteredReaders(new Reader(textBox5.Text,
                             textBox1.Text,
                             textBox2.Text,
@@ -237,6 +240,9 @@ namespace АРМ_билиотекаря
                         break;
                     case 4:
                         result = adapter.getReaderBooks(((Args)e.Argument).user_id);
+                        break;
+                    case 5:
+                        adapter.editReader(((Args)e.Argument).reader);
                         break;
                 }
                 e.Result = new Res(id, result);
@@ -253,6 +259,7 @@ namespace АРМ_билиотекаря
                     break;
                 case 2:
                     dataGridView2.DataSource = r.table;
+                    updateEditButton();
                     break;
                 case 4:
                     dataGridView1.DataSource = r.table;
@@ -265,6 +272,31 @@ namespace АРМ_билиотекаря
             AddEditReader reader = new AddEditReader();
             reader.setForm(this);
             reader.Show();
+        }
+
+        private void Button5_Click(object sender, EventArgs e)
+        {
+            AddEditReader reader = new AddEditReader();
+            reader.setForm(this);
+            int active = dataGridView2.CurrentCellAddress.Y;
+            Reader editReader = new Reader(dataGridView2["id", active].Value.ToString(),
+                dataGridView2["name", active].Value.ToString(),
+                dataGridView2["surname", active].Value.ToString(),
+                dataGridView2["patronymic", active].Value.ToString(),
+                Convert.ToDateTime(dataGridView2["birthday", active].Value),
+                dataGridView2["phone_number", active].Value.ToString(),
+                dataGridView2["adress", active].Value.ToString());
+
+            reader.setEdit(editReader);
+            reader.Show();
+        }
+
+        private void updateEditButton()
+        {
+            if (dataGridView2.CurrentCellAddress.Y == -1)
+                button5.Enabled = false;
+            else
+                button5.Enabled = true;
         }
     }
 }

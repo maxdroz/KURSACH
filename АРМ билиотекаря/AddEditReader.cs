@@ -25,11 +25,17 @@ namespace АРМ_билиотекаря
             parent = f;
         }
 
-        public void setEdit(string id)
+        public void setEdit(Reader reader)
         {
             edit = true;
-            this.id = id;
+            this.id = reader.id;
             button1.Text = "Изменить";
+            textBox1.Text = reader.name;
+            textBox2.Text = reader.surname;
+            textBox3.Text = reader.patronymic;
+            dateTimePicker1.Value = reader.birthday;
+            textBox5.Text = reader.phone_number;
+            textBox6.Text = reader.adress;
         }
 
         private void Button1_Click(object sender, EventArgs e)
@@ -61,7 +67,11 @@ namespace АРМ_билиотекаря
             }
             if (edit)
             {
-
+                var worker = new BackgroundWorker();
+                worker.DoWork += parent.BackgroundWorker1_DoWork;
+                worker.RunWorkerAsync(new Form1.Args(5, new Reader(id, textBox1.Text, textBox2.Text, textBox3.Text, dateTimePicker1.Value, textBox5.Text, textBox6.Text)));
+                parent.updateReadersGrid();
+                Close();
             }
             else
             {

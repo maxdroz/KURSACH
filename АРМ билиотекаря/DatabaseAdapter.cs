@@ -79,7 +79,7 @@ namespace АРМ_билиотекаря
 
         public DataTable getFilteredBooks(string author, string name, string language, string location, string id)
         {
-            lock (syncLock)
+            lock (syncLock) 
             {
                 connection.Open();
                 //TODO Разобрвться с исключением
@@ -94,6 +94,23 @@ namespace АРМ_билиотекаря
             }
         }
 
+        public void editReader(Reader reader)
+        {
+            lock (syncLock)
+            {
+                connection.Open();
+                String query = "UPDATE readers SET " +
+                    "name= '" + reader.name + "'," +
+                    "surname= '" + reader.surname + "'," +
+                    "patronymic= '" + reader.patronymic + "'," +
+                    "birthday= '" + reader.birthday.ToString(@"MM.dd.yyyy") + "'," +
+                    "phone_number= '" + reader.phone_number + "'," +
+                    "adress= '" + reader.adress + "'" +
+                    "WHERE Код =" + reader.id;
+                executeQuery(query);
+                connection.Close();
+            }
+        }
         public void addReader(Reader reader)
         {
             lock (syncLock)
