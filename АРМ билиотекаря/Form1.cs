@@ -25,6 +25,7 @@ namespace АРМ_билиотекаря
         {
             InitializeComponent();
             adapter = DatabaseAdapter.getInstance();
+            updateDebtors();
         }
 
         private void panel1_MouseDown(object sender, MouseEventArgs e)
@@ -77,6 +78,14 @@ namespace АРМ_билиотекаря
         {
             if (!isResetButton)
                 updateReadersGrid();
+        }
+
+        public void updateDebtors()
+        {
+            var worker = new BackgroundWorker();
+            worker.DoWork += BackgroundWorker1_DoWork;
+            worker.RunWorkerCompleted += BackgroundWorker1_RunWorkerCompleted;
+            worker.RunWorkerAsync(new Args(6));
         }
 
         public void updateReadersGrid()
@@ -215,6 +224,7 @@ namespace АРМ_билиотекаря
         //3 - Добавление читателя
         //4 - Берем книги определенного читателя
         //5 - Изменение информации о читателе
+        //6 - Получить всех должников
         public void BackgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
             lock (syncLock)
@@ -244,6 +254,9 @@ namespace АРМ_билиотекаря
                     case 5:
                         adapter.editReader(((Args)e.Argument).reader);
                         break;
+                    case 6:
+                        result = adapter.getDebtors();
+                        break;
                 }
                 e.Result = new Res(id, result);
             }
@@ -263,6 +276,9 @@ namespace АРМ_билиотекаря
                     break;
                 case 4:
                     dataGridView1.DataSource = r.table;
+                    break;
+                case 6:
+                    dataGridView4.DataSource = r.table;
                     break;
             }
         }
@@ -298,5 +314,6 @@ namespace АРМ_билиотекаря
             else
                 button5.Enabled = true;
         }
+
     }
 }

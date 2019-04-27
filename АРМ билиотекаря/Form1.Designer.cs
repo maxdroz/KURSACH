@@ -38,6 +38,13 @@
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.surname = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.patronymic = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.birthday = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.phone_number = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.adress = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.readersBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bDDataSet = new АРМ_билиотекаря.BDDataSet();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -104,13 +111,17 @@
             this.readersTableAdapter = new АРМ_билиотекаря.BDDataSetTableAdapters.readersTableAdapter();
             this.booksTableAdapter = new АРМ_билиотекаря.BDDataSetTableAdapters.booksTableAdapter();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.surname = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.patronymic = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.birthday = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.phone_number = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.adress = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button12 = new System.Windows.Forms.Button();
+            this.Name1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button13 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -248,6 +259,55 @@
             this.dataGridView2.TabIndex = 3;
             this.dataGridView2.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView2_CellEnter);
             // 
+            // id
+            // 
+            this.id.DataPropertyName = "Код";
+            this.id.HeaderText = "Код";
+            this.id.Name = "id";
+            this.id.Width = 51;
+            // 
+            // name
+            // 
+            this.name.DataPropertyName = "name";
+            this.name.HeaderText = "Имя";
+            this.name.Name = "name";
+            this.name.Width = 54;
+            // 
+            // surname
+            // 
+            this.surname.DataPropertyName = "surname";
+            this.surname.HeaderText = "Фамилия";
+            this.surname.Name = "surname";
+            this.surname.Width = 81;
+            // 
+            // patronymic
+            // 
+            this.patronymic.DataPropertyName = "patronymic";
+            this.patronymic.HeaderText = "Отчество";
+            this.patronymic.Name = "patronymic";
+            this.patronymic.Width = 79;
+            // 
+            // birthday
+            // 
+            this.birthday.DataPropertyName = "birthday";
+            this.birthday.HeaderText = "Дата рождения";
+            this.birthday.Name = "birthday";
+            this.birthday.Width = 102;
+            // 
+            // phone_number
+            // 
+            this.phone_number.DataPropertyName = "phone_number";
+            this.phone_number.HeaderText = "Номер телефона";
+            this.phone_number.Name = "phone_number";
+            this.phone_number.Width = 108;
+            // 
+            // adress
+            // 
+            this.adress.DataPropertyName = "adress";
+            this.adress.HeaderText = "Адрес";
+            this.adress.Name = "adress";
+            this.adress.Width = 63;
+            // 
             // readersBindingSource
             // 
             this.readersBindingSource.DataMember = "readers";
@@ -330,20 +390,21 @@
             // groupBox2
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox2.Controls.Add(this.button12);
             this.groupBox2.Controls.Add(this.button3);
             this.groupBox2.Controls.Add(this.button2);
             this.groupBox2.Location = new System.Drawing.Point(6, 404);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(279, 58);
+            this.groupBox2.Size = new System.Drawing.Size(450, 58);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Выдача книг";
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(184, 19);
+            this.button3.Location = new System.Drawing.Point(336, 19);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(88, 23);
+            this.button3.Size = new System.Drawing.Size(108, 23);
             this.button3.TabIndex = 15;
             this.button3.Text = "Выдать книгу";
             this.button3.UseVisualStyleBackColor = true;
@@ -352,9 +413,9 @@
             // 
             this.button2.Location = new System.Drawing.Point(6, 19);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(172, 23);
+            this.button2.Size = new System.Drawing.Size(100, 23);
             this.button2.TabIndex = 14;
-            this.button2.Text = "Пометить как возвращенную";
+            this.button2.Text = "Возвратить";
             this.button2.UseVisualStyleBackColor = true;
             // 
             // groupBox1
@@ -549,16 +610,16 @@
             this.groupBox6.Controls.Add(this.label8);
             this.groupBox6.Controls.Add(this.textBox4);
             this.groupBox6.Controls.Add(this.label7);
-            this.groupBox6.Location = new System.Drawing.Point(6, 481);
+            this.groupBox6.Location = new System.Drawing.Point(6, 467);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(437, 90);
+            this.groupBox6.Size = new System.Drawing.Size(437, 104);
             this.groupBox6.TabIndex = 2;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Поиск по книгам";
             // 
             // textBox11
             // 
-            this.textBox11.Location = new System.Drawing.Point(9, 64);
+            this.textBox11.Location = new System.Drawing.Point(9, 74);
             this.textBox11.Name = "textBox11";
             this.textBox11.Size = new System.Drawing.Size(100, 20);
             this.textBox11.TabIndex = 10;
@@ -567,7 +628,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(10, 48);
+            this.label12.Location = new System.Drawing.Point(10, 58);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(26, 13);
             this.label12.TabIndex = 9;
@@ -575,7 +636,7 @@
             // 
             // button11
             // 
-            this.button11.Location = new System.Drawing.Point(327, 58);
+            this.button11.Location = new System.Drawing.Point(327, 71);
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(100, 23);
             this.button11.TabIndex = 8;
@@ -674,7 +735,7 @@
             this.dataGridView3.Location = new System.Drawing.Point(4, 7);
             this.dataGridView3.Name = "dataGridView3";
             this.dataGridView3.RowHeadersVisible = false;
-            this.dataGridView3.Size = new System.Drawing.Size(619, 406);
+            this.dataGridView3.Size = new System.Drawing.Size(619, 392);
             this.dataGridView3.TabIndex = 1;
             // 
             // dataGridViewTextBoxColumn8
@@ -723,7 +784,7 @@
             this.groupBox4.Controls.Add(this.button9);
             this.groupBox4.Controls.Add(this.button8);
             this.groupBox4.Controls.Add(this.button7);
-            this.groupBox4.Location = new System.Drawing.Point(6, 419);
+            this.groupBox4.Location = new System.Drawing.Point(6, 405);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(404, 56);
             this.groupBox4.TabIndex = 0;
@@ -770,10 +831,12 @@
             // 
             // groupBox5
             // 
+            this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox5.Controls.Add(this.button13);
             this.groupBox5.Controls.Add(this.button10);
-            this.groupBox5.Location = new System.Drawing.Point(3, 510);
+            this.groupBox5.Location = new System.Drawing.Point(3, 521);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(193, 64);
+            this.groupBox5.Size = new System.Drawing.Size(317, 53);
             this.groupBox5.TabIndex = 1;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Операции с должниками";
@@ -782,20 +845,38 @@
             // 
             this.button10.Location = new System.Drawing.Point(6, 19);
             this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(181, 39);
+            this.button10.Size = new System.Drawing.Size(149, 27);
             this.button10.TabIndex = 0;
-            this.button10.Text = "Убрать из должников";
+            this.button10.Text = "Возвратить книгу";
             this.button10.UseVisualStyleBackColor = true;
             // 
             // dataGridView4
             // 
+            this.dataGridView4.AllowUserToAddRows = false;
+            this.dataGridView4.AllowUserToDeleteRows = false;
+            this.dataGridView4.AllowUserToResizeColumns = false;
+            this.dataGridView4.AllowUserToResizeRows = false;
             this.dataGridView4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView4.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dataGridView4.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView4.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Name1,
+            this.Column1,
+            this.Column2,
+            this.Column3,
+            this.Column4,
+            this.Column5,
+            this.Column6,
+            this.Column7,
+            this.Column8});
             this.dataGridView4.Location = new System.Drawing.Point(3, 7);
             this.dataGridView4.Name = "dataGridView4";
-            this.dataGridView4.Size = new System.Drawing.Size(622, 497);
+            this.dataGridView4.RowHeadersVisible = false;
+            this.dataGridView4.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView4.Size = new System.Drawing.Size(622, 508);
             this.dataGridView4.TabIndex = 0;
             // 
             // menuStrip1
@@ -857,54 +938,86 @@
             this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.BackgroundWorker1_DoWork);
             this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.BackgroundWorker1_RunWorkerCompleted);
             // 
-            // id
+            // button12
             // 
-            this.id.DataPropertyName = "Код";
-            this.id.HeaderText = "Код";
-            this.id.Name = "id";
-            this.id.Width = 51;
+            this.button12.Location = new System.Drawing.Point(112, 19);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(100, 23);
+            this.button12.TabIndex = 16;
+            this.button12.Text = "Продлить";
+            this.button12.UseVisualStyleBackColor = true;
             // 
-            // name
+            // Name1
             // 
-            this.name.DataPropertyName = "name";
-            this.name.HeaderText = "Имя";
-            this.name.Name = "name";
-            this.name.Width = 54;
+            this.Name1.DataPropertyName = "Код";
+            this.Name1.HeaderText = "Код";
+            this.Name1.Name = "Name1";
+            this.Name1.Width = 51;
             // 
-            // surname
+            // Column1
             // 
-            this.surname.DataPropertyName = "surname";
-            this.surname.HeaderText = "Фамилия";
-            this.surname.Name = "surname";
-            this.surname.Width = 81;
+            this.Column1.DataPropertyName = "name";
+            this.Column1.HeaderText = "Имя";
+            this.Column1.Name = "Column1";
+            this.Column1.Width = 54;
             // 
-            // patronymic
+            // Column2
             // 
-            this.patronymic.DataPropertyName = "patronymic";
-            this.patronymic.HeaderText = "Отчество";
-            this.patronymic.Name = "patronymic";
-            this.patronymic.Width = 79;
+            this.Column2.DataPropertyName = "surname";
+            this.Column2.HeaderText = "Фамилия";
+            this.Column2.Name = "Column2";
+            this.Column2.Width = 81;
             // 
-            // birthday
+            // Column3
             // 
-            this.birthday.DataPropertyName = "birthday";
-            this.birthday.HeaderText = "Дата рождения";
-            this.birthday.Name = "birthday";
-            this.birthday.Width = 102;
+            this.Column3.DataPropertyName = "title";
+            this.Column3.HeaderText = "Название книги";
+            this.Column3.Name = "Column3";
+            this.Column3.Width = 105;
             // 
-            // phone_number
+            // Column4
             // 
-            this.phone_number.DataPropertyName = "phone_number";
-            this.phone_number.HeaderText = "Номер телефона";
-            this.phone_number.Name = "phone_number";
-            this.phone_number.Width = 108;
+            this.Column4.DataPropertyName = "author";
+            this.Column4.HeaderText = "Автор книги";
+            this.Column4.Name = "Column4";
+            this.Column4.Width = 87;
             // 
-            // adress
+            // Column5
             // 
-            this.adress.DataPropertyName = "adress";
-            this.adress.HeaderText = "Адрес";
-            this.adress.Name = "adress";
-            this.adress.Width = 63;
+            this.Column5.DataPropertyName = "issue_date";
+            this.Column5.HeaderText = "Дата выдачи";
+            this.Column5.Name = "Column5";
+            this.Column5.Width = 90;
+            // 
+            // Column6
+            // 
+            this.Column6.DataPropertyName = "return_date";
+            this.Column6.HeaderText = "Дата возврата";
+            this.Column6.Name = "Column6";
+            this.Column6.Width = 99;
+            // 
+            // Column7
+            // 
+            this.Column7.DataPropertyName = "phone_number";
+            this.Column7.HeaderText = "Номер телефона";
+            this.Column7.Name = "Column7";
+            this.Column7.Width = 108;
+            // 
+            // Column8
+            // 
+            this.Column8.DataPropertyName = "adress";
+            this.Column8.HeaderText = "Адресс";
+            this.Column8.Name = "Column8";
+            this.Column8.Width = 69;
+            // 
+            // button13
+            // 
+            this.button13.Location = new System.Drawing.Point(161, 19);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(149, 27);
+            this.button13.TabIndex = 1;
+            this.button13.Text = "Продлить книгу";
+            this.button13.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -1034,6 +1147,17 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn birthday;
         private System.Windows.Forms.DataGridViewTextBoxColumn phone_number;
         private System.Windows.Forms.DataGridViewTextBoxColumn adress;
+        private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Name1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
+        private System.Windows.Forms.Button button13;
     }
 }
 

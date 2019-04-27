@@ -103,7 +103,7 @@ namespace АРМ_билиотекаря
                     "name= '" + reader.name + "'," +
                     "surname= '" + reader.surname + "'," +
                     "patronymic= '" + reader.patronymic + "'," +
-                    "birthday= '" + reader.birthday.ToString(@"MM.dd.yyyy") + "'," +
+                    "birthday= '" + reader.birthday.ToString(@"dd.MM.yyyy") + "'," +
                     "phone_number= '" + reader.phone_number + "'," +
                     "adress= '" + reader.adress + "'" +
                     "WHERE Код =" + reader.id;
@@ -127,10 +127,33 @@ namespace АРМ_билиотекаря
                     reader.surname + "','" +
                     reader.patronymic + "','" + 
                     reader.phone_number + "','" +
-                    reader.birthday.ToString(@"MM.dd.yyyy") + "','" + 
+                    reader.birthday.ToString(@"dd.MM.yyyy") + "','" + 
                     reader.adress + "')";
                 executeQuery(query);
                 connection.Close();
+            }
+        }
+
+        public DataTable getDebtors()
+        {
+            lock (syncLock)
+            {
+                connection.Open();
+                String query = "SELECT debtors.Код," +
+                    " issue_date," +
+                    " return_date," +
+                    " books.author," +
+                    " books.title," +
+                    " readers.name," +
+                    " readers.surname," +
+                    " readers.phone_number," +
+                    " readers.adress FROM (debtors " +
+                    "INNER JOIN books ON debtors.book_id=books.Код) " +
+                    "INNER JOIN readers ON debtors.reader_id=readers.Код " + 
+                    "WHERE debtors.return_date <= #" +
+                    DateTime.Now.ToString(@"dd\/MM\/yyyy") + "# ";
+                connection.Close();
+                return formDataTable(query);
             }
         }
     }
