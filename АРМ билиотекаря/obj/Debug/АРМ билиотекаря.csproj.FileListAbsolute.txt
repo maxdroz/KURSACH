@@ -22,3 +22,4 @@ C:\Users\maxim\Desktop\CURSACH\ARM\АРМ билиотекаря\АРМ били
 C:\Users\maxim\Desktop\CURSACH\ARM\АРМ билиотекаря\АРМ билиотекаря\obj\Debug\АРМ билиотекаря.csproj.GenerateResource.cache
 C:\Users\maxim\Desktop\CURSACH\ARM\АРМ билиотекаря\АРМ билиотекаря\obj\Debug\АРМ билиотекаря.csproj.CoreCompileInputs.cache
 C:\Users\maxim\Desktop\CURSACH\ARM\АРМ билиотекаря\АРМ билиотекаря\obj\Debug\АРМ_билиотекаря.AddEditReader.resources
+C:\Users\maxim\Desktop\CURSACH\ARM\АРМ билиотекаря\АРМ билиотекаря\obj\Debug\АРМ_билиотекаря.BookIssue.resources

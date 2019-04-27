@@ -170,7 +170,6 @@ namespace АРМ_билиотекаря
         {
             if (!isResetButton)
                 updateBooksGrid();
-
         }
 
         private void updateReaderBooks(int id)
@@ -287,7 +286,7 @@ namespace АРМ_билиотекаря
         {
             AddEditReader reader = new AddEditReader();
             reader.setForm(this);
-            reader.Show();
+            reader.ShowDialog();
         }
 
         private void Button5_Click(object sender, EventArgs e)
@@ -304,7 +303,7 @@ namespace АРМ_билиотекаря
                 dataGridView2["adress", active].Value.ToString());
 
             reader.setEdit(editReader);
-            reader.Show();
+            reader.ShowDialog();
         }
 
         private void updateEditButton()
@@ -315,5 +314,10 @@ namespace АРМ_билиотекаря
                 button5.Enabled = true;
         }
 
+        private void Button3_Click(object sender, EventArgs e)
+        {
+            BookIssue issue = new BookIssue();
+            issue.ShowDialog();
+        }
     }
 }
