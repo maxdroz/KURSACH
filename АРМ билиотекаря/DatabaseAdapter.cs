@@ -134,6 +134,25 @@ namespace АРМ_билиотекаря
             }
         }
 
+        public int getBooksCountFromReader(int id)
+        {
+            String query = "SELECT COUNT(*) FROM debtors WHERE Код = " + id;
+            OleDbCommand command = new OleDbCommand(query, connection);
+            int count = Convert.ToInt32(command.ExecuteScalar());
+            return count;
+        }
+
+        public bool areThereBookAtReader(int id)
+        {
+            lock (syncLock)
+            {
+                connection.Open();
+                bool ans = getBooksCountFromReader(id) != 0;
+                connection.Close();
+                return ans;
+            }
+        }
+
         public DataTable getDebtors()
         {
             lock (syncLock)
@@ -154,6 +173,18 @@ namespace АРМ_билиотекаря
                     DateTime.Now.ToString(@"dd\/MM\/yyyy") + "# ";
                 connection.Close();
                 return formDataTable(query);
+            }
+        }
+
+        public DataTable deleteReaderAndGetFilteredReaders(Reader reader, bool isDate, int id)
+        {
+            lock (syncLock)
+            {
+                connection.Open();
+                String query = "DELETE FROM readers WHERE Код = " + id;
+                executeQuery(query);
+                connection.Close();
+                return getFilteredReaders(reader, isDate);
             }
         }
     }

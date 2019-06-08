@@ -211,6 +211,8 @@ namespace АРМ_билиотекаря
         {
             public int arg;
             public DataTable table;
+            public bool readerClear;
+            public int id;
             public Res(int argg, DataTable tablee)
             {
                 arg = argg;
@@ -224,12 +226,15 @@ namespace АРМ_билиотекаря
         //4 - Берем книги определенного читателя
         //5 - Изменение информации о читателе
         //6 - Получить всех должников
+        //7 - Удалить Читателя
+        //8 - Проветиь есть ли у читателя книги
         public void BackgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
             lock (syncLock)
             {
                 int id = ((Args)e.Argument).id;
                 DataTable result = null;
+                Res res = new Res(id, result);
                 switch (id)
                 {
                     case 1:
@@ -256,8 +261,24 @@ namespace АРМ_билиотекаря
                     case 6:
                         result = adapter.getDebtors();
                         break;
+                    case 7:
+                        result = adapter.deleteReaderAndGetFilteredReaders(new Reader(textBox5.Text,
+                            textBox1.Text,
+                            textBox2.Text,
+                            textBox3.Text,
+                            dateTimePicker1.Value,
+                            textBox6.Text,
+                            textBox10.Text), checkBox1.Checked, ((Args)e.Argument).user_id);
+                            id = 2;
+                        break;
+                    case 8:
+                        res.readerClear = !adapter.areThereBookAtReader(((Args)e.Argument).user_id);
+                        res.id = ((Args)e.Argument).user_id;
+                        break;
                 }
-                e.Result = new Res(id, result);
+                res.arg = id;
+                res.table = result;
+                e.Result = res;
             }
         }
 
@@ -271,13 +292,23 @@ namespace АРМ_билиотекаря
                     break;
                 case 2:
                     dataGridView2.DataSource = r.table;
-                    updateEditButton();
+                    updateEditAndDeleteButton();
                     break;
                 case 4:
                     dataGridView1.DataSource = r.table;
                     break;
                 case 6:
                     dataGridView4.DataSource = r.table;
+                    break;
+                case 8:
+                    if (r.readerClear)
+                    {
+                        deleteAndUpdateReaders(r.id);
+                    }
+                    else
+                    {
+                        MessageBox.Show("У данного читателя есть не сданные книги\nСначала пометьте сданными все книги данного читателя");
+                    }
                     break;
             }
         }
@@ -306,18 +337,46 @@ namespace АРМ_билиотекаря
             reader.ShowDialog();
         }
 
-        private void updateEditButton()
+        private void updateEditAndDeleteButton()
         {
             if (dataGridView2.CurrentCellAddress.Y == -1)
+            {
                 button5.Enabled = false;
+                button6.Enabled = false;
+            }
             else
+            {
                 button5.Enabled = true;
+                button6.Enabled = true;
+            }
         }
 
         private void Button3_Click(object sender, EventArgs e)
         {
             BookIssue issue = new BookIssue();
             issue.ShowDialog();
+        }
+
+        private void deleteAndUpdateReaders(int id)
+        {
+            var worker = new BackgroundWorker();
+            worker.DoWork += BackgroundWorker1_DoWork;
+            worker.RunWorkerCompleted += BackgroundWorker1_RunWorkerCompleted;
+            worker.RunWorkerAsync(new Args(7, id));
+        }
+
+        private void checkForBooksAndDeleteReader(int id)
+        {
+            var worker = new BackgroundWorker();
+            worker.DoWork += BackgroundWorker1_DoWork;
+            worker.RunWorkerCompleted += BackgroundWorker1_RunWorkerCompleted;
+            worker.RunWorkerAsync(new Args(8, id));
+        }
+
+        private void Button6_Click(object sender, EventArgs e)
+        {
+            int id = Convert.ToInt32(dataGridView2[0, dataGridView2.CurrentCellAddress.Y].Value);
+            checkForBooksAndDeleteReader(id);
         }
     }
 }
