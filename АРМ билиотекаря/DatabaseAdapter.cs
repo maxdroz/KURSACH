@@ -63,11 +63,14 @@ namespace АРМ_билиотекаря
             }
          }
 
-        public void returnBook(int debtId)
+        public void returnBook(int debtId, string message)
         {
             lock (syncLock)
             {
                 connection.Open();
+                String query1 = "UPDATE books SET location = '" + message + "' WHERE Код = (SELECT book_id FROM debtors WHERE Код = " + debtId + ")";
+                executeQuery(query1);
+
                 String query = "DELETE FROM debtors WHERE Код = " + debtId;
                 executeQuery(query);
                 connection.Close();
@@ -114,7 +117,8 @@ namespace АРМ_билиотекаря
                     "AND book_language LIKE '%" + book.language + "%' " +
                     "AND location LIKE '%" + book.location + "%' " +
                     "AND Код LIKE '%" + id + "%'" +
-                    "AND CStr(Код) IN (SELECT location FROM books)";
+                    "AND NOT ISNUMERIC(location)";
+                    //"AND CStr(Код) NOT IN (SELECT location FROM books WHERE)";
 
                 connection.Close();
                 return formDataTable(query);
@@ -233,7 +237,7 @@ namespace АРМ_билиотекаря
             lock (syncLock)
             {
                 connection.Open();
-                String query1 = "UPDATE books SET location = " + readerId;
+                String query1 = "UPDATE books SET location = " + readerId + " WHERE Код = " + bookId;
                 executeQuery(query1);
 
                 String query = "INSERT INTO debtors (" +

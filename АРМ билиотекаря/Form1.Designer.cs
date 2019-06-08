@@ -683,6 +683,7 @@
             this.titleDataGridViewTextBoxColumn,
             this.booklanguageDataGridViewTextBoxColumn,
             this.locationDataGridViewTextBoxColumn});
+            this.dataGridView3.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dataGridView3.Location = new System.Drawing.Point(4, 7);
             this.dataGridView3.MultiSelect = false;
             this.dataGridView3.Name = "dataGridView3";
@@ -794,6 +795,7 @@
             this.Column6,
             this.Column7,
             this.Column8});
+            this.dataGridView4.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dataGridView4.Location = new System.Drawing.Point(3, 7);
             this.dataGridView4.MultiSelect = false;
             this.dataGridView4.Name = "dataGridView4";

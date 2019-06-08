@@ -169,6 +169,7 @@ namespace АРМ_билиотекаря
 
         public class Args
         {
+            public String message;
             public int id;
             public int user_id;
             public int debitId;
@@ -278,7 +279,7 @@ namespace АРМ_билиотекаря
                         res.id = ((Args)e.Argument).user_id;
                         break;
                     case 10:
-                        adapter.returnBook(((Args)e.Argument).debitId);
+                        adapter.returnBook(((Args)e.Argument).debitId, ((Args)e.Argument).message);
                         res.id = ((Args)e.Argument).user_id;
                         id = 9;
                         break;
@@ -414,12 +415,13 @@ namespace АРМ_билиотекаря
             checkForBooksAndDeleteReader(id);
         }
 
-        void returnBook(int debitId, int readerId)
+        public void returnBook(int debitId, int readerId, String message)
         {
             var worker = new BackgroundWorker();
             worker.DoWork += BackgroundWorker1_DoWork;
             worker.RunWorkerCompleted += BackgroundWorker1_RunWorkerCompleted;
             Args a = new Args(10, readerId);
+            a.message = message;
             a.debitId = debitId;
             worker.RunWorkerAsync(a);
         }
@@ -428,7 +430,8 @@ namespace АРМ_билиотекаря
         {
             int debitId = Convert.ToInt32(dataGridView1[0, dataGridView1.CurrentCellAddress.Y].Value);
             int readerId = Convert.ToInt32(dataGridView2[0, dataGridView2.CurrentCellAddress.Y].Value);
-            returnBook(debitId, readerId);
+            BookReturn br = new BookReturn(debitId, readerId, this);
+            br.ShowDialog();
         }
 
         private void TabControl1_SelectedIndexChanged(object sender, EventArgs e)
@@ -436,6 +439,10 @@ namespace АРМ_билиотекаря
             if(tabControl1.SelectedIndex == 2)
             {
                 updateDebtors();
+            }
+            if (tabControl1.SelectedIndex == 1)
+            {
+                updateBooksGrid();
             }
         }
 

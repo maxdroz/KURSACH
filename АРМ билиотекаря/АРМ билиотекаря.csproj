@@ -71,6 +71,12 @@
     <Compile Include="BookIssue.Designer.cs">
       <DependentUpon>BookIssue.cs</DependentUpon>
     </Compile>
+    <Compile Include="BookReturn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BookReturn.Designer.cs">
+      <DependentUpon>BookReturn.cs</DependentUpon>
+    </Compile>
     <Compile Include="DatabaseAdapter.cs" />
     <Compile Include="ExpandIssueDate.cs">
       <SubType>Form</SubType>
@@ -95,6 +101,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BookIssue.resx">
       <DependentUpon>BookIssue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BookReturn.resx">
+      <DependentUpon>BookReturn.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ExpandIssueDate.resx">
       <DependentUpon>ExpandIssueDate.cs</DependentUpon>

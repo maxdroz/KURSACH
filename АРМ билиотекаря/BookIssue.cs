@@ -12,6 +12,7 @@ namespace АРМ_билиотекаря
 {
     public partial class BookIssue : Form
     {
+        private bool inOperation = false;
         private bool isResetButton = false;
         private DatabaseAdapter adapter;
         private int readerId;
@@ -46,6 +47,15 @@ namespace АРМ_билиотекаря
         private void BackgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             dataGridView3.DataSource = e.Result;
+            if(dataGridView3.RowCount == 0)
+            {
+                button1.Enabled = false;
+            }
+            else
+            {
+                button1.Enabled = true;
+            }
+            inOperation = false;
         }
         private void AddBook_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -56,6 +66,7 @@ namespace АРМ_билиотекаря
         private void AddBook_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             form.updateReaderBooks(readerId);
+            updateBooksGrid();
         }
 
         private void BookIssue_Load(object sender, EventArgs e)
@@ -81,7 +92,7 @@ namespace АРМ_билиотекаря
 
         private void addBookToReader()
         {
-
+            inOperation = true;
             var worker = new BackgroundWorker();
             worker.DoWork += AddBook_DoWork;
             worker.RunWorkerCompleted += AddBook_RunWorkerCompleted;
@@ -90,7 +101,8 @@ namespace АРМ_билиотекаря
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            addBookToReader();
+            if(!inOperation)
+                addBookToReader();
         }
     }
 }

@@ -191,7 +191,9 @@
             this.titleDataGridViewTextBoxColumn,
             this.booklanguageDataGridViewTextBoxColumn,
             this.locationDataGridViewTextBoxColumn});
+            this.dataGridView3.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dataGridView3.Location = new System.Drawing.Point(12, 10);
+            this.dataGridView3.MultiSelect = false;
             this.dataGridView3.Name = "dataGridView3";
             this.dataGridView3.RowHeadersVisible = false;
             this.dataGridView3.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
