@@ -95,15 +95,7 @@ namespace АРМ_билиотекаря
             worker.RunWorkerCompleted += BackgroundWorker1_RunWorkerCompleted;
             worker.RunWorkerAsync(new Args(2));
 
-            if (dataGridView2.RowCount <= 1)
-            {
-                if (empty == null)
-                {
-                    empty = adapter.getReaderBooks(-1);
-                }
-                dataGridView1.DataSource = empty;
-                //dataGridView1.DataSource = adapter.getReaderBooks(-1);
-            }
+            
             //dataGridView2.DataSource = adapter.getFilteredReaders(textBox1.Text,
             //    textBox2.Text,
             //    textBox3.Text, 
@@ -189,6 +181,7 @@ namespace АРМ_билиотекаря
         {
             public int id;
             public int user_id;
+            public int debitId;
             public Reader reader = null;
 
             public Args(int id, int user_id) : this(id)
@@ -219,15 +212,30 @@ namespace АРМ_билиотекаря
                 table = tablee;
             }
         }
+        private void disableEnableBookButtons()
+        {
+            if (dataGridView1.RowCount != 0)
+            {
+                button2.Enabled = true;
+                button12.Enabled = true;
+            }
+            else
+            {
+                button2.Enabled = false;
+                button12.Enabled = false;
+            }
+        }
 
-        //1 - Поиск всех книг
-        //2 - Поиск по читателям
-        //3 - Добавление читателя
-        //4 - Берем книги определенного читателя
-        //5 - Изменение информации о читателе
-        //6 - Получить всех должников
-        //7 - Удалить Читателя
-        //8 - Проветиь есть ли у читателя книги
+        //1  - Поиск всех книг
+        //2  - Поиск по читателям
+        //3  - Добавление читателя
+        //4  - Берем книги определенного читателя
+        //5  - Изменение информации о читателе
+        //6  - Получить всех должников
+        //7  - Удалить Читателя
+        //8  - Проверить есть ли у читателя книги
+        //9  - Обновить дату выдачи
+        //10 - Вернуть книгу
         public void BackgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
             lock (syncLock)
@@ -275,6 +283,15 @@ namespace АРМ_билиотекаря
                         res.readerClear = !adapter.areThereBookAtReader(((Args)e.Argument).user_id);
                         res.id = ((Args)e.Argument).user_id;
                         break;
+                    case 9:
+                        adapter.expandIssueDate(((Args)e.Argument).debitId, ((Args)e.Argument).reader.birthday);
+                        res.id = ((Args)e.Argument).user_id;
+                        break;
+                    case 10:
+                        adapter.returnBook(((Args)e.Argument).debitId);
+                        res.id = ((Args)e.Argument).user_id;
+                        id = 9;
+                        break;
                 }
                 res.arg = id;
                 res.table = result;
@@ -282,19 +299,6 @@ namespace АРМ_билиотекаря
             }
         }
 
-        private void disableEnableBookButtons()
-        {
-            if (dataGridView1.RowCount != 0)
-            {
-                button2.Enabled = true;
-                button12.Enabled = true;
-            }
-            else
-            {
-                button2.Enabled = false;
-                button12.Enabled = false;
-            }
-        }
 
         private void BackgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
@@ -306,7 +310,17 @@ namespace АРМ_билиотекаря
                     break;
                 case 2:
                     dataGridView2.DataSource = r.table;
+                    if (dataGridView2.RowCount <= 1)
+                    {
+                        if (empty == null)
+                        {
+                            empty = adapter.getReaderBooks(-1);
+                        }
+                        dataGridView1.DataSource = empty;
+                        //dataGridView1.DataSource = adapter.getReaderBooks(-1);
+                    }
                     updateEditAndDeleteButton();
+                    disableEnableBookButtons();
                     break;
                 case 4:
                     dataGridView1.DataSource = r.table;
@@ -325,9 +339,22 @@ namespace АРМ_билиотекаря
                         MessageBox.Show("У данного читателя есть не сданные книги\nСначала пометьте сданными все книги данного читателя");
                     }
                     break;
+                case 9:
+                    updateReaderBooks(r.id);
+                    break;
             }
         }
 
+        public void expandReturnDate(int userId, DateTime newDate, int debitId)
+        {
+            var worker = new BackgroundWorker();
+            worker.DoWork += BackgroundWorker1_DoWork;
+            worker.RunWorkerCompleted += BackgroundWorker1_RunWorkerCompleted;
+            Args a = new Args(9, userId);
+            a.debitId = debitId;
+            a.reader = new Reader("", "", "", "", newDate, "", "");
+            worker.RunWorkerAsync(a);
+        }
         private void Button4_Click(object sender, EventArgs e)
         {
             AddEditReader reader = new AddEditReader();
@@ -354,7 +381,7 @@ namespace АРМ_билиотекаря
 
         private void updateEditAndDeleteButton()
         {
-            if (dataGridView2.CurrentCellAddress.Y == -1)
+            if (dataGridView2.RowCount == 0)
             {
                 button5.Enabled = false;
                 button6.Enabled = false;
@@ -397,9 +424,21 @@ namespace АРМ_билиотекаря
             checkForBooksAndDeleteReader(id);
         }
 
+        void returnBook(int debitId, int readerId)
+        {
+            var worker = new BackgroundWorker();
+            worker.DoWork += BackgroundWorker1_DoWork;
+            worker.RunWorkerCompleted += BackgroundWorker1_RunWorkerCompleted;
+            Args a = new Args(10, readerId);
+            a.debitId = debitId;
+            worker.RunWorkerAsync(a);
+        }
+
         private void Button2_Click(object sender, EventArgs e)
         {
-
+            int debitId = Convert.ToInt32(dataGridView1[0, dataGridView1.CurrentCellAddress.Y].Value);
+            int readerId = Convert.ToInt32(dataGridView2[0, dataGridView2.CurrentCellAddress.Y].Value);
+            returnBook(debitId, readerId);
         }
 
         private void TabControl1_SelectedIndexChanged(object sender, EventArgs e)
@@ -408,6 +447,14 @@ namespace АРМ_билиотекаря
             {
                 updateDebtors();
             }
+        }
+
+        private void Button12_Click(object sender, EventArgs e)
+        {
+            int debitId = Convert.ToInt32(dataGridView1[0, dataGridView1.CurrentCellAddress.Y].Value);
+            int readerId = Convert.ToInt32(dataGridView2[0, dataGridView2.CurrentCellAddress.Y].Value);
+            ExpandIssueDate exp = new ExpandIssueDate(this, debitId, readerId);
+            exp.ShowDialog();
         }
     }
 }

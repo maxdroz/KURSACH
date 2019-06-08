@@ -48,12 +48,6 @@
             this.readersBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bDDataSet = new АРМ_билиотекаря.BDDataSet();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Код = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.author = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.title = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.book_language = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.issue_date = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.return_date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.button12 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -122,6 +116,13 @@
             this.readersTableAdapter = new АРМ_билиотекаря.BDDataSetTableAdapters.readersTableAdapter();
             this.booksTableAdapter = new АРМ_билиотекаря.BDDataSetTableAdapters.booksTableAdapter();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.debtors = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Код = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.author = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.title = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.book_language = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.issue_date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.return_date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -333,6 +334,7 @@
             this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.debtors,
             this.Код,
             this.author,
             this.title,
@@ -341,53 +343,12 @@
             this.return_date});
             this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dataGridView1.Location = new System.Drawing.Point(6, 222);
+            this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(617, 176);
             this.dataGridView1.TabIndex = 2;
-            // 
-            // Код
-            // 
-            this.Код.DataPropertyName = "book_id";
-            this.Код.HeaderText = "Код книги";
-            this.Код.Name = "Код";
-            this.Код.Width = 77;
-            // 
-            // author
-            // 
-            this.author.DataPropertyName = "author";
-            this.author.HeaderText = "Автор";
-            this.author.Name = "author";
-            this.author.Width = 62;
-            // 
-            // title
-            // 
-            this.title.DataPropertyName = "title";
-            this.title.HeaderText = "Название";
-            this.title.Name = "title";
-            this.title.Width = 82;
-            // 
-            // book_language
-            // 
-            this.book_language.DataPropertyName = "books.book_language";
-            this.book_language.HeaderText = "Язык";
-            this.book_language.Name = "book_language";
-            this.book_language.Width = 60;
-            // 
-            // issue_date
-            // 
-            this.issue_date.DataPropertyName = "issue_date";
-            this.issue_date.HeaderText = "Дата выдачи";
-            this.issue_date.Name = "issue_date";
-            this.issue_date.Width = 90;
-            // 
-            // return_date
-            // 
-            this.return_date.DataPropertyName = "return_date";
-            this.return_date.HeaderText = "Дата возврата";
-            this.return_date.Name = "return_date";
-            this.return_date.Width = 99;
             // 
             // groupBox2
             // 
@@ -410,6 +371,7 @@
             this.button12.TabIndex = 16;
             this.button12.Text = "Продлить";
             this.button12.UseVisualStyleBackColor = true;
+            this.button12.Click += new System.EventHandler(this.Button12_Click);
             // 
             // button3
             // 
@@ -1023,6 +985,55 @@
             this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.BackgroundWorker1_DoWork);
             this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.BackgroundWorker1_RunWorkerCompleted);
             // 
+            // debtors
+            // 
+            this.debtors.DataPropertyName = "Код";
+            this.debtors.HeaderText = "Код долга";
+            this.debtors.Name = "debtors";
+            this.debtors.Width = 77;
+            // 
+            // Код
+            // 
+            this.Код.DataPropertyName = "book_id";
+            this.Код.HeaderText = "Код книги";
+            this.Код.Name = "Код";
+            this.Код.Width = 77;
+            // 
+            // author
+            // 
+            this.author.DataPropertyName = "author";
+            this.author.HeaderText = "Автор";
+            this.author.Name = "author";
+            this.author.Width = 62;
+            // 
+            // title
+            // 
+            this.title.DataPropertyName = "title";
+            this.title.HeaderText = "Название";
+            this.title.Name = "title";
+            this.title.Width = 82;
+            // 
+            // book_language
+            // 
+            this.book_language.DataPropertyName = "books.book_language";
+            this.book_language.HeaderText = "Язык";
+            this.book_language.Name = "book_language";
+            this.book_language.Width = 60;
+            // 
+            // issue_date
+            // 
+            this.issue_date.DataPropertyName = "issue_date";
+            this.issue_date.HeaderText = "Дата выдачи";
+            this.issue_date.Name = "issue_date";
+            this.issue_date.Width = 90;
+            // 
+            // return_date
+            // 
+            this.return_date.DataPropertyName = "return_date";
+            this.return_date.HeaderText = "Дата возврата";
+            this.return_date.Name = "return_date";
+            this.return_date.Width = 99;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1130,12 +1141,6 @@
         private BDDataSetTableAdapters.booksTableAdapter booksTableAdapter;
         private System.Windows.Forms.TextBox textBox10;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Код;
-        private System.Windows.Forms.DataGridViewTextBoxColumn author;
-        private System.Windows.Forms.DataGridViewTextBoxColumn title;
-        private System.Windows.Forms.DataGridViewTextBoxColumn book_language;
-        private System.Windows.Forms.DataGridViewTextBoxColumn issue_date;
-        private System.Windows.Forms.DataGridViewTextBoxColumn return_date;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
         private System.Windows.Forms.DataGridViewTextBoxColumn authorDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn titleDataGridViewTextBoxColumn;
@@ -1162,6 +1167,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
         private System.Windows.Forms.Button button13;
+        private System.Windows.Forms.DataGridViewTextBoxColumn debtors;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Код;
+        private System.Windows.Forms.DataGridViewTextBoxColumn author;
+        private System.Windows.Forms.DataGridViewTextBoxColumn title;
+        private System.Windows.Forms.DataGridViewTextBoxColumn book_language;
+        private System.Windows.Forms.DataGridViewTextBoxColumn issue_date;
+        private System.Windows.Forms.DataGridViewTextBoxColumn return_date;
     }
 }
 

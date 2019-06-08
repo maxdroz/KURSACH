@@ -63,14 +63,25 @@ namespace АРМ_билиотекаря
             }
          }
 
-        public DataTable getReaderBooks(int reader_id)
+        public void returnBook(int debtId)
         {
             lock (syncLock)
             {
                 connection.Open();
-                String query = "SELECT debtors.book_id, debtors.issue_date, debtors.return_date, books.author, books.title, [books.book_language]" +
+                String query = "DELETE FROM debtors WHERE Код = " + debtId;
+                executeQuery(query);
+                connection.Close();
+            }
+        }
+
+        public DataTable getReaderBooks(int readerId)
+        {
+            lock (syncLock)
+            {
+                connection.Open();
+                String query = "SELECT debtors.Код, debtors.book_id, debtors.issue_date, debtors.return_date, books.author, books.title, [books.book_language]" +
                     " FROM debtors INNER JOIN books ON debtors.book_id = books.Код " +
-                    "WHERE debtors.reader_id = " + reader_id;
+                    "WHERE debtors.reader_id = " + readerId;
                 connection.Close();
                 return formDataTable(query);
             }
@@ -185,6 +196,19 @@ namespace АРМ_билиотекаря
                 executeQuery(query);
                 connection.Close();
                 return getFilteredReaders(reader, isDate);
+            }
+        }
+
+        public void expandIssueDate(int debitId, DateTime newDate) 
+        {
+            lock (syncLock)
+            {
+                connection.Open();
+                String query = "UPDATE debtors SET return_date= '" +
+                    newDate.ToString(@"dd.MM.yyyy") + "'" +
+                    "WHERE Код = " + debitId;
+                executeQuery(query);
+                connection.Close();
             }
         }
 
