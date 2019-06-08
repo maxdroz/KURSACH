@@ -58,6 +58,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BDDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="AddEditBook.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddEditBook.Designer.cs">
+      <DependentUpon>AddEditBook.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Book.cs" />
     <Compile Include="BookIssue.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -82,6 +89,9 @@
     <Compile Include="Reader.cs" />
     <EmbeddedResource Include="AddEditReader.resx">
       <DependentUpon>AddEditReader.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddEditBook.resx">
+      <DependentUpon>AddEditBook.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="BookIssue.resx">
       <DependentUpon>BookIssue.cs</DependentUpon>

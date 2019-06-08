@@ -88,16 +88,15 @@ namespace АРМ_билиотекаря
         }
 
 
-        public DataTable getFilteredBooks(string author, string name, string language, string location, string id)
+        public DataTable getFilteredBooks(Book book, string id)
         {
             lock (syncLock) 
             {
                 connection.Open();
-                //TODO Разобрвться с исключением
-                String query = "SELECT * from books WHERE author LIKE '%" + author + "%' " +
-                    "AND title LIKE '%" + name + "%' " +
-                    "AND book_language LIKE '%" + language + "%' " +
-                    "AND location LIKE '%" + location + "%' " +
+                String query = "SELECT * from books WHERE author LIKE '%" + book.author + "%' " +
+                    "AND title LIKE '%" + book.title + "%' " +
+                    "AND book_language LIKE '%" + book.language + "%' " +
+                    "AND location LIKE '%" + book.location + "%' " +
                     "AND Код LIKE '%" + id + "%'";
 
                 connection.Close();
@@ -105,16 +104,15 @@ namespace АРМ_билиотекаря
             }
         }
 
-        public DataTable getFilteredBooksNotTaken(string author, string name, string language, string location, string id)
+        public DataTable getFilteredBooksNotTaken(Book book, string id)
         {
             lock (syncLock)
             {
                 connection.Open();
-                ////TODO Разобрвться с исключением
-                String query = "SELECT * from books WHERE author LIKE '%" + author + "%' " +
-                    "AND title LIKE '%" + name + "%' " +
-                    "AND book_language LIKE '%" + language + "%' " +
-                    "AND location LIKE '%" + location + "%' " +
+                String query = "SELECT * from books WHERE author LIKE '%" + book.author + "%' " +
+                    "AND title LIKE '%" + book.title + "%' " +
+                    "AND book_language LIKE '%" + book.language + "%' " +
+                    "AND location LIKE '%" + book.location + "%' " +
                     "AND Код LIKE '%" + id + "%'" +
                     "AND CStr(Код) IN (SELECT location FROM books)";
 
@@ -235,14 +233,17 @@ namespace АРМ_билиотекаря
             lock (syncLock)
             {
                 connection.Open();
+                String query1 = "UPDATE books SET location = " + readerId;
+                executeQuery(query1);
+
                 String query = "INSERT INTO debtors (" +
                     "book_id," +
                     "reader_id," +
                     "issue_date," +
                     "return_date" +
-                    ") VALUES (" +
-                    bookId + "," +
-                    readerId + "," +
+                    ") VALUES ('" +
+                    bookId + "','" +
+                    readerId + "'," +
                     "'" + issueDate.ToString(@"dd.MM.yyyy") + "'," +
                     "'" + returnDate.ToString(@"dd.MM.yyyy") + "')";
                 executeQuery(query);

@@ -236,7 +236,7 @@ namespace АРМ_билиотекаря
                 switch (id)
                 {
                     case 1:
-                        result = adapter.getFilteredBooks(textBox4.Text, textBox7.Text, textBox8.Text, textBox9.Text, textBox11.Text);
+                        result = adapter.getFilteredBooks(new Book(textBox7.Text, textBox4.Text, textBox8.Text, textBox9.Text), textBox11.Text);
                         break;
                     case 2:
                         result = adapter.getFilteredReaders(new Reader(textBox5.Text,

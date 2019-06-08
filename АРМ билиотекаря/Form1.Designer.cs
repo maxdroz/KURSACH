@@ -104,7 +104,6 @@
             this.создатьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.сохранитьКакToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.справкаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.adress = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.phone_number = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.birthday = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -911,12 +910,6 @@
             this.справкаToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
             this.справкаToolStripMenuItem.Text = "Справка";
             // 
-            // backgroundWorker1
-            // 
-            this.backgroundWorker1.WorkerSupportsCancellation = true;
-            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.BackgroundWorker1_DoWork);
-            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.BackgroundWorker1_RunWorkerCompleted);
-            // 
             // adress
             // 
             this.adress.DataPropertyName = "adress";
@@ -1094,7 +1087,6 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox textBox11;
         private System.Windows.Forms.Label label12;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Button button12;
         private System.Windows.Forms.DataGridViewTextBoxColumn Name1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
