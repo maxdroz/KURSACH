@@ -172,7 +172,7 @@ namespace АРМ_билиотекаря
                 updateBooksGrid();
         }
 
-        private void updateReaderBooks(int id)
+        public void updateReaderBooks(int id)
         {
             var worker = new BackgroundWorker();
             worker.DoWork += BackgroundWorker1_DoWork;
@@ -282,6 +282,20 @@ namespace АРМ_билиотекаря
             }
         }
 
+        private void disableEnableBookButtons()
+        {
+            if (dataGridView1.RowCount != 0)
+            {
+                button2.Enabled = true;
+                button12.Enabled = true;
+            }
+            else
+            {
+                button2.Enabled = false;
+                button12.Enabled = false;
+            }
+        }
+
         private void BackgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             Res r = (Res)e.Result;
@@ -296,6 +310,7 @@ namespace АРМ_билиотекаря
                     break;
                 case 4:
                     dataGridView1.DataSource = r.table;
+                    disableEnableBookButtons();
                     break;
                 case 6:
                     dataGridView4.DataSource = r.table;
@@ -343,17 +358,20 @@ namespace АРМ_билиотекаря
             {
                 button5.Enabled = false;
                 button6.Enabled = false;
+                button3.Enabled = false;
             }
             else
             {
                 button5.Enabled = true;
                 button6.Enabled = true;
+                button3.Enabled = true;
             }
         }
 
         private void Button3_Click(object sender, EventArgs e)
         {
-            BookIssue issue = new BookIssue();
+            int id = Convert.ToInt32(dataGridView2[0, dataGridView2.CurrentCellAddress.Y].Value);
+            BookIssue issue = new BookIssue(this, id);
             issue.ShowDialog();
         }
 
@@ -377,6 +395,19 @@ namespace АРМ_билиотекаря
         {
             int id = Convert.ToInt32(dataGridView2[0, dataGridView2.CurrentCellAddress.Y].Value);
             checkForBooksAndDeleteReader(id);
+        }
+
+        private void Button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(tabControl1.SelectedIndex == 2)
+            {
+                updateDebtors();
+            }
         }
     }
 }

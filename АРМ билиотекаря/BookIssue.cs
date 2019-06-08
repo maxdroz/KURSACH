@@ -14,9 +14,13 @@ namespace АРМ_билиотекаря
     {
         private bool isResetButton = false;
         private DatabaseAdapter adapter;
-        public BookIssue()
+        private int readerId;
+        private Form1 form;
+        public BookIssue(Form1 f, int readerId)
         {
+            form = f;
             InitializeComponent();
+            this.readerId = readerId;
             adapter = DatabaseAdapter.getInstance();
         }
 
@@ -43,12 +47,51 @@ namespace АРМ_билиотекаря
         {
             dataGridView3.DataSource = e.Result;
         }
+        private void AddBook_DoWork(object sender, DoWorkEventArgs e)
+        {
+            int bookId = Convert.ToInt32(dataGridView3[0, dataGridView3.CurrentCellAddress.Y].Value);
+            adapter.issueBookToReader(readerId, bookId, dateTimePicker1.Value, dateTimePicker2.Value);
+        }
+
+        private void AddBook_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            form.updateReaderBooks(readerId);
+        }
 
         private void BookIssue_Load(object sender, EventArgs e)
         {
+            dateTimePicker1.Value = DateTime.Now;
+            dateTimePicker2.Value = dateTimePicker1.Value.AddDays(30);
+
             // TODO: данная строка кода позволяет загрузить данные в таблицу "bDDataSet.books". При необходимости она может быть перемещена или удалена.
             this.booksTableAdapter.Fill(this.bDDataSet.books);
 
+        }
+
+        private void Button11_Click(object sender, EventArgs e)
+        {
+            isResetButton = true;
+            textBox4.Text = "";
+            textBox7.Text = "";
+            textBox8.Text = "";
+            textBox9.Text = "";
+            textBox11.Text = "";
+            isResetButton = false;
+            updateBooksGrid();
+        }
+
+        private void addBookToReader()
+        {
+
+            var worker = new BackgroundWorker();
+            worker.DoWork += AddBook_DoWork;
+            worker.RunWorkerCompleted += AddBook_RunWorkerCompleted;
+            worker.RunWorkerAsync();
+        }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            addBookToReader();
         }
     }
 }

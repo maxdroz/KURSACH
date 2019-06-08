@@ -187,5 +187,25 @@ namespace АРМ_билиотекаря
                 return getFilteredReaders(reader, isDate);
             }
         }
+
+        public void issueBookToReader(int readerId, int bookId, DateTime issueDate, DateTime returnDate)
+        {
+            lock (syncLock)
+            {
+                connection.Open();
+                String query = "INSERT INTO debtors (" +
+                    "book_id," +
+                    "reader_id," +
+                    "issue_date," +
+                    "return_date" +
+                    ") VALUES (" +
+                    bookId + "," +
+                    readerId + "," +
+                    "'" + issueDate.ToString(@"dd.MM.yyyy") + "'," +
+                    "'" + returnDate.ToString(@"dd.MM.yyyy") + "')";
+                executeQuery(query);
+                connection.Close();
+            }
+        }
     }
 }
