@@ -708,8 +708,10 @@
             this.locationDataGridViewTextBoxColumn});
             this.dataGridView3.DataSource = this.booksBindingSource;
             this.dataGridView3.Location = new System.Drawing.Point(4, 7);
+            this.dataGridView3.MultiSelect = false;
             this.dataGridView3.Name = "dataGridView3";
             this.dataGridView3.RowHeadersVisible = false;
+            this.dataGridView3.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView3.Size = new System.Drawing.Size(619, 392);
             this.dataGridView3.TabIndex = 1;
             // 
@@ -857,6 +859,7 @@
             this.Column7,
             this.Column8});
             this.dataGridView4.Location = new System.Drawing.Point(3, 7);
+            this.dataGridView4.MultiSelect = false;
             this.dataGridView4.Name = "dataGridView4";
             this.dataGridView4.RowHeadersVisible = false;
             this.dataGridView4.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;

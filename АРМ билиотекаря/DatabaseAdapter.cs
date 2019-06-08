@@ -105,6 +105,24 @@ namespace АРМ_билиотекаря
             }
         }
 
+        public DataTable getFilteredBooksNotTaken(string author, string name, string language, string location, string id)
+        {
+            lock (syncLock)
+            {
+                connection.Open();
+                ////TODO Разобрвться с исключением
+                String query = "SELECT * from books WHERE author LIKE '%" + author + "%' " +
+                    "AND title LIKE '%" + name + "%' " +
+                    "AND book_language LIKE '%" + language + "%' " +
+                    "AND location LIKE '%" + location + "%' " +
+                    "AND Код LIKE '%" + id + "%'" +
+                    "AND Код as char(10) NOT IN (SELECT location FROM books)";
+
+                connection.Close();
+                return formDataTable(query);
+            }
+        }
+
         public void editReader(Reader reader)
         {
             lock (syncLock)
