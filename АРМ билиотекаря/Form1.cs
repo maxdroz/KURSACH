@@ -60,18 +60,8 @@ namespace АРМ_билиотекаря
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "bDDataSet.books". При необходимости она может быть перемещена или удалена.
-            this.booksTableAdapter.Fill(this.bDDataSet.books);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "bDDataSet.readers". При необходимости она может быть перемещена или удалена.
-            this.readersTableAdapter.Fill(this.bDDataSet.readers);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "bDDataSet.books". При необходимости она может быть перемещена или удалена.
-            this.booksTableAdapter.Fill(this.bDDataSet.books);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "bDDataSet.readers". При необходимости она может быть перемещена или удалена.
-            this.readersTableAdapter.Fill(this.bDDataSet.readers);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "bDDataSet.books". При необходимости она может быть перемещена или удалена.
-            this.booksTableAdapter.Fill(this.bDDataSet.books);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "bDDataSet.readers". При необходимости она может быть перемещена или удалена.
-            this.readersTableAdapter.Fill(this.bDDataSet.readers);
+            updateReadersGrid();
+            updateBooksGrid();
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)

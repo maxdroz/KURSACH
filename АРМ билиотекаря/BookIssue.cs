@@ -63,8 +63,7 @@ namespace АРМ_билиотекаря
             dateTimePicker1.Value = DateTime.Now;
             dateTimePicker2.Value = dateTimePicker1.Value.AddDays(30);
 
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "bDDataSet.books". При необходимости она может быть перемещена или удалена.
-            this.booksTableAdapter.Fill(this.bDDataSet.books);
+            updateBooksGrid();
 
         }
 

@@ -116,7 +116,7 @@ namespace АРМ_билиотекаря
                     "AND book_language LIKE '%" + language + "%' " +
                     "AND location LIKE '%" + location + "%' " +
                     "AND Код LIKE '%" + id + "%'" +
-                    "AND Код as char(10) NOT IN (SELECT location FROM books)";
+                    "AND CStr(Код) IN (SELECT location FROM books)";
 
                 connection.Close();
                 return formDataTable(query);
