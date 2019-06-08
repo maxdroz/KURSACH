@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace АРМ_билиотекаря
 {
-    class Book
+    public class Book
     {
         public String title;
         public String author;

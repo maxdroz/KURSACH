@@ -169,6 +169,7 @@ namespace АРМ_билиотекаря
 
         public class Args
         {
+            public Book book;
             public String message;
             public int id;
             public int user_id;
@@ -227,6 +228,9 @@ namespace АРМ_билиотекаря
         //8  - Проверить есть ли у читателя книги
         //9  - Обновить дату выдачи
         //10 - Вернуть книгу
+        //11 - Добавить книгу
+        //12 - Изменить книгу
+
         public void BackgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
             lock (syncLock)
@@ -283,6 +287,13 @@ namespace АРМ_билиотекаря
                         res.id = ((Args)e.Argument).user_id;
                         id = 9;
                         break;
+                    case 11:
+                        adapter.addBook(((Args)e.Argument).book);
+                        break;
+                    case 12:
+                        adapter.editBook(((Args)e.Argument).book, ((Args)e.Argument).user_id);
+                        id = 11;
+                        break;
                 }
                 res.arg = id;
                 res.table = result;
@@ -332,6 +343,9 @@ namespace АРМ_билиотекаря
                     break;
                 case 9:
                     updateReaderBooks(r.id);
+                    break;
+                case 11:
+                    updateBooksGrid();
                     break;
             }
         }
@@ -444,6 +458,11 @@ namespace АРМ_билиотекаря
             {
                 updateBooksGrid();
             }
+            if(tabControl1.SelectedIndex == 0)
+            {
+                int readerId = Convert.ToInt32(dataGridView2[0, dataGridView2.CurrentCellAddress.Y].Value);
+                updateReaderBooks(readerId);
+            }
         }
 
         private void Button12_Click(object sender, EventArgs e)
@@ -452,6 +471,43 @@ namespace АРМ_билиотекаря
             int readerId = Convert.ToInt32(dataGridView2[0, dataGridView2.CurrentCellAddress.Y].Value);
             ExpandIssueDate exp = new ExpandIssueDate(this, debitId, readerId);
             exp.ShowDialog();
+        }
+
+        public void addBook(Book book)
+        {
+            var worker = new BackgroundWorker();
+            worker.DoWork += BackgroundWorker1_DoWork;
+            worker.RunWorkerCompleted += BackgroundWorker1_RunWorkerCompleted;
+            worker.RunWorkerAsync(new Args(11)
+            {
+                book = book
+            });
+        }
+
+        private void Button7_Click(object sender, EventArgs e)
+        {
+            AddEditBook addEditBook = new AddEditBook(this);
+            addEditBook.ShowDialog();
+        }
+
+        private void Button8_Click(object sender, EventArgs e)
+        {
+            int i = Convert.ToInt32(dataGridView3.CurrentCellAddress.Y);
+            AddEditBook addEditBook = new AddEditBook(this);
+            addEditBook.setBook(new Book(dataGridView3[2, i].Value.ToString(), dataGridView3[1, i].Value.ToString(), dataGridView3[3, i].Value.ToString(), dataGridView3[4, i].Value.ToString()), Convert.ToInt32(dataGridView3[0, i].Value.ToString()));
+            addEditBook.ShowDialog();
+        }
+
+        public void editBook(Book book, int bookId)
+        {
+            var worker = new BackgroundWorker();
+            worker.DoWork += BackgroundWorker1_DoWork;
+            worker.RunWorkerCompleted += BackgroundWorker1_RunWorkerCompleted;
+            worker.RunWorkerAsync(new Args(12)
+            {
+                user_id = bookId,
+                book = book
+            });
         }
     }
 }

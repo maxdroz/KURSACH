@@ -190,18 +190,20 @@ namespace АРМ_билиотекаря
             {
                 connection.Open();
                 String query = "SELECT debtors.Код," +
-                    " issue_date," +
-                    " return_date," +
-                    " books.author," +
-                    " books.title," +
-                    " readers.name," +
-                    " readers.surname," +
-                    " readers.phone_number," +
-                    " readers.adress FROM (debtors " +
+                    "issue_date," +
+                    "return_date," +
+                    "books.author," +
+                    "books.title," +
+                    "readers.name," +
+                    "readers.surname," +
+                    "readers.phone_number," +
+                    "readers.adress " +
+                    "FROM (debtors " +
                     "INNER JOIN books ON debtors.book_id=books.Код) " +
-                    "INNER JOIN readers ON debtors.reader_id=readers.Код " + 
-                    "WHERE debtors.return_date <= #" +
-                    DateTime.Now.ToString(@"dd\/MM\/yyyy") + "# ";
+                    "INNER JOIN readers ON debtors.reader_id=readers.Код " +
+                    "WHERE debtors.return_date <= NOW()";
+                    //"WHERE debtors.return_date <= #" +
+                    //DateTime.Now.ToString(@"dd\/MM\/yyyy") + "# ";
                 connection.Close();
                 return formDataTable(query);
             }
@@ -251,6 +253,46 @@ namespace АРМ_билиотекаря
                     "'" + issueDate.ToString(@"dd.MM.yyyy") + "'," +
                     "'" + returnDate.ToString(@"dd.MM.yyyy") + "')";
                 executeQuery(query);
+                connection.Close();
+            }
+        }
+
+        public void addBook(Book book)
+        {
+            lock (syncLock)
+            {
+                connection.Open();
+
+                String query = "INSERT INTO books (" +
+                    "author," +
+                    "title," +
+                    "book_language," +
+                    "location" +
+                    ") values (" +
+                    "'" + book.author +
+                    "','" + book.title + 
+                    "','" + book.language +
+                    "', '" + book.location +
+                    "')";
+                executeQuery(query);
+
+                connection.Close();
+            }
+        }
+
+        public void editBook(Book book, int bookId)
+        {
+            lock (syncLock)
+            {
+                connection.Open();
+                String query = "UPDATE books SET " +
+                    "author = '" + book.author + "'," +
+                    "title = '" + book.title + "'," +
+                    "book_language = '" + book.language + "'," +
+                    "location = '" + book.location + 
+                    "' WHERE Код = " + bookId;
+                executeQuery(query);
+
                 connection.Close();
             }
         }

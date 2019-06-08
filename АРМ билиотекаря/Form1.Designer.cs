@@ -144,7 +144,7 @@
             this.tabControl1.Location = new System.Drawing.Point(12, 27);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(637, 603);
+            this.tabControl1.Size = new System.Drawing.Size(845, 603);
             this.tabControl1.TabIndex = 0;
             this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.TabControl1_SelectedIndexChanged);
             // 
@@ -158,7 +158,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(629, 577);
+            this.tabPage1.Size = new System.Drawing.Size(837, 577);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Читатели";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -173,7 +173,7 @@
             this.groupBox3.Controls.Add(this.button4);
             this.groupBox3.Location = new System.Drawing.Point(3, 162);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(617, 54);
+            this.groupBox3.Size = new System.Drawing.Size(825, 54);
             this.groupBox3.TabIndex = 4;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Редактирование БД читателей";
@@ -183,7 +183,7 @@
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel1.BackgroundImage")));
             this.panel1.Cursor = System.Windows.Forms.Cursors.SizeAll;
-            this.panel1.Location = new System.Drawing.Point(589, 10);
+            this.panel1.Location = new System.Drawing.Point(797, 10);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(22, 38);
             this.panel1.TabIndex = 3;
@@ -246,7 +246,7 @@
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowHeadersVisible = false;
             this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView2.Size = new System.Drawing.Size(617, 150);
+            this.dataGridView2.Size = new System.Drawing.Size(825, 150);
             this.dataGridView2.TabIndex = 3;
             this.dataGridView2.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView2_CellEnter);
             // 
@@ -276,7 +276,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(617, 176);
+            this.dataGridView1.Size = new System.Drawing.Size(825, 176);
             this.dataGridView1.TabIndex = 2;
             // 
             // debtors
@@ -722,6 +722,7 @@
             this.button8.TabIndex = 1;
             this.button8.Text = "Редактировать";
             this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.Button8_Click);
             // 
             // button7
             // 
@@ -731,6 +732,7 @@
             this.button7.TabIndex = 0;
             this.button7.Text = "Добавить";
             this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.Button7_Click);
             // 
             // tabPage3
             // 
@@ -874,7 +876,7 @@
             this.справкаToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(661, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(869, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -1000,7 +1002,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(661, 642);
+            this.ClientSize = new System.Drawing.Size(869, 642);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
