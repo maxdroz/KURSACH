@@ -117,8 +117,8 @@ namespace АРМ_билиотекаря
                     "AND book_language LIKE '%" + book.language + "%' " +
                     "AND location LIKE '%" + book.location + "%' " +
                     "AND Код LIKE '%" + id + "%'" +
-                    "AND NOT ISNUMERIC(location)";
-                    //"AND CStr(Код) NOT IN (SELECT location FROM books WHERE)";
+                    //"AND NOT ISNUMERIC(location)";
+                    "AND Код NOT IN (SELECT book_id FROM debtors)";
 
                 connection.Close();
                 return formDataTable(query);
@@ -190,14 +190,16 @@ namespace АРМ_билиотекаря
             {
                 connection.Open();
                 String query = "SELECT debtors.Код," +
-                    "issue_date," +
-                    "return_date," +
+                    "book_id," +
+                    "reader_id," +
                     "books.author," +
                     "books.title," +
                     "readers.name," +
                     "readers.surname," +
                     "readers.phone_number," +
-                    "readers.adress " +
+                    "readers.adress, " +
+                    "issue_date," +
+                    "return_date " +
                     "FROM (debtors " +
                     "INNER JOIN books ON debtors.book_id=books.Код) " +
                     "INNER JOIN readers ON debtors.reader_id=readers.Код " +

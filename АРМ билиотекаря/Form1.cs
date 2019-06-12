@@ -509,5 +509,13 @@ namespace АРМ_билиотекаря
                 book = book
             });
         }
+
+        private void Button10_Click(object sender, EventArgs e)
+        {
+            int debitId = Convert.ToInt32(dataGridView1[0, dataGridView1.CurrentCellAddress.Y].Value);
+            int readerId = Convert.ToInt32(dataGridView2[0, dataGridView2.CurrentCellAddress.Y].Value);
+            BookReturn br = new BookReturn(debitId, readerId, this);
+            br.ShowDialog();
+        }
     }
 }
