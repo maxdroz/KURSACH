@@ -173,7 +173,7 @@ namespace АРМ_билиотекаря
             return count;
         }
 
-        public bool areThereBookAtReader(int id)
+        public bool isThereBookAtReader(int id)
         {
             lock (syncLock)
             {
@@ -297,6 +297,22 @@ namespace АРМ_билиотекаря
 
                 connection.Close();
             }
+        }
+
+        private int getBooksReadersCount(int bookId)
+        {
+            String query = "SELECT COUNT(*) FROM debtors WHERE book_id = " + bookId;
+            OleDbCommand command = new OleDbCommand(query, connection);
+            int count = Convert.ToInt32(command.ExecuteScalar());
+            return count;
+        }
+
+        public bool isBookAtReader(int bookId)
+        {
+            connection.Open();
+            bool ans = getBooksReadersCount(bookId) != 0;
+            connection.Close();
+            return ans;
         }
     }
 }

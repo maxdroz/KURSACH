@@ -162,11 +162,6 @@ namespace АРМ_билиотекаря
             worker.RunWorkerAsync(new Args(4, id));
         }
 
-        private void DataGridView2_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
-        {
-
-        }
-
         public class Args
         {
             public Book book;
@@ -197,6 +192,7 @@ namespace АРМ_билиотекаря
             public int arg;
             public DataTable table;
             public bool readerClear;
+            public bool bookClear;
             public int id;
             public Res(int argg, DataTable tablee)
             {
@@ -230,6 +226,8 @@ namespace АРМ_билиотекаря
         //10 - Вернуть книгу
         //11 - Добавить книгу
         //12 - Изменить книгу
+        //13 - Удалить книгу
+        //14 - Проверить, выдана ли книга
 
         public void BackgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -275,7 +273,7 @@ namespace АРМ_билиотекаря
                             id = 2;
                         break;
                     case 8:
-                        res.readerClear = !adapter.areThereBookAtReader(((Args)e.Argument).user_id);
+                        res.readerClear = !adapter.isThereBookAtReader(((Args)e.Argument).user_id);
                         res.id = ((Args)e.Argument).user_id;
                         break;
                     case 9:
@@ -293,6 +291,13 @@ namespace АРМ_билиотекаря
                     case 12:
                         adapter.editBook(((Args)e.Argument).book, ((Args)e.Argument).user_id);
                         id = 11;
+                        break;
+                    case 13:
+
+                        id = 11;
+                        break;
+                    case 14:
+                        res.bookClear = adapter.isBookAtReader(((Args)e.Argument).user_id);
                         break;
                 }
                 res.arg = id;
@@ -343,9 +348,20 @@ namespace АРМ_билиотекаря
                     break;
                 case 9:
                     updateReaderBooks(r.id);
+                    updateDebtors();
                     break;
                 case 11:
                     updateBooksGrid();
+                    break;
+                case 14:
+                    if (!r.bookClear)
+                    {
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Данная книга выдана.\nСначала верните ее");
+                    }
                     break;
             }
         }
@@ -492,9 +508,9 @@ namespace АРМ_билиотекаря
 
         private void Button8_Click(object sender, EventArgs e)
         {
-            int i = Convert.ToInt32(dataGridView3.CurrentCellAddress.Y);
+            int rowId = Convert.ToInt32(dataGridView3.CurrentCellAddress.Y);
             AddEditBook addEditBook = new AddEditBook(this);
-            addEditBook.setBook(new Book(dataGridView3[2, i].Value.ToString(), dataGridView3[1, i].Value.ToString(), dataGridView3[3, i].Value.ToString(), dataGridView3[4, i].Value.ToString()), Convert.ToInt32(dataGridView3[0, i].Value.ToString()));
+            addEditBook.setBook(new Book(dataGridView3[2, rowId].Value.ToString(), dataGridView3[1, rowId].Value.ToString(), dataGridView3[3, rowId].Value.ToString(), dataGridView3[4, rowId].Value.ToString()), Convert.ToInt32(dataGridView3[0, rowId].Value.ToString()));
             addEditBook.ShowDialog();
         }
 
@@ -510,12 +526,34 @@ namespace АРМ_билиотекаря
             });
         }
 
+        private void checkBookForReaderAndDelete(int book_id)
+        {
+            var worker = new BackgroundWorker();
+            worker.DoWork += BackgroundWorker1_DoWork;
+            worker.RunWorkerCompleted += BackgroundWorker1_RunWorkerCompleted;
+            worker.RunWorkerAsync(new Args(14, book_id));
+        }
+
         private void Button10_Click(object sender, EventArgs e)
         {
-            int debitId = Convert.ToInt32(dataGridView1[0, dataGridView1.CurrentCellAddress.Y].Value);
-            int readerId = Convert.ToInt32(dataGridView2[0, dataGridView2.CurrentCellAddress.Y].Value);
+            int debitId = Convert.ToInt32(dataGridView4["Name1", dataGridView4.CurrentCellAddress.Y].Value);
+            int readerId = Convert.ToInt32(dataGridView4["Column10", dataGridView4.CurrentCellAddress.Y].Value);
             BookReturn br = new BookReturn(debitId, readerId, this);
             br.ShowDialog();
+        }
+
+        private void Button13_Click(object sender, EventArgs e)
+        {
+            int debitId = Convert.ToInt32(dataGridView4["Name1", dataGridView4.CurrentCellAddress.Y].Value);
+            int readerId = Convert.ToInt32(dataGridView4["Column10", dataGridView4.CurrentCellAddress.Y].Value);
+            ExpandIssueDate exp = new ExpandIssueDate(this, debitId, readerId);
+            exp.ShowDialog();
+        }
+
+        private void Button9_Click(object sender, EventArgs e)
+        {
+            int bookId = Convert.ToInt32(dataGridView3[0, dataGridView3.CurrentCellAddress.Y].Value);
+            checkBookForReaderAndDelete(bookId);
         }
     }
 }

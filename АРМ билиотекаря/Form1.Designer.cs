@@ -799,6 +799,7 @@
             this.button9.TabIndex = 2;
             this.button9.Text = "Удалить";
             this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.Button9_Click);
             // 
             // button8
             // 
@@ -851,6 +852,7 @@
             this.button13.TabIndex = 1;
             this.button13.Text = "Продлить книгу";
             this.button13.UseVisualStyleBackColor = true;
+            this.button13.Click += new System.EventHandler(this.Button13_Click);
             // 
             // button10
             // 
