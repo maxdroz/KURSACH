@@ -79,6 +79,7 @@
             this.MinimizeBox = false;
             this.Name = "BookReturn";
             this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Возврат книги";
             this.ResumeLayout(false);
             this.PerformLayout();

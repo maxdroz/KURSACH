@@ -187,6 +187,7 @@
             this.MinimizeBox = false;
             this.Name = "AddEditReader";
             this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Читатель";
             this.ResumeLayout(false);
             this.PerformLayout();

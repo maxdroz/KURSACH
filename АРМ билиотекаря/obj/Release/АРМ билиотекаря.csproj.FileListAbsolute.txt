@@ -1,0 +1,19 @@
+C:\Users\maxim\Desktop\KURSACH\АРМ билиотекаря\bin\Release\BD.mdb
+C:\Users\maxim\Desktop\KURSACH\АРМ билиотекаря\bin\Release\АРМ билиотекаря.exe.config
+C:\Users\maxim\Desktop\KURSACH\АРМ билиотекаря\bin\Release\АРМ билиотекаря.exe
+C:\Users\maxim\Desktop\KURSACH\АРМ билиотекаря\bin\Release\АРМ билиотекаря.pdb
+C:\Users\maxim\Desktop\KURSACH\АРМ билиотекаря\obj\Release\АРМ билиотекаря.csprojAssemblyReference.cache
+C:\Users\maxim\Desktop\KURSACH\АРМ билиотекаря\obj\Release\Interop.ADOX.dll
+C:\Users\maxim\Desktop\KURSACH\АРМ билиотекаря\obj\Release\АРМ билиотекаря.csproj.ResolveComReference.cache
+C:\Users\maxim\Desktop\KURSACH\АРМ билиотекаря\obj\Release\АРМ_билиотекаря.AddEditReader.resources
+C:\Users\maxim\Desktop\KURSACH\АРМ билиотекаря\obj\Release\АРМ_билиотекаря.AddEditBook.resources
+C:\Users\maxim\Desktop\KURSACH\АРМ билиотекаря\obj\Release\АРМ_билиотекаря.BookIssue.resources
+C:\Users\maxim\Desktop\KURSACH\АРМ билиотекаря\obj\Release\АРМ_билиотекаря.BookReturn.resources
+C:\Users\maxim\Desktop\KURSACH\АРМ билиотекаря\obj\Release\АРМ_билиотекаря.DBChooser.resources
+C:\Users\maxim\Desktop\KURSACH\АРМ билиотекаря\obj\Release\АРМ_билиотекаря.ExpandIssueDate.resources
+C:\Users\maxim\Desktop\KURSACH\АРМ билиотекаря\obj\Release\АРМ_билиотекаря.Form1.resources
+C:\Users\maxim\Desktop\KURSACH\АРМ билиотекаря\obj\Release\АРМ_билиотекаря.Properties.Resources.resources
+C:\Users\maxim\Desktop\KURSACH\АРМ билиотекаря\obj\Release\АРМ билиотекаря.csproj.GenerateResource.cache
+C:\Users\maxim\Desktop\KURSACH\АРМ билиотекаря\obj\Release\АРМ билиотекаря.csproj.CoreCompileInputs.cache
+C:\Users\maxim\Desktop\KURSACH\АРМ билиотекаря\obj\Release\АРМ билиотекаря.exe
+C:\Users\maxim\Desktop\KURSACH\АРМ билиотекаря\obj\Release\АРМ билиотекаря.pdb

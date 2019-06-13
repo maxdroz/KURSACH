@@ -104,5 +104,11 @@ namespace АРМ_билиотекаря
             if(!inOperation)
                 addBookToReader();
         }
+
+        private void DateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            dateTimePicker2.MinDate = dateTimePicker1.Value;
+            dateTimePicker1.MaxDate = dateTimePicker2.Value;
+        }
     }
 }

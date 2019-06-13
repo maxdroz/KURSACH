@@ -38,6 +38,7 @@ namespace АРМ_билиотекаря
             if (!edit)
             {
                 f.addBook(new Book(textBox2.Text, textBox1.Text, textBox3.Text, textBox6.Text));
+                textBox1.Text = textBox2.Text = textBox3.Text = textBox6.Text = "";
             }
             else
             {

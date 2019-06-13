@@ -143,6 +143,7 @@
             this.MinimizeBox = false;
             this.Name = "AddEditBook";
             this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Книга";
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -44,12 +44,12 @@ namespace АРМ_билиотекаря
                 {
                     File.Delete(sfd.FileName);
                 }
-                else
-                    form.updateConnection(sfd.FileName);
                 var cat = new ADOX.Catalog();
                 cat.Create(DatabaseAdapter.connectionStringTemplate + sfd.FileName);
                 if (form == null)
                     form = new Form1(sfd.FileName, this);
+                else
+                    form.updateConnection(sfd.FileName);
                 form.Show();
                 Hide();
             }

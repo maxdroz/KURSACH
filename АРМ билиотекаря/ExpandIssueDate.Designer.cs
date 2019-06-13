@@ -77,6 +77,7 @@
             this.MinimizeBox = false;
             this.Name = "ExpandIssueDate";
             this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Продление книги";
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -14,12 +14,13 @@ namespace АРМ_билиотекаря
     {
         Form1 f;
         int debitId, userId;
-        public ExpandIssueDate(Form1 form, int debitId, int userId)
+        public ExpandIssueDate(Form1 form, int debitId, int userId, DateTime min)
         {
             this.debitId = debitId;
             this.userId = userId;
             f = form;
             InitializeComponent();
+            monthCalendar1.MinDate = min;
         }
 
         private void Button1_Click(object sender, EventArgs e)

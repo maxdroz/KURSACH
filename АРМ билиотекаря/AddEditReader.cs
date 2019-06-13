@@ -79,6 +79,7 @@ namespace АРМ_билиотекаря
                 worker.DoWork += parent.BackgroundWorker1_DoWork;
                 worker.RunWorkerAsync(new Form1.Args(3, new Reader("", textBox1.Text, textBox2.Text, textBox3.Text, dateTimePicker1.Value, textBox5.Text, textBox6.Text)));
                 parent.updateReadersGrid();
+                textBox1.Text = textBox2.Text = textBox3.Text = textBox5.Text = textBox6.Text = "";
             }
         }
     }

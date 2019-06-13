@@ -530,7 +530,8 @@ namespace АРМ_билиотекаря
         {
             int debitId = Convert.ToInt32(dataGridView1[0, dataGridView1.CurrentCellAddress.Y].Value);
             int readerId = Convert.ToInt32(dataGridView2[0, dataGridView2.CurrentCellAddress.Y].Value);
-            ExpandIssueDate exp = new ExpandIssueDate(this, debitId, readerId);
+            DateTime date = DateTime.Parse(dataGridView1["issue_date", dataGridView2.CurrentCellAddress.Y].Value.ToString());
+            ExpandIssueDate exp = new ExpandIssueDate(this, debitId, readerId, date);
             exp.ShowDialog();
         }
 
@@ -591,7 +592,8 @@ namespace АРМ_билиотекаря
         {
             int debitId = Convert.ToInt32(dataGridView4["Name1", dataGridView4.CurrentCellAddress.Y].Value);
             int readerId = Convert.ToInt32(dataGridView4["Column10", dataGridView4.CurrentCellAddress.Y].Value);
-            ExpandIssueDate exp = new ExpandIssueDate(this, debitId, readerId);
+            DateTime min = DateTime.Parse(dataGridView4["Column5", dataGridView4.CurrentCellAddress.Y].Value.ToString());
+            ExpandIssueDate exp = new ExpandIssueDate(this, debitId, readerId, min);
             exp.ShowDialog();
         }
 
