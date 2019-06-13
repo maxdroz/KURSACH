@@ -14,17 +14,26 @@ namespace АРМ_билиотекаря
     public partial class Form1 : Form
     {
         private DataTable empty = null;
-        
 
+        private DBChooser chooser;
         private readonly object syncLock = new object();
         private bool isResetButton = false;
         private DatabaseAdapter adapter;
         private bool mouseDown = false;
         private Point startPos;
-        public Form1()
+
+        public void updateConnection(String pathToDB)
         {
+            adapter.setBDPath(pathToDB);
+            adapter.createTables();
+        }
+
+        public Form1(String pathToDB, DBChooser chooser)
+        {
+            this.chooser = chooser;
             InitializeComponent();
             adapter = DatabaseAdapter.getInstance();
+            updateConnection(pathToDB);
             updateDebtors();
         }
 
@@ -293,10 +302,11 @@ namespace АРМ_билиотекаря
                         id = 11;
                         break;
                     case 13:
-
+                        adapter.deleteBook(((Args)e.Argument).user_id);
                         id = 11;
                         break;
                     case 14:
+                        res.id = ((Args)e.Argument).user_id;
                         res.bookClear = adapter.isBookAtReader(((Args)e.Argument).user_id);
                         break;
                 }
@@ -306,6 +316,35 @@ namespace АРМ_билиотекаря
             }
         }
 
+        private void updateEditAndDeleteBookButtons()
+        {
+            if (dataGridView3.RowCount == 0)
+            {
+                button8.Enabled = false;
+                button9.Enabled = false;
+            }
+            else
+            {
+                button8.Enabled = true;
+                button9.Enabled = true;
+            }
+        }
+
+        private void updateEditAndDeleteDebtorsButtons()
+        {
+            if (dataGridView4.RowCount == 0)
+            {
+                button10.Enabled = false;
+                button13.Enabled = false;
+            }
+            else
+            {
+                button10.Enabled = true;
+                button13.Enabled = true;
+            }
+        }
+
+
 
         private void BackgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
@@ -314,6 +353,7 @@ namespace АРМ_билиотекаря
             {
                 case 1:
                     dataGridView3.DataSource = r.table;
+                    updateEditAndDeleteBookButtons();
                     break;
                 case 2:
                     dataGridView2.DataSource = r.table;
@@ -335,6 +375,7 @@ namespace АРМ_билиотекаря
                     break;
                 case 6:
                     dataGridView4.DataSource = r.table;
+                    updateEditAndDeleteDebtorsButtons();
                     break;
                 case 8:
                     if (r.readerClear)
@@ -356,7 +397,7 @@ namespace АРМ_билиотекаря
                 case 14:
                     if (!r.bookClear)
                     {
-
+                        deleteAndUpdateBook(r.id);
                     }
                     else
                     {
@@ -476,8 +517,12 @@ namespace АРМ_билиотекаря
             }
             if(tabControl1.SelectedIndex == 0)
             {
-                int readerId = Convert.ToInt32(dataGridView2[0, dataGridView2.CurrentCellAddress.Y].Value);
-                updateReaderBooks(readerId);
+                updateReadersGrid();
+                if (dataGridView2.CurrentCellAddress.Y != -1)
+                {
+                    int readerId = Convert.ToInt32(dataGridView2[0, dataGridView2.CurrentCellAddress.Y].Value);
+                    updateReaderBooks(readerId);
+                }
             }
         }
 
@@ -554,6 +599,33 @@ namespace АРМ_билиотекаря
         {
             int bookId = Convert.ToInt32(dataGridView3[0, dataGridView3.CurrentCellAddress.Y].Value);
             checkBookForReaderAndDelete(bookId);
+        }
+
+        private void deleteAndUpdateBook(int bookId)
+        {
+            var worker = new BackgroundWorker();
+            worker.DoWork += BackgroundWorker1_DoWork;
+            worker.RunWorkerCompleted += BackgroundWorker1_RunWorkerCompleted;
+            worker.RunWorkerAsync(new Args(13, bookId));
+        }
+
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void ВыбратьДругуюБДToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            chooser.Show();
+            Hide();
+        }
+
+        private void Form1_VisibleChanged(object sender, EventArgs e)
+        {
+            if (this.Visible)
+            {
+                TabControl1_SelectedIndexChanged(null, null);
+            }
         }
     }
 }

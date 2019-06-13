@@ -139,8 +139,11 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "AddEditBook";
-            this.Text = "AddEditBook";
+            this.ShowIcon = false;
+            this.Text = "Книга";
             this.ResumeLayout(false);
             this.PerformLayout();
 

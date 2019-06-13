@@ -75,8 +75,11 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "BookReturn";
-            this.Text = "BookReturn";
+            this.ShowIcon = false;
+            this.Text = "Возврат книги";
             this.ResumeLayout(false);
             this.PerformLayout();
 

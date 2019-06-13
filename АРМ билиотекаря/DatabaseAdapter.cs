@@ -13,13 +13,66 @@ namespace АРМ_билиотекаря
         private readonly object syncLock = new object();
         private static DatabaseAdapter instance;
         OleDbConnection connection;
-        public static string connectionString = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=|DataDirectory|\BD.mdb";
+        public static string connectionStringTemplate = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=";
+        public static string connectionString = @"";
         private DatabaseAdapter()
         {
             connection = new OleDbConnection(connectionString);
-            //Connection.Open();
         }
         
+        public void createTables()
+        {
+            String queryBooks = 
+                "CREATE TABLE books( " +
+                "[Код] AUTOINCREMENT not null primary key, " +
+                "author varchar(50), " +
+                "title varchar(50), " +
+                "book_language varchar(50), " +
+                "location varchar(50) " +
+                ")";
+
+            String queryReaders =
+                "CREATE TABLE readers(" +
+                "Код AUTOINCREMENT not null primary key," +
+                "name varchar(50)," +
+                "surname varchar(50)," +
+                "patronymic varchar(50)," +
+                "birthday DateTime," +
+                "phone_number varchar(50)," +
+                "adress varchar(50)" +
+                ")";
+
+            String queryDebtors =
+               "CREATE TABLE debtors(" +
+               "Код AUTOINCREMENT not null primary key," +
+               "book_id int," +
+               "reader_id int," +
+               "issue_date DateTime," +
+               "return_date DateTime" +
+               ")";
+            connection.Open();
+            try
+            {
+                lock (syncLock)
+                {
+                    executeQuery(queryBooks);
+                    executeQuery(queryReaders);
+                    executeQuery(queryDebtors);
+                }
+            }
+            catch(System.Data.OleDb.OleDbException e)
+            {
+
+            }
+            connection.Close();
+        }
+
+        public void setBDPath(String path)
+        {
+            connectionString = connectionStringTemplate + path;
+            connection = new OleDbConnection(connectionString);
+        }
+
         public static DatabaseAdapter getInstance()
         {
             if(instance == null)
@@ -167,7 +220,7 @@ namespace АРМ_билиотекаря
 
         public int getBooksCountFromReader(int id)
         {
-            String query = "SELECT COUNT(*) FROM debtors WHERE Код = " + id;
+            String query = "SELECT COUNT(*) FROM debtors WHERE reader_id = " + id;
             OleDbCommand command = new OleDbCommand(query, connection);
             int count = Convert.ToInt32(command.ExecuteScalar());
             return count;
@@ -297,6 +350,14 @@ namespace АРМ_билиотекаря
 
                 connection.Close();
             }
+        }
+
+        public void deleteBook(int bookId)
+        {
+            connection.Open();
+            String query = "DELETE FROM books WHERE Код = " + bookId;
+            executeQuery(query);
+            connection.Close();
         }
 
         private int getBooksReadersCount(int bookId)

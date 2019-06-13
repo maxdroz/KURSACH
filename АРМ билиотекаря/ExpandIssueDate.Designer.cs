@@ -73,9 +73,11 @@
             this.Controls.Add(this.monthCalendar1);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "ExpandIssueDate";
             this.ShowIcon = false;
-            this.Text = "ExpandIssueDate";
+            this.Text = "Продление книги";
             this.ResumeLayout(false);
             this.PerformLayout();
 

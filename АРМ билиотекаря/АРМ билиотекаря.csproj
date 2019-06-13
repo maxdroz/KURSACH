@@ -32,6 +32,10 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>
+    </ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
@@ -73,6 +77,12 @@
       <DependentUpon>BookReturn.cs</DependentUpon>
     </Compile>
     <Compile Include="DatabaseAdapter.cs" />
+    <Compile Include="DBChooser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DBChooser.Designer.cs">
+      <DependentUpon>DBChooser.cs</DependentUpon>
+    </Compile>
     <Compile Include="ExpandIssueDate.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -99,6 +109,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BookReturn.resx">
       <DependentUpon>BookReturn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DBChooser.resx">
+      <DependentUpon>DBChooser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ExpandIssueDate.resx">
       <DependentUpon>ExpandIssueDate.cs</DependentUpon>
@@ -129,6 +142,15 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <COMReference Include="ADOX">
+      <Guid>{00000600-0000-0010-8000-00AA006D2EA4}</Guid>
+      <VersionMajor>6</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
     <COMReference Include="Microsoft.Office.Core">
       <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
       <VersionMajor>2</VersionMajor>
@@ -161,6 +183,7 @@
     <Content Include="BD.mdb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

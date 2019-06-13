@@ -40,3 +40,5 @@ C:\Users\maxim\Desktop\KURSACH\АРМ билиотекаря\obj\Debug\АРМ б
 C:\Users\maxim\Desktop\KURSACH\АРМ билиотекаря\obj\Debug\АРМ_билиотекаря.ExpandIssueDate.resources
 C:\Users\maxim\Desktop\KURSACH\АРМ билиотекаря\obj\Debug\АРМ_билиотекаря.AddEditBook.resources
 C:\Users\maxim\Desktop\KURSACH\АРМ билиотекаря\obj\Debug\АРМ_билиотекаря.BookReturn.resources
+C:\Users\maxim\Desktop\KURSACH\АРМ билиотекаря\obj\Debug\АРМ_билиотекаря.DBChooser.resources
+C:\Users\maxim\Desktop\KURSACH\АРМ билиотекаря\obj\Debug\Interop.ADOX.dll
