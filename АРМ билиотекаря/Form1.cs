@@ -530,7 +530,7 @@ namespace АРМ_билиотекаря
         {
             int debitId = Convert.ToInt32(dataGridView1[0, dataGridView1.CurrentCellAddress.Y].Value);
             int readerId = Convert.ToInt32(dataGridView2[0, dataGridView2.CurrentCellAddress.Y].Value);
-            DateTime date = DateTime.Parse(dataGridView1["issue_date", dataGridView2.CurrentCellAddress.Y].Value.ToString());
+            DateTime date = DateTime.Parse(dataGridView1["issue_date", dataGridView1.CurrentCellAddress.Y].Value.ToString());
             ExpandIssueDate exp = new ExpandIssueDate(this, debitId, readerId, date);
             exp.ShowDialog();
         }
