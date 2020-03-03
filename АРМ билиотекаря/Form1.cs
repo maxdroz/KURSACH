@@ -22,19 +22,18 @@ namespace АРМ_билиотекаря
         private bool mouseDown = false;
         private Point startPos;
 
-        public void updateConnection(String pathToDB)
+        public void updateConnection(String address, String databaseName, String username, String password)
         {
-            adapter.setBDPath(pathToDB);
+            adapter.setBDPath(address, databaseName, username, password);
             adapter.createTables();
+            updateDebtors();
         }
 
-        public Form1(String pathToDB, DBChooser chooser)
+        public Form1(DBChooser chooser)
         {
             this.chooser = chooser;
             InitializeComponent();
             adapter = DatabaseAdapter.getInstance();
-            updateConnection(pathToDB);
-            updateDebtors();
         }
 
         private void panel1_MouseDown(object sender, MouseEventArgs e)

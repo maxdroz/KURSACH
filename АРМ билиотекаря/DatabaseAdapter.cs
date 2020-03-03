@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.OleDb;
 using System.Data;
+using MySql.Data.MySqlClient;
+using System.IO;
 
 namespace АРМ_билиотекаря
 {
@@ -12,65 +14,59 @@ namespace АРМ_билиотекаря
     {
         private readonly object syncLock = new object();
         private static DatabaseAdapter instance;
-        OleDbConnection connection;
-        public static string connectionStringTemplate = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=";
+        MySqlConnection connection;
+        public static string connectionStringTemplate = @"server={0};database={1};uid={2};pwd={3};";
         public static string connectionString = @"";
         private DatabaseAdapter()
         {
-            connection = new OleDbConnection(connectionString);
+            connection = new MySqlConnection(connectionString);
         }
-        
+
         public void createTables()
-        {
-            String queryBooks = 
-                "CREATE TABLE books( " +
-                "[Код] AUTOINCREMENT not null primary key, " +
-                "author varchar(50), " +
-                "title varchar(50), " +
-                "book_language varchar(50), " +
-                "location varchar(50) " +
-                ")";
+        { 
+        //{
+        //    String queryBooks = 
+        //        "CREATE TABLE IF NOT EXISTS books( " +
+        //        "Код int AUTO_INCREMENT not null primary key, " +
+        //        "author varchar(50), " +
+        //        "title varchar(50), " +
+        //        "book_language varchar(50), " +
+        //        "location varchar(50) " +
+        //        ")";
 
-            String queryReaders =
-                "CREATE TABLE readers(" +
-                "Код AUTOINCREMENT not null primary key," +
-                "name varchar(50)," +
-                "surname varchar(50)," +
-                "patronymic varchar(50)," +
-                "birthday DateTime," +
-                "phone_number varchar(50)," +
-                "adress varchar(50)" +
-                ")";
+        //    String queryReaders =
+        //        "CREATE TABLE IF NOT EXISTS readers(" +
+        //        "Код int AUTO_INCREMENT not null primary key," +
+        //        "name varchar(50)," +
+        //        "surname varchar(50)," +
+        //        "patronymic varchar(50)," +
+        //        "birthday DateTime," +
+        //        "phone_number varchar(50)," +
+        //        "adress varchar(50)" +
+        //        ")";
 
-            String queryDebtors =
-               "CREATE TABLE debtors(" +
-               "Код AUTOINCREMENT not null primary key," +
-               "book_id int," +
-               "reader_id int," +
-               "issue_date DateTime," +
-               "return_date DateTime" +
-               ")";
+        //    String queryDebtors =
+        //       "CREATE TABLE IF NOT EXISTS debtors(" +
+        //       "Код int AUTO_INCREMENT not null primary key," +
+        //       "book_id int," +
+        //       "reader_id int," +
+        //       "issue_date DateTime," +
+        //       "return_date DateTime" +
+        //       ")";
             connection.Open();
-            try
+            lock (syncLock)
             {
-                lock (syncLock)
-                {
-                    executeQuery(queryBooks);
-                    executeQuery(queryReaders);
-                    executeQuery(queryDebtors);
-                }
-            }
-            catch(System.Data.OleDb.OleDbException e)
-            {
-
+                MySqlScript script = new MySqlScript(connection, File.ReadAllText(@"create.sql"));
+                script.Delimiter = "$$";
+                script.Execute();     
             }
             connection.Close();
         }
 
-        public void setBDPath(String path)
+        public void setBDPath(String address, String databaseName, String username, String password)
         {
-            connectionString = connectionStringTemplate + path;
-            connection = new OleDbConnection(connectionString);
+            connectionString = String.Format(connectionStringTemplate, address, databaseName, username, password);
+            connection = new MySqlConnection(connectionString);
         }
 
         public static DatabaseAdapter getInstance()
@@ -84,13 +80,13 @@ namespace АРМ_билиотекаря
 
         private void executeQuery(string query)
         {
-            OleDbCommand com = new OleDbCommand(query, connection);
+            MySqlCommand com = new MySqlCommand(query, connection);
             com.ExecuteNonQuery();
         }
 
         private DataTable formDataTable(string query)
         {
-            OleDbDataAdapter da = new OleDbDataAdapter(query, connection);
+            MySqlDataAdapter da = new MySqlDataAdapter(query, connection);
             DataTable dt = new DataTable();
             da.Fill(dt);
             return dt;
@@ -135,7 +131,7 @@ namespace АРМ_билиотекаря
             lock (syncLock)
             {
                 connection.Open();
-                String query = "SELECT debtors.Код, debtors.book_id, debtors.issue_date, debtors.return_date, books.author, books.title, [books.book_language]" +
+                String query = "SELECT debtors.Код, debtors.book_id, debtors.issue_date, debtors.return_date, books.author, books.title, books.book_language" +
                     " FROM debtors INNER JOIN books ON debtors.book_id = books.Код " +
                     "WHERE debtors.reader_id = " + readerId;
                 connection.Close();
@@ -221,7 +217,7 @@ namespace АРМ_билиотекаря
         public int getBooksCountFromReader(int id)
         {
             String query = "SELECT COUNT(*) FROM debtors WHERE reader_id = " + id;
-            OleDbCommand command = new OleDbCommand(query, connection);
+            MySqlCommand command = new MySqlCommand(query, connection);
             int count = Convert.ToInt32(command.ExecuteScalar());
             return count;
         }
@@ -363,7 +359,7 @@ namespace АРМ_билиотекаря
         private int getBooksReadersCount(int bookId)
         {
             String query = "SELECT COUNT(*) FROM debtors WHERE book_id = " + bookId;
-            OleDbCommand command = new OleDbCommand(query, connection);
+            MySqlCommand command = new MySqlCommand(query, connection);
             int count = Convert.ToInt32(command.ExecuteScalar());
             return count;
         }

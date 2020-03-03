@@ -34,7 +34,6 @@ C:\Users\maxim\Desktop\KURSACH\АРМ билиотекаря\obj\Debug\АРМ_б
 C:\Users\maxim\Desktop\KURSACH\АРМ билиотекаря\obj\Debug\АРМ_билиотекаря.Form1.resources
 C:\Users\maxim\Desktop\KURSACH\АРМ билиотекаря\obj\Debug\АРМ_билиотекаря.Properties.Resources.resources
 C:\Users\maxim\Desktop\KURSACH\АРМ билиотекаря\obj\Debug\АРМ билиотекаря.csproj.GenerateResource.cache
-C:\Users\maxim\Desktop\KURSACH\АРМ билиотекаря\obj\Debug\АРМ билиотекаря.csproj.CoreCompileInputs.cache
 C:\Users\maxim\Desktop\KURSACH\АРМ билиотекаря\obj\Debug\АРМ билиотекаря.exe
 C:\Users\maxim\Desktop\KURSACH\АРМ билиотекаря\obj\Debug\АРМ билиотекаря.pdb
 C:\Users\maxim\Desktop\KURSACH\АРМ билиотекаря\obj\Debug\АРМ_билиотекаря.ExpandIssueDate.resources
@@ -61,3 +60,11 @@ C:\Users\maxim\Desktop\pp\KURSACH\АРМ билиотекаря\obj\Debug\АРМ
 C:\Users\maxim\Desktop\pp\KURSACH\АРМ билиотекаря\obj\Debug\АРМ билиотекаря.csproj.CoreCompileInputs.cache
 C:\Users\maxim\Desktop\pp\KURSACH\АРМ билиотекаря\obj\Debug\АРМ билиотекаря.exe
 C:\Users\maxim\Desktop\pp\KURSACH\АРМ билиотекаря\obj\Debug\АРМ билиотекаря.pdb
+C:\Users\maxim\Desktop\KURSACH\АРМ билиотекаря\bin\Debug\MySql.Data.dll
+C:\Users\maxim\Desktop\KURSACH\АРМ билиотекаря\bin\Debug\MySql.Data.xml
+C:\Users\maxim\Desktop\KURSACH\АРМ билиотекаря\bin\Debug\MySql.Data.EntityFramework.xml
+C:\Users\maxim\Desktop\KURSACH\АРМ билиотекаря\bin\Debug\MySQL.Data.EntityFrameworkCore.xml
+C:\Users\maxim\Desktop\KURSACH\АРМ билиотекаря\bin\Debug\MySQL.Data.EntityFrameworkCore.Design.xml
+C:\Users\maxim\Desktop\KURSACH\АРМ билиотекаря\obj\Debug\АРМ билиотекаря.exe.config
+C:\Users\maxim\Desktop\KURSACH\АРМ билиотекаря\obj\Debug\АРМ билиотекаря.csproj.CopyComplete
+C:\Users\maxim\Desktop\KURSACH\АРМ билиотекаря\bin\Debug\create.sql
