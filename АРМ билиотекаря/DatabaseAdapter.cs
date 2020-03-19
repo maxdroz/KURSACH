@@ -23,42 +23,13 @@ namespace АРМ_билиотекаря
         }
 
         public void createTables()
-        { 
-        //{
-        //    String queryBooks = 
-        //        "CREATE TABLE IF NOT EXISTS books( " +
-        //        "Код int AUTO_INCREMENT not null primary key, " +
-        //        "author varchar(50), " +
-        //        "title varchar(50), " +
-        //        "book_language varchar(50), " +
-        //        "location varchar(50) " +
-        //        ")";
-
-        //    String queryReaders =
-        //        "CREATE TABLE IF NOT EXISTS readers(" +
-        //        "Код int AUTO_INCREMENT not null primary key," +
-        //        "name varchar(50)," +
-        //        "surname varchar(50)," +
-        //        "patronymic varchar(50)," +
-        //        "birthday DateTime," +
-        //        "phone_number varchar(50)," +
-        //        "adress varchar(50)" +
-        //        ")";
-
-        //    String queryDebtors =
-        //       "CREATE TABLE IF NOT EXISTS debtors(" +
-        //       "Код int AUTO_INCREMENT not null primary key," +
-        //       "book_id int," +
-        //       "reader_id int," +
-        //       "issue_date DateTime," +
-        //       "return_date DateTime" +
-        //       ")";
+        {
             lock (syncLock)
             {
                 connection.Open();
                 MySqlScript script = new MySqlScript(connection, File.ReadAllText(@"create.sql"));
                 script.Delimiter = "$$";
-                script.Execute();     
+                script.Execute();
                 connection.Close();
             }
         }
@@ -71,7 +42,7 @@ namespace АРМ_билиотекаря
 
         public static DatabaseAdapter getInstance()
         {
-            if(instance == null)
+            if (instance == null)
             {
                 instance = new DatabaseAdapter();
             }
@@ -91,9 +62,9 @@ namespace АРМ_билиотекаря
             da.Fill(dt);
             return dt;
         }
-        
-         public DataTable getFilteredReaders(Reader reader, bool isDate)
-         {
+
+        public DataTable getFilteredReaders(Reader reader, bool isDate)
+        {
             lock (syncLock)
             {
                 connection.Open();
@@ -108,7 +79,7 @@ namespace АРМ_билиотекаря
                 connection.Close();
                 return formDataTable(query);
             }
-         }
+        }
 
         public void returnBook(int debtId)
         {
@@ -123,9 +94,10 @@ namespace АРМ_билиотекаря
 
         public DataTable getReaderBooks(int readerId)
         {
-            lock (syncLock) {
+            lock (syncLock)
+            {
                 connection.Open();
-                String query = "select record.id, book.title, CONCAT(author.surname, ' ', author.name, ' ', author.patronymic) as author, language.language, record.issue_date, record.return_date from record inner join book on record.id_book = book.id inner join author on book.id_author = author.id inner join language on book.id_language = language.id where record.id_reader = " + readerId;
+                String query = "select record.id as record_id, book.id, book.title, CONCAT(author.surname, ' ', author.name, ' ', author.patronymic) as author, language.language, record.issue_date, record.return_date from record inner join book on record.id_book = book.id inner join author on book.id_author = author.id inner join language on book.id_language = language.id where record.id_reader = " + readerId;
                 DataTable result = formDataTable(query);
                 connection.Close();
                 return result;
@@ -134,11 +106,23 @@ namespace АРМ_билиотекаря
 
         public DataTable getFilteredBooks(Book book, string id)
         {
-            lock (syncLock) 
+            lock (syncLock)
             {
                 connection.Open();
                 String query = String.Format("select " +
-                    "book.id, book.title, CONCAT(author.surname, ' ', author.name, ' ', author.patronymic) as author, language.language, genre.genre, publishing_house.title as publishing_house, cover.cover_description as cover from book " +
+                    "book.id, " +
+                    "book.title, " +
+                    "CONCAT(author.surname, ' ', author.name, ' ', author.patronymic) as author, " +
+                    "language.language, " +
+                    "genre.genre, " +
+                    "publishing_house.title as publishing_house, " +
+                    "cover.cover_description as cover, " +
+                    "author.id as author_id, " +
+                    "language.id as language_id, " +
+                    "genre.id as genre_id," +
+                    "publishing_house.id as publishing_house_id, " +
+                    "cover.id as cover_id " +
+                    "from book " +
                     "inner join author on book.id_author = author.id " +
                     "inner join language on book.id_language = language.id " +
                     "inner join genre on book.id_genre = genre.id " +
@@ -207,7 +191,7 @@ namespace АРМ_билиотекаря
                 connection.Close();
             }
         }
-        
+
         public void addReader(Reader reader)
         {
             lock (syncLock)
@@ -222,9 +206,9 @@ namespace АРМ_билиотекаря
                     "address) VALUES ('" +
                     reader.name + "','" +
                     reader.surname + "','" +
-                    reader.patronymic + "','" + 
+                    reader.patronymic + "','" +
                     reader.phone_number + "','" +
-                    reader.birthday.ToString(@"yyyy-MM-dd") + "','" + 
+                    reader.birthday.ToString(@"yyyy-MM-dd") + "','" +
                     reader.address + "')";
                 executeQuery(query);
                 connection.Close();
@@ -256,26 +240,38 @@ namespace АРМ_билиотекаря
             lock (syncLock)
             {
                 connection.Open();
-                String query = "SELECT debtors.Код," +
-                    "book_id," +
-                    "reader_id," +
-                    "books.author," +
-                    "books.title," +
-                    "readers.name," +
-                    "readers.surname," +
-                    "readers.phone_number," +
-                    "readers.adress, " +
-                    "issue_date," +
-                    "return_date " +
-                    "FROM (debtors " +
-                    "INNER JOIN books ON debtors.book_id=books.Код) " +
-                    "INNER JOIN readers ON debtors.reader_id=readers.Код " +
-                    "WHERE debtors.return_date <= NOW()";
-                    //"WHERE debtors.return_date <= #" +
-                    //DateTime.Now.ToString(@"dd\/MM\/yyyy") + "# ";
+                String query = "SELECT " +
+                    "record.id as id," +
+                    "book.id as id_book, " +
+                    "record.id_reader as id_reader, " +
+                    "reader.name as name, " +
+                    "reader.surname as surname, " +
+                    "reader.phone_number as phone_number, " +
+                    "reader.address as address, " +
+                    "book.title as title," +
+                    "return_date, " +
+                    "issue_date, " +
+                    "CONCAT(author.surname, ' ', author.name, ' ', author.patronymic) as author" +
+                    " FROM record inner join book on record.id_book = book.id inner join reader on reader.id = record.id_reader inner join author on book.id_author = author.id " +
+                    "WHERE (record.return_date <= now())";
+                //String query = "SELECT debtors.Код," +
+                //    "book_id," +
+                //    "reader_id," +
+                //    "books.author," +
+                //    "books.title," +
+                //    "readers.name," +
+                //    "readers.surname," +
+                //    "readers.phone_number," +
+                //    "readers.adress, " +
+                //    "issue_date," +
+                //    "return_date " +
+                //    "FROM (debtors " +
+                //    "INNER JOIN books ON debtors.book_id=books.Код) " +
+                //    "INNER JOIN readers ON debtors.reader_id=readers.Код " +
+                //    "WHERE debtors.return_date <= NOW()";
+                DataTable answer = formDataTable(query);
                 connection.Close();
-                return new DataTable();
-                return formDataTable(query);
+                return answer;
             }
         }
 
@@ -284,15 +280,32 @@ namespace АРМ_билиотекаря
             lock (syncLock)
             {
                 connection.Open();
-                String query = "DELETE FROM readers WHERE Код = " + id;
-                executeQuery(query);
-                connection.Close();
-                return new DataTable();
-                return getFilteredReaders(reader, isDate);
+                bool error = false;
+                try
+                {
+                    String query = "DELETE FROM reader WHERE id = " + id;
+                    executeQuery(query);
+                }
+                catch (Exception ex)
+                {
+                    error = true;
+                }
+                finally
+                {
+                    connection.Close();
+                }
+                if (error)
+                {
+                    return null;
+                }
+                else
+                {
+                    return getFilteredReaders(reader, isDate);
+                }
             }
         }
 
-        public void expandIssueDate(int debitId, DateTime newDate) 
+        public void expandIssueDate(int debitId, DateTime newDate)
         {
             lock (syncLock)
             {
@@ -325,72 +338,62 @@ namespace АРМ_билиотекаря
             }
         }
 
-        public void addBook(Book book)
+        public void addBook(string title, int author, int language, int genre, int ph, int cover)
         {
             lock (syncLock)
             {
                 connection.Open();
 
-                String query = "INSERT INTO books (" +
-                    "author," +
+                String query = "INSERT INTO book (" +
                     "title," +
-                    "book_language," +
-                    "location" +
-                    ") values (" +
-                    "'" + book.author +
-                    "','" + book.title + 
-                    "','" + book.language +
-                    "')";
-                connection.Close();
-                return;
+                    "id_author," +
+                    "id_language," +
+                    "id_genre," +
+                    "id_publishing_house," +
+                    "id_cover" +
+                    ") values ('" + title +
+                    "', " + author +
+                    ", " + language +
+                    ", " + genre +
+                    ", " + ph +
+                    ", " + cover +
+                    ")";
                 executeQuery(query);
+                connection.Close();
             }
         }
 
-        public void editBook(Book book, int bookId)
+        public void editBook(string title, int author, int language, int genre, int ph, int cover, int id)
         {
             lock (syncLock)
             {
                 connection.Open();
-                String query = "UPDATE books SET " +
-                    "author = '" + book.author + "'," +
-                    "title = '" + book.title + "'," +
-                    "book_language = '" + book.language + "'," +
-                    "' WHERE Код = " + bookId;
-                connection.Close();
-                return;
+                String query = String.Format("update book set " +
+                    "title = '{0}', id_author = '{1}', id_language = '{2}', id_genre = '{3}', id_publishing_house = '{4}', id_cover = '{5}' where id = '{6}'", title, author, language, genre, ph, cover, id);
+
                 executeQuery(query);
+                connection.Close();
             }
         }
 
-        public void deleteBook(int bookId)
+        public bool deleteBook(int bookId)
         {
             connection.Open();
-            String query = "DELETE FROM books WHERE Код = " + bookId;
-            connection.Close();
-            return;
-            executeQuery(query);
-        }
-
-        private int getBooksReadersCount(int bookId)
-        {
-            String query = "SELECT COUNT(*) FROM debtors WHERE book_id = " + bookId;
-            MySqlCommand command = new MySqlCommand(query, connection);
-            int count = Convert.ToInt32(command.ExecuteScalar());
-            return 0;
-            return count;
-        }
-
-        public bool isBookAtReader(int bookId)
-        {
-            lock (syncLock)
+            bool error = false;
+            try
             {
-                connection.Open();
-                bool ans = getBooksReadersCount(bookId) != 0;
-                connection.Close();
-                return false;
-                return ans;
+                String query = "DELETE FROM book WHERE id = " + bookId;
+                executeQuery(query);
             }
+            catch (Exception ex)
+            {
+                error = true;
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return error;
         }
 
         public DataTable getCommonData(string tableName)
@@ -409,7 +412,71 @@ namespace АРМ_билиотекаря
             lock (syncLock)
             {
                 connection.Open();
-                String query = "SELECT publishing_house.title, city.city_name FROM publishing_house INNER JOIN city ON publishing_house.id_city = city.id";
+                String query = "SELECT publishing_house.title, city.city_name, city.id as city_id, publishing_house.id as id FROM publishing_house INNER JOIN city ON publishing_house.id_city = city.id";
+                var covers = formDataTable(query);
+                connection.Close();
+                return covers;
+            }
+        }
+
+        public DataTable addCommon(string table, string data)
+        {
+            lock (syncLock)
+            {
+                connection.Open();
+                String query = String.Format("insert into {0} values(null, '{1}')", table, data);
+                executeQuery(query);
+                connection.Close();
+                return getCommonData(table);
+            }
+        }
+        public DataTable editCommon(string table, string tableName, string value, int id)
+        {
+            lock (syncLock)
+            {
+                connection.Open();
+                String query = String.Format("update {0} set {1} = '{2}' where id = {3}", table, tableName, value, id);
+                executeQuery(query);
+                connection.Close();
+                return getCommonData(table);
+            }
+        }
+        public DataTable deleteCommon(string table, int id)
+        {
+            lock (syncLock)
+            {
+                connection.Open();
+                String query = String.Format("delete from {0} where id = '{1}'", table, id);
+                bool error = false;
+                try
+                {
+                    executeQuery(query);
+                } 
+                catch (Exception ex)
+                {
+                    error = true;
+                }
+                finally
+                {
+                    connection.Close();
+                }
+                if(error)
+                {
+                    return null;
+                }
+                else
+                {
+                    return getCommonData(table);
+                }
+            }
+        }
+
+        public DataTable authorFullName()
+        {
+            lock (syncLock)
+            {
+                connection.Open();
+                String query = "SELECT id, CONCAT(surname, ' ', name, ' ', patronymic) as name FROM author";
                 var covers = formDataTable(query);
                 connection.Close();
                 return covers;

@@ -12,23 +12,34 @@ namespace АРМ_билиотекаря
 {
     public partial class AddEditSimpleCommon : Form
     {
-        Form1 form;
-        string tableName;
-        string paramName;
-        DataGridView gridView;
-
-        public AddEditSimpleCommon(Form1 form, string tableName, string paramName, int id, DataGridView gridView)
+        Action<String> action;
+        public AddEditSimpleCommon(string labelText, string title, bool buttonEdit, Action<String> action, string value = "")
         {
             InitializeComponent();
-            this.form = form;
-            this.tableName = tableName;
-            this.paramName = paramName;
-            this.gridView = gridView;
+            this.action = action;
+            label1.Text = labelText;
+            Text = title;
+            if (buttonEdit)
+            {
+                textBox1.Text = value;
+                button1.Text = "Изменить";
+            }
+            else
+            {
+                button1.Text = "Добавить";
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Close();
+            if (textBox1.Text.Trim() == "")
+            {
+                MessageBox.Show("Поле не может быть пустым");
+            } else
+            {
+                action.Invoke(textBox1.Text);
+                Close();
+            }
         }
     }
 }

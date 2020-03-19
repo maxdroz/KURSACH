@@ -162,6 +162,12 @@ namespace АРМ_билиотекаря
 
         public class Args
         {
+            public int author2;
+            public int language;
+            public int genre;
+            public int ph;
+            public int cover;
+            public string title;
             public Book book;
             public String message;
             public int id;
@@ -170,8 +176,12 @@ namespace АРМ_билиотекаря
             public Reader reader = null;
             public DataGridView dataGridView = null;
             public string tableName = null;
+            public string columnName = null;
             public Button deleteButton;
             public Button editButton;
+            public string data;
+            public int dataId;
+            public string errorMessage = "";
 
             public Args(int id, int user_id) : this(id)
             {
@@ -181,6 +191,16 @@ namespace АРМ_билиотекаря
             public Args(int id, Reader reader) : this(id)
             {
                 this.reader = reader;
+            }
+
+            public Args(int id, DataGridView table, string tableName, Button deleteButton, Button editButton, string data)
+            {
+                this.id = id;
+                this.dataGridView = table;
+                this.tableName = tableName;
+                this.deleteButton = deleteButton;
+                this.editButton = editButton;
+                this.data = data;
             }
 
             public Args(int id, DataGridView table, string tableName, Button deleteButton, Button editButton)
@@ -202,12 +222,14 @@ namespace АРМ_билиотекаря
         {
             public int arg;
             public DataTable table;
-            public bool readerClear;
-            public bool bookClear;
+            public bool readerError = false;
+            public bool bookError = false;
             public int id;
             public DataGridView dataGridView;
             public Button deleteButton;
             public Button editButton;
+            public bool error = false;
+            public string message = "";
             public Res(int argg, DataTable tablee)
             {
                 arg = argg;
@@ -227,6 +249,196 @@ namespace АРМ_билиотекаря
                 button12.Enabled = false;
             }
         }
+        private void deleteAuthor(int id)
+        {
+            var worker = new BackgroundWorker();
+            worker.DoWork += BackgroundWorker1_DoWork;
+            worker.RunWorkerCompleted += BackgroundWorker1_RunWorkerCompleted;
+            worker.RunWorkerAsync(new Args(18, dataGridView5, "author", button14, button15)
+            {
+                user_id = id,
+                errorMessage = "Чтобы удалить автора, необходимо избавиться от его использования во всех книгах."
+            });
+        }
+        private void deleteLanguage(int id)
+        {
+            var worker = new BackgroundWorker();
+            worker.DoWork += BackgroundWorker1_DoWork;
+            worker.RunWorkerCompleted += BackgroundWorker1_RunWorkerCompleted;
+            worker.RunWorkerAsync(new Args(18, dataGridView6, "language", button17, button18)
+            {
+                user_id = id,
+                errorMessage = "Чтобы удалить язык, необходимо избавиться от его использования во всех книгах."
+            });
+        }
+
+        private void deleteGenre(int id)
+        {
+            var worker = new BackgroundWorker();
+            worker.DoWork += BackgroundWorker1_DoWork;
+            worker.RunWorkerCompleted += BackgroundWorker1_RunWorkerCompleted;
+            worker.RunWorkerAsync(new Args(18, dataGridView7, "genre", button20, button21)
+            {
+                user_id = id,
+                errorMessage = "Чтобы удалить жанр, необходимо избавиться от его использования во всех книгах."
+            });
+        }
+
+
+        private void deletePublishingHouse(int id)
+        {
+            var worker = new BackgroundWorker();
+            worker.DoWork += BackgroundWorker1_DoWork;
+            worker.RunWorkerCompleted += BackgroundWorker1_RunWorkerCompleted;
+            worker.RunWorkerAsync(new Args(22, dataGridView8, "publishing_house", button23, button24)
+            {
+                user_id = id,
+                errorMessage = "Чтобы удалить издательство, необходимо избавиться от его использования во всех книгах."
+            });
+        }
+
+        private void deleteCity(int id)
+        {
+            var worker = new BackgroundWorker();
+            worker.DoWork += BackgroundWorker1_DoWork;
+            worker.RunWorkerCompleted += BackgroundWorker1_RunWorkerCompleted;
+            worker.RunWorkerAsync(new Args(18, dataGridView9, "city", button26, button27)
+            {
+                user_id = id,
+                errorMessage = "Чтобы удалить город, необходимо избавиться от его использования во всех издательствах."
+            });
+        }
+
+        private void deleteCover(int id)
+        {
+            var worker = new BackgroundWorker();
+            worker.DoWork += BackgroundWorker1_DoWork;
+            worker.RunWorkerCompleted += BackgroundWorker1_RunWorkerCompleted;
+            worker.RunWorkerAsync(new Args(18, dataGridView10, "cover", button29, button30)
+            {
+                user_id = id,
+                errorMessage = "Чтобы удалить обложку, необходимо избавиться от ее использования во всех книгах."
+            });
+        }
+
+        private void editPublishingHouse(string text, int id_city, int id)
+        {
+            var worker = new BackgroundWorker();
+            worker.DoWork += BackgroundWorker1_DoWork;
+            worker.RunWorkerCompleted += BackgroundWorker1_RunWorkerCompleted;
+            worker.RunWorkerAsync(new Args(21, dataGridView8, "publishing_house", button23, button24, String.Format("{0}', title = '{1}", id_city, text))
+            {
+                dataId = id,
+                columnName = "id_city"
+            });
+        }
+
+        private void editAuthor(string name, string surname, string patronymic, int id)
+        {
+            var worker = new BackgroundWorker();
+            worker.DoWork += BackgroundWorker1_DoWork;
+            worker.RunWorkerCompleted += BackgroundWorker1_RunWorkerCompleted;
+            worker.RunWorkerAsync(new Args(17, dataGridView5, "author", button14, button15, String.Format("{0}', surname = '{1}', patronymic = '{2}", name, surname, patronymic))
+            {
+                dataId = id,
+                columnName = "name"
+            });
+        }
+
+        private void editLanguage(string language, int id)
+        {
+            var worker = new BackgroundWorker();
+            worker.DoWork += BackgroundWorker1_DoWork;
+            worker.RunWorkerCompleted += BackgroundWorker1_RunWorkerCompleted;
+            worker.RunWorkerAsync(new Args(17, dataGridView6, "language", button17, button18, language)
+            {
+                dataId = id,
+                columnName = "language"
+            });
+        }
+
+        private void editGenre(string genre, int id)
+        {
+            var worker = new BackgroundWorker();
+            worker.DoWork += BackgroundWorker1_DoWork;
+            worker.RunWorkerCompleted += BackgroundWorker1_RunWorkerCompleted;
+            worker.RunWorkerAsync(new Args(17, dataGridView7, "genre", button20, button21, genre)
+            {
+                dataId = id,
+                columnName = "genre"
+            });
+        }
+
+        private void editCity(string cityName, int id)
+        {
+            var worker = new BackgroundWorker();
+            worker.DoWork += BackgroundWorker1_DoWork;
+            worker.RunWorkerCompleted += BackgroundWorker1_RunWorkerCompleted;
+            worker.RunWorkerAsync(new Args(17, dataGridView9, "city", button26, button27, cityName)
+            {
+                dataId = id,
+                columnName = "city_name"
+            });
+        }
+
+        private void editCovers(string coverName, int id)
+        {
+            var worker = new BackgroundWorker();
+            worker.DoWork += BackgroundWorker1_DoWork;
+            worker.RunWorkerCompleted += BackgroundWorker1_RunWorkerCompleted;
+            worker.RunWorkerAsync(new Args(17, dataGridView10, "cover", button29, button30, coverName)
+            {
+                dataId = id,
+                columnName = "cover_description"
+            });
+        }
+
+        private void addPublishingHouse(string text, int id_city)
+        {
+            var worker = new BackgroundWorker();
+            worker.DoWork += BackgroundWorker1_DoWork;
+            worker.RunWorkerCompleted += BackgroundWorker1_RunWorkerCompleted;
+            worker.RunWorkerAsync(new Args(20, dataGridView8, "publishing_house", button23, button24, String.Format("{0}', '{1}", id_city, text)));
+        }
+
+        private void addAuthor(string name, string surname, string patronymic)
+        {
+            var worker = new BackgroundWorker();
+            worker.DoWork += BackgroundWorker1_DoWork;
+            worker.RunWorkerCompleted += BackgroundWorker1_RunWorkerCompleted;
+            worker.RunWorkerAsync(new Args(16, dataGridView5, "author", button14, button15, String.Format("{0}', '{1}', '{2}", name, surname, patronymic)));
+        }
+
+        private void addLanguage(string language)
+        {
+            var worker = new BackgroundWorker();
+            worker.DoWork += BackgroundWorker1_DoWork;
+            worker.RunWorkerCompleted += BackgroundWorker1_RunWorkerCompleted;
+            worker.RunWorkerAsync(new Args(16, dataGridView6, "language", button17, button18, language));
+        }
+        private void addGenre(string genre)
+        {
+            var worker = new BackgroundWorker();
+            worker.DoWork += BackgroundWorker1_DoWork;
+            worker.RunWorkerCompleted += BackgroundWorker1_RunWorkerCompleted;
+            worker.RunWorkerAsync(new Args(16, dataGridView7, "genre", button20, button21, genre));
+        }
+        private void addCity(string cityName)
+        {
+            var worker = new BackgroundWorker();
+            worker.DoWork += BackgroundWorker1_DoWork;
+            worker.RunWorkerCompleted += BackgroundWorker1_RunWorkerCompleted;
+            worker.RunWorkerAsync(new Args(16, dataGridView9, "city", button26, button26, cityName));
+        }
+
+        private void addCover(string coverName)
+        {
+            var worker = new BackgroundWorker();
+            worker.DoWork += BackgroundWorker1_DoWork;
+            worker.RunWorkerCompleted += BackgroundWorker1_RunWorkerCompleted;
+            worker.RunWorkerAsync(new Args(16, dataGridView10, "cover", button29, button30, coverName));
+        }
+
         private void updateAuthors()
         {
             var worker = new BackgroundWorker();
@@ -331,20 +543,27 @@ namespace АРМ_билиотекаря
                     case 6:
                         result = adapter.getDebtors();
                         break;
-                    case 7:
-                        result = adapter.deleteReaderAndGetFilteredReaders(new Reader(textBox5.Text,
-                            textBox1.Text,
-                            textBox2.Text,
-                            textBox3.Text,
-                            dateTimePicker1.Value,
-                            textBox6.Text,
-                            textBox10.Text), checkBox1.Checked, ((Args)e.Argument).user_id);
-                            id = 2;
+                    case 7: 
+                        result = adapter.deleteReaderAndGetFilteredReaders(
+                            new Reader(
+                                textBox5.Text,
+                                textBox1.Text,
+                                textBox2.Text,
+                                textBox3.Text,
+                                dateTimePicker1.Value,
+                                textBox6.Text,
+                                textBox10.Text
+                            ),
+                            checkBox1.Checked,
+                            ((Args)e.Argument).user_id);
+                        id = 2;
+                        res.readerError = result == null;
+                     
                         break;
-                    case 8: 
-                        res.readerClear = !adapter.isThereBookAtReader(((Args)e.Argument).user_id);
-                        res.id = ((Args)e.Argument).user_id;
-                        break;
+                    //case 8: 
+                    //    res.readerClear = !adapter.isThereBookAtReader(((Args)e.Argument).user_id);
+                    //    res.id = ((Args)e.Argument).user_id;
+                    //    break;
                     case 9:
                         adapter.expandIssueDate(((Args)e.Argument).debitId, ((Args)e.Argument).reader.birthday);
                         res.id = ((Args)e.Argument).user_id;
@@ -355,19 +574,29 @@ namespace АРМ_билиотекаря
                         id = 9;
                         break;
                     case 11:
-                        adapter.addBook(((Args)e.Argument).book);
+                        adapter.addBook(
+                            ((Args)e.Argument).title,
+                            ((Args)e.Argument).author2,
+                            ((Args)e.Argument).language,
+                            ((Args)e.Argument).genre,
+                            ((Args)e.Argument).ph,
+                            ((Args)e.Argument).cover
+                        );
                         break;
                     case 12:
-                        adapter.editBook(((Args)e.Argument).book, ((Args)e.Argument).user_id);
+                        adapter.editBook(
+                            ((Args)e.Argument).title,
+                            ((Args)e.Argument).author2,
+                            ((Args)e.Argument).language,
+                            ((Args)e.Argument).genre,
+                            ((Args)e.Argument).ph,
+                            ((Args)e.Argument).cover,
+                            ((Args)e.Argument).user_id);
                         id = 11;
                         break;
                     case 13:
-                        adapter.deleteBook(((Args)e.Argument).user_id);
+                        res.bookError = adapter.deleteBook(((Args)e.Argument).user_id);
                         id = 11;
-                        break;
-                    case 14:
-                        res.id = ((Args)e.Argument).user_id;
-                        res.bookClear = adapter.isBookAtReader(((Args)e.Argument).user_id);
                         break;
                     case 15:
                         result = adapter.getCommonData(((Args)e.Argument).tableName);
@@ -376,10 +605,27 @@ namespace АРМ_билиотекаря
                         res.editButton = ((Args)e.Argument).editButton;
                         break;
                     case 16:
+                        result = adapter.addCommon(((Args)e.Argument).tableName, ((Args)e.Argument).data);
+                        res.dataGridView = ((Args)e.Argument).dataGridView;
+                        res.deleteButton = ((Args)e.Argument).deleteButton;
+                        res.editButton = ((Args)e.Argument).editButton;
+                        id = 15;
                         break;
                     case 17:
+                        result = adapter.editCommon(((Args)e.Argument).tableName, ((Args)e.Argument).columnName, ((Args)e.Argument).data, ((Args)e.Argument).dataId);
+                        res.dataGridView = ((Args)e.Argument).dataGridView;
+                        res.deleteButton = ((Args)e.Argument).deleteButton;
+                        res.editButton = ((Args)e.Argument).editButton;
+                        id = 15;
                         break;
                     case 18:
+                        result = adapter.deleteCommon(((Args)e.Argument).tableName, ((Args)e.Argument).user_id);
+                        res.dataGridView = ((Args)e.Argument).dataGridView;
+                        res.deleteButton = ((Args)e.Argument).deleteButton;
+                        res.editButton = ((Args)e.Argument).editButton;
+                        res.message = ((Args)e.Argument).errorMessage;
+                        res.error = result == null;
+                        id = 15;
                         break;
                     case 19:
                         result = adapter.getPublishers();
@@ -389,10 +635,24 @@ namespace АРМ_билиотекаря
                         id = 15;
                         break;
                     case 20:
+                         adapter.addCommon(((Args)e.Argument).tableName, ((Args)e.Argument).data);
                         break;
                     case 21:
+                        adapter.editCommon(((Args)e.Argument).tableName, ((Args)e.Argument).columnName, ((Args)e.Argument).data, ((Args)e.Argument).dataId);
+                        result = adapter.getPublishers();
+                        res.dataGridView = ((Args)e.Argument).dataGridView;
+                        res.deleteButton = ((Args)e.Argument).deleteButton;
+                        res.editButton = ((Args)e.Argument).editButton;
+                        id = 15;
                         break;
                     case 22:
+                        res.error = adapter.deleteCommon(((Args)e.Argument).tableName, ((Args)e.Argument).user_id) == null;
+                        result = adapter.getPublishers();
+                        res.dataGridView = ((Args)e.Argument).dataGridView;
+                        res.deleteButton = ((Args)e.Argument).deleteButton;
+                        res.editButton = ((Args)e.Argument).editButton;
+                        res.message = ((Args)e.Argument).errorMessage;
+                        id = 15;
                         break;
                     case 24:
                         break;
@@ -458,18 +718,25 @@ namespace АРМ_билиотекаря
                     updateEditAndDeleteBookButtons();
                     break;
                 case 2:
-                    dataGridView2.DataSource = r.table;
-                    if (dataGridView2.RowCount <= 1)
+                    if (r.readerError)
                     {
-                        if (empty == null)
-                        {
-                            empty = adapter.getReaderBooks(-1);
-                        }
-                        dataGridView1.DataSource = empty;
-                        //dataGridView1.DataSource = adapter.getReaderBooks(-1);
+                        MessageBox.Show("У данного читателя есть не сданные книги\nСначала пометьте сданными все книги данного читателя");
                     }
-                    updateEditAndDeleteButton();
-                    disableEnableBookButtons();
+                    else
+                    {
+                        dataGridView2.DataSource = r.table;
+                        if (dataGridView2.RowCount <= 1)
+                        {
+                            if (empty == null)
+                            {
+                                empty = adapter.getReaderBooks(-1);
+                            }
+                            dataGridView1.DataSource = empty;
+                            //dataGridView1.DataSource = adapter.getReaderBooks(-1);
+                        }
+                        updateEditAndDeleteButton();
+                        disableEnableBookButtons();
+                    }
                     break;
                 case 4:
                     dataGridView1.DataSource = r.table;
@@ -479,36 +746,33 @@ namespace АРМ_билиотекаря
                     dataGridView4.DataSource = r.table;
                     updateEditAndDeleteDebtorsButtons();
                     break;
-                case 8:
-                    if (r.readerClear)
-                    {
-                        deleteAndUpdateReaders(r.id);
-                    }
-                    else
-                    {
-                        MessageBox.Show("У данного читателя есть не сданные книги\nСначала пометьте сданными все книги данного читателя");
-                    }
-                    break;
                 case 9:
                     updateReaderBooks(r.id);
                     updateDebtors();
                     break;
                 case 11:
-                    updateBooksGrid();
-                    break;
-                case 14:
-                    if (!r.bookClear)
-                    {
-                        deleteAndUpdateBook(r.id);
-                    }
-                    else
+                    if (r.bookError)
                     {
                         MessageBox.Show("Данная книга выдана.\nСначала верните ее");
                     }
+                    else
+                    {
+                        updateBooksGrid();
+                    }
                     break;
                 case 15:
-                    r.dataGridView.DataSource = r.table;
-                    updateEditAndDeleteButtons(r.dataGridView, r.editButton, r.deleteButton);
+                    if(r.error)
+                    {
+                        MessageBox.Show(r.message);
+                    }
+                    else
+                    {
+                        r.dataGridView.DataSource = r.table;
+                        updateEditAndDeleteButtons(r.dataGridView, r.editButton, r.deleteButton);
+                    }
+                    break;
+                case 20:
+                    updatePublishers();
                     break;
             }
         }
@@ -589,7 +853,7 @@ namespace АРМ_билиотекаря
         private void Button6_Click(object sender, EventArgs e)
         {
             int id = Convert.ToInt32(dataGridView2[0, dataGridView2.CurrentCellAddress.Y].Value);
-            checkForBooksAndDeleteReader(id);
+            deleteAndUpdateReaders(id);
         }
 
         public void returnBook(int debitId, int readerId)
@@ -604,7 +868,7 @@ namespace АРМ_билиотекаря
 
         private void Button2_Click(object sender, EventArgs e)
         {
-            int debitId = Convert.ToInt32(dataGridView1[0, dataGridView1.CurrentCellAddress.Y].Value);
+            int debitId = Convert.ToInt32(dataGridView1["record_id", dataGridView1.CurrentCellAddress.Y].Value);
             int readerId = Convert.ToInt32(dataGridView2[0, dataGridView2.CurrentCellAddress.Y].Value);
             returnBook(debitId, readerId);
         }
@@ -657,40 +921,75 @@ namespace АРМ_билиотекаря
             exp.ShowDialog();
         }
 
-        public void addBook(Book book)
+        public void addBook(string title, int author, int language, int genre, int ph, int cover)
         {
             var worker = new BackgroundWorker();
             worker.DoWork += BackgroundWorker1_DoWork;
             worker.RunWorkerCompleted += BackgroundWorker1_RunWorkerCompleted;
             worker.RunWorkerAsync(new Args(11)
             {
-                book = book
+                author2 = author,
+                language = language,
+                genre = genre,
+                ph = ph,
+                cover = cover,
+                title = title,
             });
         }
 
         private void Button7_Click(object sender, EventArgs e)
         {
-            AddEditBook addEditBook = new AddEditBook(this);
+            DataTable authors = adapter.authorFullName();
+            DataTable languages = adapter.getCommonData("language");
+            DataTable genre = adapter.getCommonData("genre");
+            DataTable publishingHouse = adapter.getCommonData("publishing_house");
+            DataTable cover = adapter.getCommonData("cover");
+            AddEditBook addEditBook = new AddEditBook(this, authors, "name", languages, "language", genre, "genre", publishingHouse, "title", cover, "cover_description");
             addEditBook.ShowDialog();
         }
 
         private void Button8_Click(object sender, EventArgs e)
         {
-            int rowId = Convert.ToInt32(dataGridView3.CurrentCellAddress.Y);
-            AddEditBook addEditBook = new AddEditBook(this);
-            addEditBook.setBook(new Book(dataGridView3[2, rowId].Value.ToString(), dataGridView3[1, rowId].Value.ToString(), dataGridView3[3, rowId].Value.ToString()), Convert.ToInt32(dataGridView3[0, rowId].Value.ToString()));
+            int rowId = dataGridView3.CurrentCellAddress.Y;
+            DataTable authors = adapter.authorFullName();
+            DataTable languages = adapter.getCommonData("language");
+            DataTable genre = adapter.getCommonData("genre");
+            DataTable publishingHouse = adapter.getCommonData("publishing_house");
+            DataTable cover = adapter.getCommonData("cover");
+            AddEditBook addEditBook = new AddEditBook(this, authors, "name", languages, "language", genre, "genre", publishingHouse, "title", cover, "cover_description");
+            int authorId = Int32.Parse(dataGridView3["author_id", rowId].Value.ToString());
+            int languageId = Int32.Parse(dataGridView3["language_id", rowId].Value.ToString());
+            int genreId = Int32.Parse(dataGridView3["genre_id", rowId].Value.ToString());
+            int publishingHouseId = Int32.Parse(dataGridView3["publishing_house_id", rowId].Value.ToString());
+            int coverId = Int32.Parse(dataGridView3["cover_id", rowId].Value.ToString());
+            DataRow ans = authors.Select("id = '" + authorId + "'")[0];
+            authorId = authors.Rows.IndexOf(ans);
+            ans = languages.Select("id = '" + languageId + "'")[0];
+            languageId = languages.Rows.IndexOf(ans);
+            ans = genre.Select("id = '" + genreId + "'")[0];
+            genreId = genre.Rows.IndexOf(ans);
+            ans = publishingHouse.Select("id = '" + publishingHouseId + "'")[0];
+            publishingHouseId = publishingHouse.Rows.IndexOf(ans);
+            ans = cover.Select("id = '" + coverId + "'")[0];
+            coverId = cover.Rows.IndexOf(ans);
+            addEditBook.setBook(Int32.Parse(dataGridView3[0, rowId].Value.ToString()), dataGridView3[1, rowId].Value.ToString(), authorId, languageId, genreId, publishingHouseId, coverId);
             addEditBook.ShowDialog();
         }
 
-        public void editBook(Book book, int bookId)
+        public void editBook(int id, string title, int author, int language, int genre, int ph, int cover)
         {
             var worker = new BackgroundWorker();
             worker.DoWork += BackgroundWorker1_DoWork;
             worker.RunWorkerCompleted += BackgroundWorker1_RunWorkerCompleted;
             worker.RunWorkerAsync(new Args(12)
             {
-                user_id = bookId,
-                book = book
+                author2 = author,
+                language = language,
+                genre = genre,
+                ph = ph,
+                cover = cover,
+                title = title,
+                user_id = id
             });
         }
 
@@ -704,8 +1003,8 @@ namespace АРМ_билиотекаря
 
         private void Button10_Click(object sender, EventArgs e)
         {
-            int debitId = Convert.ToInt32(dataGridView4["Name1", dataGridView4.CurrentCellAddress.Y].Value);
-            int readerId = Convert.ToInt32(dataGridView4["Column10", dataGridView4.CurrentCellAddress.Y].Value);
+            int debitId = dataGridView4["Name1", dataGridView4.CurrentCellAddress.Y].Value.ToString().ToInt();
+            int readerId = dataGridView4["Column10", dataGridView4.CurrentCellAddress.Y].Value.ToString().ToInt();
             //BookReturn br = new BookReturn(debitId, readerId, this);
             //br.ShowDialog();
             returnBook(debitId, readerId);
@@ -723,7 +1022,7 @@ namespace АРМ_билиотекаря
         private void Button9_Click(object sender, EventArgs e)
         {
             int bookId = Convert.ToInt32(dataGridView3[0, dataGridView3.CurrentCellAddress.Y].Value);
-            checkBookForReaderAndDelete(bookId);
+            deleteAndUpdateBook(bookId);
         }
 
         private void deleteAndUpdateBook(int bookId)
@@ -752,5 +1051,166 @@ namespace АРМ_билиотекаря
                 TabControl1_SelectedIndexChanged(null, null);
             }
         }
+
+        private void button31_Click(object sender, EventArgs e)
+        {
+            AddEditSimpleCommon form = new AddEditSimpleCommon("Обложка", "Добавление обложки", false, (text) =>
+            {
+                addCover(text);
+            });
+            form.ShowDialog();
+        }
+
+        private void button28_Click(object sender, EventArgs e)
+        {
+            AddEditSimpleCommon form = new AddEditSimpleCommon("Город", "Добавление города", false, (text) =>
+            {
+                addCity(text);
+            });
+            form.ShowDialog();
+        }
+
+        private void button22_Click(object sender, EventArgs e)
+        {
+            AddEditSimpleCommon form = new AddEditSimpleCommon("Жанр", "Добавление жанра", false, (text) =>
+            {
+                addGenre(text);
+            });
+            form.ShowDialog();
+        }
+
+        private void button19_Click(object sender, EventArgs e)
+        {
+            AddEditSimpleCommon form = new AddEditSimpleCommon("Язык", "Добавление языка", false, (text) =>
+            {
+                addLanguage(text);
+            });
+            form.ShowDialog();
+        }
+
+        private void button16_Click(object sender, EventArgs e)
+        {
+            AddEditAuthors form = new AddEditAuthors((name, surname, patronymic) =>
+            {
+                addAuthor(name, surname, patronymic);
+            });
+            form.ShowDialog();
+        }
+
+        private void button25_Click(object sender, EventArgs e)
+        {
+            AddEditPublishingHouses form = new AddEditPublishingHouses(adapter.getCommonData("city"), "city_name", false, (name, id_city) =>
+            {
+                addPublishingHouse(name, id_city);
+            });
+            form.ShowDialog();
+        }
+
+        private void button30_Click(object sender, EventArgs e)
+        {
+            int active = dataGridView10.CurrentCellAddress.Y;
+            AddEditSimpleCommon form = new AddEditSimpleCommon("Обложка", "Изменение обложки", true, (text) =>
+            {
+                editCovers(text, Int32.Parse(dataGridView10[0, active].Value.ToString()));
+            }, dataGridView10[1, active].Value.ToString());
+            form.ShowDialog();
+        }
+
+        private void button27_Click(object sender, EventArgs e)
+        { 
+            int active = dataGridView9.CurrentCellAddress.Y;
+            AddEditSimpleCommon form = new AddEditSimpleCommon("Город", "Изменение города", true, (text) =>
+            {
+                editCity(text, Int32.Parse(dataGridView9[0, active].Value.ToString()));
+            }, dataGridView9[1, active].Value.ToString());
+            form.ShowDialog();
+        }
+
+        private void button21_Click(object sender, EventArgs e)
+        {
+            int active = dataGridView7.CurrentCellAddress.Y;
+            AddEditSimpleCommon form = new AddEditSimpleCommon("Жанр", "Изменение жанра", true, (text) =>
+            {
+                editGenre(text, Int32.Parse(dataGridView7[0, active].Value.ToString()));
+            }, dataGridView7[1, active].Value.ToString());
+            form.ShowDialog();
+        }
+
+        private void button18_Click(object sender, EventArgs e)
+        {
+            int active = dataGridView6.CurrentCellAddress.Y;
+            AddEditSimpleCommon form = new AddEditSimpleCommon("Язык", "Изменение языка", true, (text) =>
+            {
+                editLanguage(text, Int32.Parse(dataGridView6[0, active].Value.ToString()));
+            }, dataGridView6[1, active].Value.ToString());
+            form.ShowDialog();
+        }
+
+        private void button15_Click(object sender, EventArgs e)
+        {
+            int active = dataGridView5.CurrentCellAddress.Y;
+            AddEditAuthors form = new AddEditAuthors((a, b, c) =>{
+                editAuthor(a, b, c, Int32.Parse(dataGridView5[0, active].Value.ToString()));
+            }, true, dataGridView5[1, active].Value.ToString(), dataGridView5[2, active].Value.ToString(), dataGridView5[3, active].Value.ToString());
+            form.ShowDialog();
+        }
+
+        private void button24_Click(object sender, EventArgs e)
+        {
+            int active = dataGridView8.CurrentCellAddress.Y;
+            int cityId = Int32.Parse(dataGridView8["city_id", active].Value.ToString());
+            DataTable cities = adapter.getCommonData("city");
+            DataRow ans = cities.Select("id = '" + cityId + "'")[0];
+            cityId = cities.Rows.IndexOf(ans);
+            AddEditPublishingHouses form = new AddEditPublishingHouses(cities, "city_name", true, (name, id_city) =>
+            {
+                editPublishingHouse(name, id_city, Int32.Parse(dataGridView8["idid", active].Value.ToString()));
+            }, dataGridView8["dataGridViewTextBoxColumn10", active].Value.ToString(), cityId);
+            form.ShowDialog();
+        }
+
+        private void button29_Click(object sender, EventArgs e)
+        {
+            int active = dataGridView10.CurrentCellAddress.Y;
+            deleteCover(dataGridView10[0, active].Value.ToString().ToInt());
+        }
+
+        private void button26_Click(object sender, EventArgs e)
+        {
+            int active = dataGridView9.CurrentCellAddress.Y;
+            deleteCity(dataGridView9[0, active].Value.ToString().ToInt());
+        }
+
+        private void button23_Click(object sender, EventArgs e)
+        {
+            int active = dataGridView8.CurrentCellAddress.Y;
+            deletePublishingHouse(dataGridView8["idid", active].Value.ToString().ToInt());
+        }
+
+        private void button20_Click(object sender, EventArgs e)
+        {
+            int active = dataGridView7.CurrentCellAddress.Y;
+            deleteGenre(dataGridView7[0, active].Value.ToString().ToInt());
+        }
+
+        private void button17_Click(object sender, EventArgs e)
+        {
+            int active = dataGridView6.CurrentCellAddress.Y;
+            deleteLanguage(dataGridView6[0, active].Value.ToString().ToInt());
+        }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+            int active = dataGridView5.CurrentCellAddress.Y;
+            deleteAuthor(dataGridView5[0, active].Value.ToString().ToInt());
+        }
+    }
+}
+
+static class Ext
+{
+    public static int ToInt(this string str)
+    {
+        return Int32.Parse(str);
     }
 }
