@@ -25,7 +25,7 @@ namespace АРМ_билиотекаря
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            f.returnBook(debitId, readerId, textBox1.Text);
+            f.returnBook(debitId, readerId);
             Close();
         }
 

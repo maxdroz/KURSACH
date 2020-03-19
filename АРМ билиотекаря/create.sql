@@ -1,85 +1,85 @@
-CREATE TABLE IF NOT EXISTS `Читатель` (
-	`id` INT NOT NULL AUTO_INCREMENT,
-	`Имя` VARCHAR(255) NOT NULL,
-	`Фамилия` VARCHAR(255) NOT NULL,
-	`Отчество` VARCHAR(255) NOT NULL,
-	`Дата_рождения` VARCHAR(255) NOT NULL,
-	`Номер_телефона` VARCHAR(255) NOT NULL,
-	`Адрес` VARCHAR(255) NOT NULL,
+CREATE TABLE IF NOT EXISTS `reader` (
+	`id` int AUTO_INCREMENT NOT NULL,
+	`name` varchar(255) NOT NULL,
+	`surname` varchar(255) NOT NULL,
+	`patronymic` varchar(255) NOT NULL,
+	`birthday` DATETIME NOT NULL,
+	`phone_number` varchar(255) NOT NULL,
+	`address` varchar(255) NOT NULL,
 	PRIMARY KEY (`id`)
 );
 
-CREATE TABLE IF NOT EXISTS `Запись` (
-	`id` INT NOT NULL AUTO_INCREMENT,
-	`Номер_читателя` INT NOT NULL,
-	`Номер_книги` INT NOT NULL,
-	`Дата_выдачи` DATETIME NOT NULL,
-	`Дата_возврата` DATETIME NOT NULL,
+CREATE TABLE IF NOT EXISTS `record` (
+	`id` int AUTO_INCREMENT NOT NULL,
+	`id_reader` int NOT NULL,
+	`id_book` int NOT NULL,
+	`issue_date` DATETIME NOT NULL,
+	`return_date` DATETIME NOT NULL,
 	PRIMARY KEY (`id`)
 );
 
-CREATE TABLE IF NOT EXISTS `Книга` (
-	`id` INT NOT NULL AUTO_INCREMENT,
-	`Номер_автора` INT NOT NULL,
-	`Номер_языка` INT NOT NULL,
-	`Номер_жанра` INT NOT NULL,
-	`Номер_издательства` INT NOT NULL,
-	`Название` VARCHAR(255) NOT NULL,
-	`Номер_описания_обложки` BINARY NOT NULL,
+CREATE TABLE IF NOT EXISTS `book` (
+	`id` int AUTO_INCREMENT NOT NULL,
+	`id_author` int NOT NULL,
+	`id_language` int NOT NULL,
+	`id_genre` int NOT NULL,
+	`id_publishing_house` int NOT NULL,
+	`id_cover` int NOT NULL,
+	`title` varchar(255) NOT NULL,
 	PRIMARY KEY (`id`)
 );
 
-CREATE TABLE IF NOT EXISTS `Автор` (
-	`id` INT NOT NULL AUTO_INCREMENT,
-	`Имя` VARCHAR(255) NOT NULL,
-	`Фамилия` VARCHAR(255) NOT NULL,
-	`Отчество` VARCHAR(255) NOT NULL,
+CREATE TABLE IF NOT EXISTS `author` (
+	`id` int AUTO_INCREMENT NOT NULL,
+	`name` varchar(255) NOT NULL,
+	`surname` varchar(255) NOT NULL,
+	`patronymic` varchar(255) NOT NULL,
 	PRIMARY KEY (`id`)
 );
 
-CREATE TABLE IF NOT EXISTS `Жанр` (
-	`id` INT NOT NULL AUTO_INCREMENT,
-	`Жанр` VARCHAR(255) NOT NULL AUTO_INCREMENT,
+CREATE TABLE IF NOT EXISTS `genre` (
+	`id` int AUTO_INCREMENT NOT NULL,
+	`genre` varchar(255) NOT NULL,
 	PRIMARY KEY (`id`)
 );
 
-CREATE TABLE IF NOT EXISTS `Язык` (
-	`id` INT NOT NULL AUTO_INCREMENT,
-	`Язык` VARCHAR(255) NOT NULL AUTO_INCREMENT,
+CREATE TABLE IF NOT EXISTS `language` (
+	`id` int AUTO_INCREMENT NOT NULL,
+	`language` varchar(255) NOT NULL,
 	PRIMARY KEY (`id`)
 );
 
-CREATE TABLE IF NOT EXISTS `Издательство` (
-	`id` INT NOT NULL AUTO_INCREMENT,
-	`Номер_города_издательства` INT NOT NULL,
-	`Название` VARCHAR(255) NOT NULL,
+CREATE TABLE IF NOT EXISTS `publishing_house` (
+	`id` int AUTO_INCREMENT NOT NULL,
+	`id_city` int NOT NULL,
+	`title` varchar(255) NOT NULL,
 	PRIMARY KEY (`id`)
 );
 
-CREATE TABLE IF NOT EXISTS `Город издательства` (
-	`id` INT NOT NULL AUTO_INCREMENT,
-	`Название_города` VARCHAR(255) NOT NULL,
+CREATE TABLE IF NOT EXISTS `city` (
+	`id` int AUTO_INCREMENT NOT NULL,
+	`city_name` varchar(255) NOT NULL,
 	PRIMARY KEY (`id`)
 );
 
-CREATE TABLE IF NOT EXISTS `Тип_обложки` (
-	`id` INT NOT NULL AUTO_INCREMENT,
-	`Описание обложки` INT NOT NULL AUTO_INCREMENT,
+CREATE TABLE IF NOT EXISTS `cover` (
+	`id` int AUTO_INCREMENT NOT NULL,
+	`cover_description` varchar(255) NOT NULL,
 	PRIMARY KEY (`id`)
 );
 
-ALTER TABLE `Запись` ADD CONSTRAINT `Запись_fk0` FOREIGN KEY (`Номер_читателя`) REFERENCES `Читатель`(`id`);
+ALTER TABLE `record` ADD CONSTRAINT FOREIGN KEY (`id_reader`) REFERENCES `reader`(`id`);
 
-ALTER TABLE `Запись` ADD CONSTRAINT `Запись_fk1` FOREIGN KEY (`Номер_книги`) REFERENCES `Книга`(`id`);
+ALTER TABLE `record` ADD CONSTRAINT FOREIGN KEY (`id_book`) REFERENCES `book`(`id`);
 
-ALTER TABLE `Книга` ADD CONSTRAINT `Книга_fk0` FOREIGN KEY (`Номер_автора`) REFERENCES `Автор`(`id`);
+ALTER TABLE `book` ADD CONSTRAINT FOREIGN KEY (`id_author`) REFERENCES `author`(`id`);
 
-ALTER TABLE `Книга` ADD CONSTRAINT `Книга_fk1` FOREIGN KEY (`Номер_языка`) REFERENCES `Язык`(`id`);
+ALTER TABLE `book` ADD CONSTRAINT FOREIGN KEY (`id_language`) REFERENCES `language`(`id`);
 
-ALTER TABLE `Книга` ADD CONSTRAINT `Книга_fk2` FOREIGN KEY (`Номер_жанра`) REFERENCES `Жанр`(`id`);
+ALTER TABLE `book` ADD CONSTRAINT FOREIGN KEY (`id_genre`) REFERENCES `genre`(`id`);
 
-ALTER TABLE `Книга` ADD CONSTRAINT `Книга_fk3` FOREIGN KEY (`Номер_издательства`) REFERENCES `Издательство`(`id`);
+ALTER TABLE `book` ADD CONSTRAINT FOREIGN KEY (`id_publishing_house`) REFERENCES `publishing_house`(`id`);
 
-ALTER TABLE `Книга` ADD CONSTRAINT `Книга_fk4` FOREIGN KEY (`Номер_описания_обложки`) REFERENCES `Тип_обложки`(`id`);
+ALTER TABLE `book` ADD CONSTRAINT FOREIGN KEY (`id_cover`) REFERENCES `cover`(`id`);
 
-ALTER TABLE `Издательство` ADD CONSTRAINT `Издательство_fk0` FOREIGN KEY (`Номер_города_издательства`) REFERENCES `Город издательства`(`id`);
+ALTER TABLE `publishing_house` ADD CONSTRAINT FOREIGN KEY (`id_city`) REFERENCES `city`(`id`);

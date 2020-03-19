@@ -11,14 +11,12 @@ namespace АРМ_билиотекаря
         public String title;
         public String author;
         public String language;
-        public String location;
 
-        public Book(string title, string author, string language, string location)
+        public Book(string title, string author, string language)
         {
             this.title = title;
             this.author = author;
             this.language = language;
-            this.location = location;
         }
     }
 }

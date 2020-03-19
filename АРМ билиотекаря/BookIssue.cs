@@ -41,7 +41,7 @@ namespace АРМ_билиотекаря
 
         private void BackgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
-            e.Result = adapter.getFilteredBooksNotTaken(new Book(textBox7.Text, textBox4.Text, textBox8.Text, textBox9.Text), textBox11.Text);
+            e.Result = adapter.getFilteredBooksNotTaken(new Book(textBox7.Text, textBox4.Text, textBox8.Text), textBox11.Text);
         }
 
         private void BackgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -84,7 +84,6 @@ namespace АРМ_билиотекаря
             textBox4.Text = "";
             textBox7.Text = "";
             textBox8.Text = "";
-            textBox9.Text = "";
             textBox11.Text = "";
             isResetButton = false;
             updateBooksGrid();
@@ -101,8 +100,10 @@ namespace АРМ_билиотекаря
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            if(!inOperation)
+            if (!inOperation)
+            {
                 addBookToReader();
+            }
         }
 
         private void DateTimePicker1_ValueChanged(object sender, EventArgs e)

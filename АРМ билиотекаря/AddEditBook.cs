@@ -15,7 +15,6 @@ namespace АРМ_билиотекаря
         private int id;
         private bool edit = false;
         private Form1 f;
-        private string prevLocation;
         public AddEditBook(Form1 form)
         {
             f = form;
@@ -28,7 +27,6 @@ namespace АРМ_билиотекаря
             textBox1.Text = book.author;
             textBox2.Text = book.title;
             textBox3.Text = book.language;
-            prevLocation = textBox6.Text = book.location;
             edit = true;
             button1.Text = "Изменить";
         }
@@ -37,15 +35,15 @@ namespace АРМ_билиотекаря
         {
             if (!edit)
             {
-                f.addBook(new Book(textBox2.Text, textBox1.Text, textBox3.Text, textBox6.Text));
-                textBox1.Text = textBox2.Text = textBox3.Text = textBox6.Text = "";
+                f.addBook(new Book(textBox2.Text, textBox1.Text, textBox3.Text));
+                textBox1.Text = textBox2.Text = textBox3.Text = "";
             }
             else
             {
                 //TODO: Разабраться с изменением кода
                 //if(prevLocation != textBox6.Text)
 
-                f.editBook(new Book(textBox2.Text, textBox1.Text, textBox3.Text, textBox6.Text), id);
+                f.editBook(new Book(textBox2.Text, textBox1.Text, textBox3.Text), id);
                 Close();
             }
         }
