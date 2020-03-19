@@ -35,7 +35,7 @@ namespace АРМ_билиотекаря
             textBox3.Text = reader.patronymic;
             dateTimePicker1.Value = reader.birthday;
             textBox5.Text = reader.phone_number;
-            textBox6.Text = reader.adress;
+            textBox6.Text = reader.address;
         }
 
         private void Button1_Click(object sender, EventArgs e)

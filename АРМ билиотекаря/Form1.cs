@@ -606,8 +606,7 @@ namespace АРМ_билиотекаря
         {
             int debitId = Convert.ToInt32(dataGridView1[0, dataGridView1.CurrentCellAddress.Y].Value);
             int readerId = Convert.ToInt32(dataGridView2[0, dataGridView2.CurrentCellAddress.Y].Value);
-            BookReturn br = new BookReturn(debitId, readerId, this);
-            br.ShowDialog();
+            returnBook(debitId, readerId);
         }
 
         private void TabControl1_SelectedIndexChanged(object sender, EventArgs e)

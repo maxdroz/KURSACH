@@ -102,7 +102,7 @@ namespace АРМ_билиотекаря
                     "patronymic LIKE '%" + reader.patronymic + "%' AND " +
                     "phone_number LIKE '%" + reader.phone_number + "%' AND " +
                     "id LIKE '%" + reader.id + "%' AND " +
-                    "address LIKE '%" + reader.adress + "%'";
+                    "address LIKE '%" + reader.address + "%'";
                 if (isDate)
                     query += " AND birthday = '" + reader.birthday.ToString(@"yyyy-MM-dd") + "' ";
                 connection.Close();
@@ -115,9 +115,6 @@ namespace АРМ_билиотекаря
             lock (syncLock)
             {
                 connection.Open();
-                //String query1 = "UPDATE books SET location = '" + message + "' WHERE Код = (SELECT book_id FROM debtors WHERE Код = " + debtId + ")";
-                //executeQuery(query1);
-
                 String query = "DELETE FROM record WHERE id = " + debtId;
                 executeQuery(query);
                 connection.Close();
@@ -198,17 +195,16 @@ namespace АРМ_билиотекаря
             lock (syncLock)
             {
                 connection.Open();
-                String query = "UPDATE readers SET " +
+                String query = "UPDATE reader SET " +
                     "name= '" + reader.name + "'," +
                     "surname= '" + reader.surname + "'," +
                     "patronymic= '" + reader.patronymic + "'," +
-                    "birthday= '" + reader.birthday.ToString(@"dd.MM.yyyy") + "'," +
+                    "birthday= '" + reader.birthday.ToString(@"yyyy-MM-dd") + "'," +
                     "phone_number= '" + reader.phone_number + "'," +
-                    "adress= '" + reader.adress + "'" +
-                    "WHERE Код =" + reader.id;
-                connection.Close();
-                return;
+                    "address= '" + reader.address + "'" +
+                    "WHERE id =" + reader.id;
                 executeQuery(query);
+                connection.Close();
             }
         }
         
@@ -217,22 +213,21 @@ namespace АРМ_билиотекаря
             lock (syncLock)
             {
                 connection.Open();
-                String query = "INSERT INTO readers (" +
+                String query = "INSERT INTO reader (" +
                     "name, " +
                     "surname, " +
                     "patronymic, " +
                     "phone_number, " +
                     "birthday, " +
-                    "adress) VALUES ('" +
+                    "address) VALUES ('" +
                     reader.name + "','" +
                     reader.surname + "','" +
                     reader.patronymic + "','" + 
                     reader.phone_number + "','" +
-                    reader.birthday.ToString(@"dd.MM.yyyy") + "','" + 
-                    reader.adress + "')";
-                connection.Close();
-                return;
+                    reader.birthday.ToString(@"yyyy-MM-dd") + "','" + 
+                    reader.address + "')";
                 executeQuery(query);
+                connection.Close();
             }
         }
 
@@ -302,12 +297,11 @@ namespace АРМ_билиотекаря
             lock (syncLock)
             {
                 connection.Open();
-                String query = "UPDATE debtors SET return_date= '" +
+                String query = "UPDATE record SET return_date= '" +
                     newDate.ToString(@"yyyy-MM-dd") + "'" +
-                    "WHERE Код = " + debitId;
-                connection.Close();
-                return;
+                    "WHERE id = " + debitId;
                 executeQuery(query);
+                connection.Close();
             }
         }
 

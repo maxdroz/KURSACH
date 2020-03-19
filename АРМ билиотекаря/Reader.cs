@@ -14,7 +14,7 @@ namespace АРМ_билиотекаря
         public String patronymic;
         public DateTime birthday;
         public string phone_number;
-        public string adress;
+        public string address;
 
         public Reader(string id, string name, string surname, string patronymic, DateTime birthday, string phone_number, string adress)
         {
@@ -24,7 +24,7 @@ namespace АРМ_билиотекаря
             this.patronymic = patronymic;
             this.birthday = birthday;
             this.phone_number = phone_number;
-            this.adress = adress;
+            this.address = adress;
         }
     }
 }
