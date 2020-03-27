@@ -55,7 +55,7 @@
             this.address.Name = "address";
             this.address.Size = new System.Drawing.Size(196, 22);
             this.address.TabIndex = 1;
-            this.address.Text = "localhost";
+            this.address.Text = "remotemysql.com";
             // 
             // label3
             // 
@@ -72,7 +72,7 @@
             this.username.Name = "username";
             this.username.Size = new System.Drawing.Size(193, 22);
             this.username.TabIndex = 5;
-            this.username.Text = "root";
+            this.username.Text = "sUsm6iCROs";
             // 
             // label4
             // 
@@ -89,7 +89,7 @@
             this.pswd.Name = "pswd";
             this.pswd.Size = new System.Drawing.Size(193, 22);
             this.pswd.TabIndex = 7;
-            this.pswd.Text = "root";
+            this.pswd.Text = "I2M4oYDTmF";
             // 
             // button1
             // 
@@ -107,7 +107,7 @@
             this.name.Name = "name";
             this.name.Size = new System.Drawing.Size(196, 22);
             this.name.TabIndex = 9;
-            this.name.Text = "testDB";
+            this.name.Text = "sUsm6iCROs";
             // 
             // label2
             // 

@@ -133,11 +133,6 @@ namespace АРМ_билиотекаря
                     "(book.title LIKE '%{1}%') AND " +
                     "(language.language LIKE '%{2}%') AND" +
                     "(book.id LIKE '%{3}%')", book.author, book.title, book.language, id);
-                //String query = "SELECT * from books WHERE author LIKE '%" + book.author + "%' " +
-                //    "AND title LIKE '%" + book.title + "%' " +
-                //    "AND book_language LIKE '%" + book.language + "%' " +
-                //    "AND location LIKE '%" + book.location + "%' " +
-                //    "AND Код LIKE '%" + id + "%'";
                 DataTable result = formDataTable(query);
                 connection.Close();
                 return result;
@@ -162,12 +157,6 @@ namespace АРМ_билиотекаря
                    "(language.language LIKE '%{2}%') AND" +
                    "(book.id LIKE '%{3}%') AND " +
                    "(book.id NOT IN (select id_book from record))", book.author, book.title, book.language, id);
-                //String query = "SELECT * from books WHERE author LIKE '%" + book.author + "%' " +
-                //    "AND title LIKE '%" + book.title + "%' " +
-                //    "AND book_language LIKE '%" + book.language + "%' " +
-                //    "AND Код LIKE '%" + id + "%'" +
-                //    //"AND NOT ISNUMERIC(location)";
-                //    "AND Код NOT IN (SELECT book_id FROM debtors)";
                 DataTable result = formDataTable(query);
                 connection.Close();
                 return result;
@@ -215,26 +204,6 @@ namespace АРМ_билиотекаря
             }
         }
 
-        public int getBooksCountFromReader(int id)
-        {
-            String query = "SELECT COUNT(*) FROM debtors WHERE reader_id = " + id;
-            MySqlCommand command = new MySqlCommand(query, connection);
-            int count = Convert.ToInt32(command.ExecuteScalar());
-            return 0;
-            return count;
-        }
-
-        public bool isThereBookAtReader(int id)
-        {
-            lock (syncLock)
-            {
-                connection.Open();
-                bool ans = getBooksCountFromReader(id) != 0;
-                connection.Close();
-                return ans;
-            }
-        }
-
         public DataTable getDebtors()
         {
             lock (syncLock)
@@ -252,23 +221,10 @@ namespace АРМ_билиотекаря
                     "return_date, " +
                     "issue_date, " +
                     "CONCAT(author.surname, ' ', author.name, ' ', author.patronymic) as author" +
-                    " FROM record inner join book on record.id_book = book.id inner join reader on reader.id = record.id_reader inner join author on book.id_author = author.id " +
+                    " FROM record inner join book on record.id_book = book.id " +
+                    "inner join reader on reader.id = record.id_reader " +
+                    "inner join author on book.id_author = author.id " +
                     "WHERE (record.return_date <= now())";
-                //String query = "SELECT debtors.Код," +
-                //    "book_id," +
-                //    "reader_id," +
-                //    "books.author," +
-                //    "books.title," +
-                //    "readers.name," +
-                //    "readers.surname," +
-                //    "readers.phone_number," +
-                //    "readers.adress, " +
-                //    "issue_date," +
-                //    "return_date " +
-                //    "FROM (debtors " +
-                //    "INNER JOIN books ON debtors.book_id=books.Код) " +
-                //    "INNER JOIN readers ON debtors.reader_id=readers.Код " +
-                //    "WHERE debtors.return_date <= NOW()";
                 DataTable answer = formDataTable(query);
                 connection.Close();
                 return answer;
@@ -412,7 +368,9 @@ namespace АРМ_билиотекаря
             lock (syncLock)
             {
                 connection.Open();
-                String query = "SELECT publishing_house.title, city.city_name, city.id as city_id, publishing_house.id as id FROM publishing_house INNER JOIN city ON publishing_house.id_city = city.id";
+                String query = "SELECT publishing_house.title, city.city_name, city.id as city_id, " +
+                    "publishing_house.id as id " +
+                    "FROM publishing_house INNER JOIN city ON publishing_house.id_city = city.id";
                 var covers = formDataTable(query);
                 connection.Close();
                 return covers;
