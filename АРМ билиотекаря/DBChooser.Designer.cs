@@ -55,7 +55,7 @@
             this.address.Name = "address";
             this.address.Size = new System.Drawing.Size(196, 22);
             this.address.TabIndex = 1;
-            this.address.Text = "remotemysql.com";
+            this.address.Text = "localhost";
             // 
             // label3
             // 
@@ -72,7 +72,7 @@
             this.username.Name = "username";
             this.username.Size = new System.Drawing.Size(193, 22);
             this.username.TabIndex = 5;
-            this.username.Text = "sUsm6iCROs";
+            this.username.Text = "root";
             // 
             // label4
             // 
@@ -89,7 +89,7 @@
             this.pswd.Name = "pswd";
             this.pswd.Size = new System.Drawing.Size(193, 22);
             this.pswd.TabIndex = 7;
-            this.pswd.Text = "I2M4oYDTmF";
+            this.pswd.Text = "root";
             // 
             // button1
             // 
@@ -107,7 +107,7 @@
             this.name.Name = "name";
             this.name.Size = new System.Drawing.Size(196, 22);
             this.name.TabIndex = 9;
-            this.name.Text = "sUsm6iCROs";
+            this.name.Text = "test";
             // 
             // label2
             // 
@@ -139,7 +139,7 @@
             this.MinimizeBox = false;
             this.Name = "DBChooser";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "АРМ Библиотекаря";
+            this.Text = "Учет книг бибилиотеки";
             this.ResumeLayout(false);
             this.PerformLayout();
 

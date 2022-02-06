@@ -78,6 +78,17 @@
             this.button13 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
             this.dataGridView4 = new System.Windows.Forms.DataGridView();
+            this.Name1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.textBox11 = new System.Windows.Forms.TextBox();
@@ -161,17 +172,6 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.выбратьДругуюБДToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.Name1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -796,6 +796,95 @@
             this.dataGridView4.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView4.Size = new System.Drawing.Size(1108, 625);
             this.dataGridView4.TabIndex = 0;
+            // 
+            // Name1
+            // 
+            this.Name1.DataPropertyName = "id";
+            this.Name1.HeaderText = "Код долга";
+            this.Name1.MinimumWidth = 6;
+            this.Name1.Name = "Name1";
+            this.Name1.Visible = false;
+            this.Name1.Width = 80;
+            // 
+            // Column10
+            // 
+            this.Column10.DataPropertyName = "id_reader";
+            this.Column10.HeaderText = "Код читателя";
+            this.Column10.MinimumWidth = 6;
+            this.Column10.Name = "Column10";
+            this.Column10.Width = 118;
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "name";
+            this.Column1.HeaderText = "Имя";
+            this.Column1.MinimumWidth = 6;
+            this.Column1.Name = "Column1";
+            this.Column1.Width = 64;
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "surname";
+            this.Column2.HeaderText = "Фамилия";
+            this.Column2.MinimumWidth = 6;
+            this.Column2.Name = "Column2";
+            this.Column2.Width = 99;
+            // 
+            // Column7
+            // 
+            this.Column7.DataPropertyName = "phone_number";
+            this.Column7.HeaderText = "Номер телефона";
+            this.Column7.MinimumWidth = 6;
+            this.Column7.Name = "Column7";
+            this.Column7.Width = 137;
+            // 
+            // Column8
+            // 
+            this.Column8.DataPropertyName = "address";
+            this.Column8.HeaderText = "Адресс";
+            this.Column8.MinimumWidth = 6;
+            this.Column8.Name = "Column8";
+            this.Column8.Width = 84;
+            // 
+            // Column9
+            // 
+            this.Column9.DataPropertyName = "id_book";
+            this.Column9.HeaderText = "Код книги";
+            this.Column9.MinimumWidth = 6;
+            this.Column9.Name = "Column9";
+            this.Column9.Width = 94;
+            // 
+            // Column3
+            // 
+            this.Column3.DataPropertyName = "title";
+            this.Column3.HeaderText = "Название книги";
+            this.Column3.MinimumWidth = 6;
+            this.Column3.Name = "Column3";
+            this.Column3.Width = 129;
+            // 
+            // Column4
+            // 
+            this.Column4.DataPropertyName = "author";
+            this.Column4.HeaderText = "Автор книги";
+            this.Column4.MinimumWidth = 6;
+            this.Column4.Name = "Column4";
+            this.Column4.Width = 107;
+            // 
+            // Column5
+            // 
+            this.Column5.DataPropertyName = "issue_date";
+            this.Column5.HeaderText = "Дата выдачи";
+            this.Column5.MinimumWidth = 6;
+            this.Column5.Name = "Column5";
+            this.Column5.Width = 114;
+            // 
+            // Column6
+            // 
+            this.Column6.DataPropertyName = "return_date";
+            this.Column6.HeaderText = "Дата возврата";
+            this.Column6.MinimumWidth = 6;
+            this.Column6.Name = "Column6";
+            this.Column6.Width = 124;
             // 
             // tabPage2
             // 
@@ -1759,7 +1848,7 @@
             this.файлToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1159, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1159, 30);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -1768,7 +1857,7 @@
             this.файлToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.выбратьДругуюБДToolStripMenuItem});
             this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
-            this.файлToolStripMenuItem.Size = new System.Drawing.Size(42, 24);
+            this.файлToolStripMenuItem.Size = new System.Drawing.Size(42, 26);
             this.файлToolStripMenuItem.Text = "БД";
             // 
             // выбратьДругуюБДToolStripMenuItem
@@ -1777,95 +1866,6 @@
             this.выбратьДругуюБДToolStripMenuItem.Size = new System.Drawing.Size(228, 26);
             this.выбратьДругуюБДToolStripMenuItem.Text = "Выбрать другую БД";
             this.выбратьДругуюБДToolStripMenuItem.Click += new System.EventHandler(this.ВыбратьДругуюБДToolStripMenuItem_Click);
-            // 
-            // Name1
-            // 
-            this.Name1.DataPropertyName = "id";
-            this.Name1.HeaderText = "Код долга";
-            this.Name1.MinimumWidth = 6;
-            this.Name1.Name = "Name1";
-            this.Name1.Visible = false;
-            this.Name1.Width = 80;
-            // 
-            // Column10
-            // 
-            this.Column10.DataPropertyName = "id_reader";
-            this.Column10.HeaderText = "Код читателя";
-            this.Column10.MinimumWidth = 6;
-            this.Column10.Name = "Column10";
-            this.Column10.Width = 128;
-            // 
-            // Column1
-            // 
-            this.Column1.DataPropertyName = "name";
-            this.Column1.HeaderText = "Имя";
-            this.Column1.MinimumWidth = 6;
-            this.Column1.Name = "Column1";
-            this.Column1.Width = 64;
-            // 
-            // Column2
-            // 
-            this.Column2.DataPropertyName = "surname";
-            this.Column2.HeaderText = "Фамилия";
-            this.Column2.MinimumWidth = 6;
-            this.Column2.Name = "Column2";
-            this.Column2.Width = 99;
-            // 
-            // Column7
-            // 
-            this.Column7.DataPropertyName = "phone_number";
-            this.Column7.HeaderText = "Номер телефона";
-            this.Column7.MinimumWidth = 6;
-            this.Column7.Name = "Column7";
-            this.Column7.Width = 137;
-            // 
-            // Column8
-            // 
-            this.Column8.DataPropertyName = "address";
-            this.Column8.HeaderText = "Адресс";
-            this.Column8.MinimumWidth = 6;
-            this.Column8.Name = "Column8";
-            this.Column8.Width = 84;
-            // 
-            // Column9
-            // 
-            this.Column9.DataPropertyName = "id_book";
-            this.Column9.HeaderText = "Код книги";
-            this.Column9.MinimumWidth = 6;
-            this.Column9.Name = "Column9";
-            this.Column9.Width = 94;
-            // 
-            // Column3
-            // 
-            this.Column3.DataPropertyName = "title";
-            this.Column3.HeaderText = "Название книги";
-            this.Column3.MinimumWidth = 6;
-            this.Column3.Name = "Column3";
-            this.Column3.Width = 129;
-            // 
-            // Column4
-            // 
-            this.Column4.DataPropertyName = "author";
-            this.Column4.HeaderText = "Автор книги";
-            this.Column4.MinimumWidth = 6;
-            this.Column4.Name = "Column4";
-            this.Column4.Width = 107;
-            // 
-            // Column5
-            // 
-            this.Column5.DataPropertyName = "issue_date";
-            this.Column5.HeaderText = "Дата выдачи";
-            this.Column5.MinimumWidth = 6;
-            this.Column5.Name = "Column5";
-            this.Column5.Width = 114;
-            // 
-            // Column6
-            // 
-            this.Column6.DataPropertyName = "return_date";
-            this.Column6.HeaderText = "Дата возврата";
-            this.Column6.MinimumWidth = 6;
-            this.Column6.Name = "Column6";
-            this.Column6.Width = 124;
             // 
             // Form1
             // 
@@ -1879,7 +1879,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "АРМ Библиотекаря";
+            this.Text = "Учет книг бибилиотеки";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.VisibleChanged += new System.EventHandler(this.Form1_VisibleChanged);

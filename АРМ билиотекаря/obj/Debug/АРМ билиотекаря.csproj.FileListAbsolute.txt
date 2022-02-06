@@ -70,3 +70,4 @@ C:\Users\maxim\Desktop\KURSACH\АРМ билиотекаря\bin\Debug\create.sq
 C:\Users\maxim\Desktop\KURSACH\АРМ билиотекаря\obj\Debug\АРМ_билиотекаря.AddEditSimpleCommon.resources
 C:\Users\maxim\Desktop\KURSACH\АРМ билиотекаря\obj\Debug\АРМ_билиотекаря.AddEditAuthors.resources
 C:\Users\maxim\Desktop\KURSACH\АРМ билиотекаря\obj\Debug\АРМ_билиотекаря.AddEditPublishingHouses.resources
+C:\Users\maxim\Desktop\KURSACH\АРМ билиотекаря\obj\Debug\АРМ билиотекаря.csproj.CoreCompileInputs.cache

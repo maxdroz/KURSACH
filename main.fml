@@ -1,0 +1,907 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<!-- Author program Terehin I.V. www.fceditor.nm.ru -->
+<FCEblocks>
+	<Count>
+33
+</Count>
+	<FCEblock>
+		<text>
+example4
+</text>
+		<comment>
+		</comment>
+		<Index>
+0
+</Index>
+		<Next>
+-1
+</Next>
+		<Parent>
+-1
+</Parent>
+		<level>
+0
+</level>
+		<kind>
+7
+</kind>
+		<ItemsCount>
+1
+</ItemsCount>
+		<Items0>
+1
+</Items0>
+	</FCEblock>
+	<FCEblock>
+		<text>
+Пользователь 
+пользуется
+программой
+</text>
+		<comment>
+		</comment>
+		<Index>
+1
+</Index>
+		<Next>
+-1
+</Next>
+		<Parent>
+0
+</Parent>
+		<level>
+1
+</level>
+		<kind>
+4
+</kind>
+		<ItemsCount>
+1
+</ItemsCount>
+		<Items0>
+2
+</Items0>
+	</FCEblock>
+	<FCEblock>
+		<text>
+Надо добавить или 
+изменить сущность
+</text>
+		<comment>
+		</comment>
+		<Index>
+2
+</Index>
+		<Next>
+28
+</Next>
+		<Parent>
+1
+</Parent>
+		<level>
+1
+</level>
+		<kind>
+3
+</kind>
+		<ItemsCount>
+2
+</ItemsCount>
+		<Items0>
+3
+</Items0>
+		<Items1>
+-1
+</Items1>
+	</FCEblock>
+	<FCEblock>
+		<text>
+Перейти на экран 
+добавления\редактирования
+ нужной сущности
+</text>
+		<comment>
+		</comment>
+		<Index>
+3
+</Index>
+		<Next>
+4
+</Next>
+		<Parent>
+2
+</Parent>
+		<level>
+2
+</level>
+		<kind>
+0
+</kind>
+		<ItemsCount>
+0
+</ItemsCount>
+	</FCEblock>
+	<FCEblock>
+		<text>
+Ввода данных пользователя
+</text>
+		<comment>
+		</comment>
+		<Index>
+4
+</Index>
+		<Next>
+5
+</Next>
+		<Parent>
+2
+</Parent>
+		<level>
+2
+</level>
+		<kind>
+9
+</kind>
+		<ItemsCount>
+0
+</ItemsCount>
+	</FCEblock>
+	<FCEblock>
+		<text>
+Провалидировать данные
+</text>
+		<comment>
+		</comment>
+		<Index>
+5
+</Index>
+		<Next>
+6
+</Next>
+		<Parent>
+2
+</Parent>
+		<level>
+2
+</level>
+		<kind>
+0
+</kind>
+		<ItemsCount>
+0
+</ItemsCount>
+	</FCEblock>
+	<FCEblock>
+		<text>
+Данные 
+валидны
+</text>
+		<comment>
+		</comment>
+		<Index>
+6
+</Index>
+		<Next>
+-1
+</Next>
+		<Parent>
+2
+</Parent>
+		<level>
+2
+</level>
+		<kind>
+3
+</kind>
+		<ItemsCount>
+2
+</ItemsCount>
+		<Items0>
+7
+</Items0>
+		<Items1>
+9
+</Items1>
+	</FCEblock>
+	<FCEblock>
+		<text>
+Изменить или добавить сущность в БД
+</text>
+		<comment>
+		</comment>
+		<Index>
+7
+</Index>
+		<Next>
+8
+</Next>
+		<Parent>
+6
+</Parent>
+		<level>
+3
+</level>
+		<kind>
+0
+</kind>
+		<ItemsCount>
+0
+</ItemsCount>
+	</FCEblock>
+	<FCEblock>
+		<text>
+Обновить таблицу с данными
+</text>
+		<comment>
+		</comment>
+		<Index>
+8
+</Index>
+		<Next>
+-1
+</Next>
+		<Parent>
+6
+</Parent>
+		<level>
+3
+</level>
+		<kind>
+9
+</kind>
+		<ItemsCount>
+0
+</ItemsCount>
+	</FCEblock>
+	<FCEblock>
+		<text>
+Показать сообщение,
+что данные не валидны
+</text>
+		<comment>
+		</comment>
+		<Index>
+9
+</Index>
+		<Next>
+-1
+</Next>
+		<Parent>
+6
+</Parent>
+		<level>
+3
+</level>
+		<kind>
+0
+</kind>
+		<ItemsCount>
+0
+</ItemsCount>
+	</FCEblock>
+	<FCEblock>
+		<text>
+Надо удалить 
+читателя
+</text>
+		<comment>
+		</comment>
+		<Index>
+10
+</Index>
+		<Next>
+15
+</Next>
+		<Parent>
+1
+</Parent>
+		<level>
+1
+</level>
+		<kind>
+3
+</kind>
+		<ItemsCount>
+2
+</ItemsCount>
+		<Items0>
+11
+</Items0>
+		<Items1>
+-1
+</Items1>
+	</FCEblock>
+	<FCEblock>
+		<text>
+У читателя 
+есть книги
+</text>
+		<comment>
+		</comment>
+		<Index>
+11
+</Index>
+		<Next>
+-1
+</Next>
+		<Parent>
+10
+</Parent>
+		<level>
+2
+</level>
+		<kind>
+3
+</kind>
+		<ItemsCount>
+2
+</ItemsCount>
+		<Items0>
+12
+</Items0>
+		<Items1>
+13
+</Items1>
+	</FCEblock>
+	<FCEblock>
+		<text>
+Показать сообщение, 
+что у пользователя есть книги
+</text>
+		<comment>
+		</comment>
+		<Index>
+12
+</Index>
+		<Next>
+-1
+</Next>
+		<Parent>
+11
+</Parent>
+		<level>
+3
+</level>
+		<kind>
+0
+</kind>
+		<ItemsCount>
+0
+</ItemsCount>
+	</FCEblock>
+	<FCEblock>
+		<text>
+Удалить читателя из БД
+</text>
+		<comment>
+		</comment>
+		<Index>
+13
+</Index>
+		<Next>
+14
+</Next>
+		<Parent>
+11
+</Parent>
+		<level>
+3
+</level>
+		<kind>
+0
+</kind>
+		<ItemsCount>
+0
+</ItemsCount>
+	</FCEblock>
+	<FCEblock>
+		<text>
+Обновить таблицу с данными
+</text>
+		<comment>
+		</comment>
+		<Index>
+14
+</Index>
+		<Next>
+-1
+</Next>
+		<Parent>
+11
+</Parent>
+		<level>
+3
+</level>
+		<kind>
+9
+</kind>
+		<ItemsCount>
+0
+</ItemsCount>
+	</FCEblock>
+	<FCEblock>
+		<text>
+Надо удалить 
+книгу
+</text>
+		<comment>
+		</comment>
+		<Index>
+15
+</Index>
+		<Next>
+18
+</Next>
+		<Parent>
+1
+</Parent>
+		<level>
+1
+</level>
+		<kind>
+3
+</kind>
+		<ItemsCount>
+2
+</ItemsCount>
+		<Items0>
+16
+</Items0>
+		<Items1>
+-1
+</Items1>
+	</FCEblock>
+	<FCEblock>
+		<text>
+Удалить книгу из БД
+</text>
+		<comment>
+		</comment>
+		<Index>
+16
+</Index>
+		<Next>
+17
+</Next>
+		<Parent>
+15
+</Parent>
+		<level>
+2
+</level>
+		<kind>
+0
+</kind>
+		<ItemsCount>
+0
+</ItemsCount>
+	</FCEblock>
+	<FCEblock>
+		<text>
+Обновить таблицу с данными
+</text>
+		<comment>
+		</comment>
+		<Index>
+17
+</Index>
+		<Next>
+-1
+</Next>
+		<Parent>
+15
+</Parent>
+		<level>
+2
+</level>
+		<kind>
+9
+</kind>
+		<ItemsCount>
+0
+</ItemsCount>
+	</FCEblock>
+	<FCEblock>
+		<text>
+Надо вернуть 
+книгу
+</text>
+		<comment>
+		</comment>
+		<Index>
+18
+</Index>
+		<Next>
+20
+</Next>
+		<Parent>
+1
+</Parent>
+		<level>
+1
+</level>
+		<kind>
+3
+</kind>
+		<ItemsCount>
+2
+</ItemsCount>
+		<Items0>
+24
+</Items0>
+		<Items1>
+-1
+</Items1>
+	</FCEblock>
+	<FCEblock>
+		<text>
+Обновить таблицу с данными
+</text>
+		<comment>
+		</comment>
+		<Index>
+19
+</Index>
+		<Next>
+-1
+</Next>
+		<Parent>
+18
+</Parent>
+		<level>
+2
+</level>
+		<kind>
+9
+</kind>
+		<ItemsCount>
+0
+</ItemsCount>
+	</FCEblock>
+	<FCEblock>
+		<text>
+Надо выдать книгу
+</text>
+		<comment>
+		</comment>
+		<Index>
+20
+</Index>
+		<Next>
+-1
+</Next>
+		<Parent>
+1
+</Parent>
+		<level>
+1
+</level>
+		<kind>
+3
+</kind>
+		<ItemsCount>
+2
+</ItemsCount>
+		<Items0>
+26
+</Items0>
+		<Items1>
+-1
+</Items1>
+	</FCEblock>
+	<FCEblock>
+		<text>
+Выбрать книгу, которую необходимо выдать
+</text>
+		<comment>
+		</comment>
+		<Index>
+21
+</Index>
+		<Next>
+23
+</Next>
+		<Parent>
+20
+</Parent>
+		<level>
+2
+</level>
+		<kind>
+9
+</kind>
+		<ItemsCount>
+0
+</ItemsCount>
+	</FCEblock>
+	<FCEblock>
+		<text>
+Обновить таблицу с данными
+</text>
+		<comment>
+		</comment>
+		<Index>
+22
+</Index>
+		<Next>
+-1
+</Next>
+		<Parent>
+20
+</Parent>
+		<level>
+2
+</level>
+		<kind>
+9
+</kind>
+		<ItemsCount>
+0
+</ItemsCount>
+	</FCEblock>
+	<FCEblock>
+		<text>
+Выдать книгу читателю
+</text>
+		<comment>
+		</comment>
+		<Index>
+23
+</Index>
+		<Next>
+22
+</Next>
+		<Parent>
+20
+</Parent>
+		<level>
+2
+</level>
+		<kind>
+0
+</kind>
+		<ItemsCount>
+0
+</ItemsCount>
+	</FCEblock>
+	<FCEblock>
+		<text>
+Выбрать читателя которму надо вернуть книгу
+</text>
+		<comment>
+		</comment>
+		<Index>
+24
+</Index>
+		<Next>
+25
+</Next>
+		<Parent>
+18
+</Parent>
+		<level>
+1
+</level>
+		<kind>
+9
+</kind>
+		<ItemsCount>
+0
+</ItemsCount>
+	</FCEblock>
+	<FCEblock>
+		<text>
+Выбрать книгу, которую необходимо вернуть
+</text>
+		<comment>
+		</comment>
+		<Index>
+25
+</Index>
+		<Next>
+27
+</Next>
+		<Parent>
+18
+</Parent>
+		<level>
+1
+</level>
+		<kind>
+9
+</kind>
+		<ItemsCount>
+0
+</ItemsCount>
+	</FCEblock>
+	<FCEblock>
+		<text>
+Выбрать читателя, которому необходимо выдать книгу
+</text>
+		<comment>
+		</comment>
+		<Index>
+26
+</Index>
+		<Next>
+21
+</Next>
+		<Parent>
+20
+</Parent>
+		<level>
+1
+</level>
+		<kind>
+9
+</kind>
+		<ItemsCount>
+0
+</ItemsCount>
+	</FCEblock>
+	<FCEblock>
+		<text>
+Вернуть книгу пользователя
+</text>
+		<comment>
+		</comment>
+		<Index>
+27
+</Index>
+		<Next>
+19
+</Next>
+		<Parent>
+18
+</Parent>
+		<level>
+1
+</level>
+		<kind>
+0
+</kind>
+		<ItemsCount>
+0
+</ItemsCount>
+	</FCEblock>
+	<FCEblock>
+		<text>
+Надо удалить
+сущность
+</text>
+		<comment>
+		</comment>
+		<Index>
+28
+</Index>
+		<Next>
+10
+</Next>
+		<Parent>
+1
+</Parent>
+		<level>
+1
+</level>
+		<kind>
+3
+</kind>
+		<ItemsCount>
+2
+</ItemsCount>
+		<Items0>
+29
+</Items0>
+		<Items1>
+-1
+</Items1>
+	</FCEblock>
+	<FCEblock>
+		<text>
+Сущность используется 
+в других сущностях
+</text>
+		<comment>
+		</comment>
+		<Index>
+29
+</Index>
+		<Next>
+-1
+</Next>
+		<Parent>
+28
+</Parent>
+		<level>
+2
+</level>
+		<kind>
+3
+</kind>
+		<ItemsCount>
+2
+</ItemsCount>
+		<Items0>
+32
+</Items0>
+		<Items1>
+30
+</Items1>
+	</FCEblock>
+	<FCEblock>
+		<text>
+Удалить сущность из БД
+</text>
+		<comment>
+		</comment>
+		<Index>
+30
+</Index>
+		<Next>
+31
+</Next>
+		<Parent>
+29
+</Parent>
+		<level>
+2
+</level>
+		<kind>
+0
+</kind>
+		<ItemsCount>
+0
+</ItemsCount>
+	</FCEblock>
+	<FCEblock>
+		<text>
+Обновить таблицу с данными
+</text>
+		<comment>
+		</comment>
+		<Index>
+31
+</Index>
+		<Next>
+-1
+</Next>
+		<Parent>
+29
+</Parent>
+		<level>
+2
+</level>
+		<kind>
+9
+</kind>
+		<ItemsCount>
+0
+</ItemsCount>
+	</FCEblock>
+	<FCEblock>
+		<text>
+Показать сообщение, 
+что эта сущность сейчас используется
+</text>
+		<comment>
+		</comment>
+		<Index>
+32
+</Index>
+		<Next>
+-1
+</Next>
+		<Parent>
+29
+</Parent>
+		<level>
+3
+</level>
+		<kind>
+0
+</kind>
+		<ItemsCount>
+0
+</ItemsCount>
+	</FCEblock>
+</FCEblocks>
