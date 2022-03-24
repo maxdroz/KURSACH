@@ -1,0 +1,71 @@
+@startuml var_isp
+left to right direction
+
+skinparam linetype polyline
+
+' !procedure $inc($a, $b)
+'   $a ..> ($b) : <<include>>
+' !endprocedure
+
+' !procedure $ext($a, $b)
+'   $a <.. ($b) : <<include>>
+' !endprocedure
+
+!$i = "<<include>>"
+!$e = "<<extend>>"
+
+:Гость: "n" -- "1" (Авторизоваться)
+
+actor "Администратор" as admin
+
+usecase "Работать с \nбиблиотекарями" as adm
+
+adm ..> (Просматриваить \nбиблиотекарей): $i
+adm <.. (Добавлять \nбиблиотекарей): $e
+adm <.. (Удалять \nбиблиотекарей): $e
+
+admin "n" -- "1" adm
+
+usecase "Работать с \nкнигами" as b
+
+b ..> (Просматривать \nкниги): $i
+(Искать книгу) as book_search
+b <.. book_search: $e
+b <.. (Выдавать \nкнигу): $e
+b <.. (Добавлять \nкнигу): $e
+
+book_search <|-- (Искать по \nномеру)
+book_search <|-- (Искать по \nназванию)
+book_search <|-- (Искать по \nавтору)
+
+usecase "Работать с \nчитателями" as r
+
+r ..> (Просматривать \nчитателей): $i
+(Искать \nчитателей) as reader_search
+r <.. reader_search: $e
+r <.. (Редактировать \nчитателя): $e
+r <.. (Удалить \nчитателя): $e
+
+reader_search <|-- (Искать по номеру )
+reader_search <|-- (Искать по ФИО)
+reader_search <|-- (Искать по адресу)
+reader_search <|-- (Искать по \nномеру телефона)
+
+usecase "Работать с \nдолжниками" as owe
+
+owe <.. (Просмотр должников): $e
+owe <.. (Возвратить книгу): $e
+owe <.. (Продлить книгу): $e
+
+actor "Библиотекарь" as user
+
+usecase "Работать с \nбиблиотекой" as main
+
+user "n" -- "1" main
+admin "n" -- "1" main
+
+main <.. b: $e
+main <.. r: $e
+main <.. owe: $e
+
+@enduml
