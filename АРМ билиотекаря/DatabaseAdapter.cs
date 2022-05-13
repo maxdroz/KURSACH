@@ -15,7 +15,7 @@ namespace АРМ_билиотекаря
         private readonly object syncLock = new object();
         private static DatabaseAdapter instance;
         MySqlConnection connection;
-        public static string connectionStringTemplate = @"server={0};database={1};uid={2};pwd={3};";
+        public static string connectionStringTemplate = @"server={0};database={1};uid={2};pwd={3};CharSet=utf8;";
         public static string connectionString = @"";
         private DatabaseAdapter()
         {

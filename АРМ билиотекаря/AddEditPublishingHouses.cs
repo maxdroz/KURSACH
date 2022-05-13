@@ -38,6 +38,16 @@ namespace АРМ_билиотекаря
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if (textBox1.Text.Trim() == "")
+            {
+                MessageBox.Show("Название не должно быть пустым");
+                return;
+            }
+            if (comboBox1.SelectedIndex == -1)
+            {
+                MessageBox.Show("Выберите город");
+                return;
+            }
             int index = (int)table.Rows[comboBox1.SelectedIndex][0];
             action.Invoke(textBox1.Text, index);
             Close();

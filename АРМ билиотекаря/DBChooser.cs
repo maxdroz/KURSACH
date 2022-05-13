@@ -39,5 +39,11 @@ namespace АРМ_билиотекаря
                 MessageBox.Show(exc.Message, "Произошла ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void DBChooser_Load(object sender, EventArgs e)
+        {
+            button1_Click_1(null, null);
+            Hide();
+        }
     }
 }

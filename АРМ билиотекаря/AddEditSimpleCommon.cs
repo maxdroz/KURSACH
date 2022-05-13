@@ -35,7 +35,8 @@ namespace АРМ_билиотекаря
             if (textBox1.Text.Trim() == "")
             {
                 MessageBox.Show("Поле не может быть пустым");
-            } else
+            } 
+            else
             {
                 action.Invoke(textBox1.Text);
                 Close();

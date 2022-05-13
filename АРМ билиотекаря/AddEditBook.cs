@@ -61,7 +61,34 @@ namespace АРМ_билиотекаря
             {
                 MessageBox.Show("Название не должно быть пустым");
                 return;
-            } 
+            }
+
+            if (comboBox1.SelectedIndex == -1)
+            {
+                MessageBox.Show("Выберите автора");
+                return;
+            }
+            if (comboBox2.SelectedIndex == -1)
+            {
+                MessageBox.Show("Выберите язык");
+                return;
+            }
+            if (comboBox3.SelectedIndex == -1)
+            {
+                MessageBox.Show("Выберите жанр");
+                return;
+            }
+            if (comboBox4.SelectedIndex == -1)
+            {
+                MessageBox.Show("Выберите издательство");
+                return;
+            }
+            if (comboBox5.SelectedIndex == -1)
+            {
+                MessageBox.Show("Выберите обложку");
+                return;
+            }
+
             if (!edit)
             {
                 int authorsIndex = (int)authors.Rows[comboBox1.SelectedIndex][0];

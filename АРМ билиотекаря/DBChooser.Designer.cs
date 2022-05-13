@@ -55,7 +55,7 @@
             this.address.Name = "address";
             this.address.Size = new System.Drawing.Size(196, 22);
             this.address.TabIndex = 1;
-            this.address.Text = "localhost";
+            this.address.Text = "192.168.0.21";
             // 
             // label3
             // 
@@ -89,7 +89,7 @@
             this.pswd.Name = "pswd";
             this.pswd.Size = new System.Drawing.Size(193, 22);
             this.pswd.TabIndex = 7;
-            this.pswd.Text = "root";
+            this.pswd.Text = "pswd";
             // 
             // button1
             // 
@@ -107,7 +107,7 @@
             this.name.Name = "name";
             this.name.Size = new System.Drawing.Size(196, 22);
             this.name.TabIndex = 9;
-            this.name.Text = "test";
+            this.name.Text = "library";
             // 
             // label2
             // 
@@ -140,6 +140,7 @@
             this.Name = "DBChooser";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Учет книг бибилиотеки";
+            this.Activated += new System.EventHandler(this.DBChooser_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
