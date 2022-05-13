@@ -104,16 +104,13 @@ COLLATE utf8_general_ci;
 
 CREATE TABLE IF NOT EXISTS `book_size` (
   `id` int PRIMARY KEY NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) NOT NULL,
-  `dimension_x_mm` int NOT NULL,
-  `dimension_y_mm` int NOT NULL
+  `name` varchar(255) NOT NULL
 )
 COLLATE utf8_general_ci;
 
 CREATE TABLE IF NOT EXISTS `font_size` (
   `id` int PRIMARY KEY NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) NOT NULL,
-  `value` int NOT NULL
+  `name` varchar(255) NOT NULL
 )
 COLLATE utf8_general_ci;
 
@@ -153,11 +150,3 @@ ALTER TABLE `librarian` ADD FOREIGN KEY (`id_admin`) REFERENCES `admin` (`id`);
 ALTER TABLE `book` ADD FOREIGN KEY (`id_book_size`) REFERENCES `book_size` (`id`);
 
 ALTER TABLE `book` ADD FOREIGN KEY (`id_font_size`) REFERENCES `font_size` (`id`);
-
-CREATE TABLE IF NOT EXISTS `log` (
-	`id` int AUTO_INCREMENT NOT NULL,
-	`timestamp` DATETIME NOT NULL,
-	`cover_description` varchar(255) NOT NULL,
-	PRIMARY KEY (`id`)
-)
-COLLATE utf8_general_ci;

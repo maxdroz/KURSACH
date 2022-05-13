@@ -117,17 +117,29 @@ namespace АРМ_билиотекаря
                     "genre.genre, " +
                     "publishing_house.title as publishing_house, " +
                     "cover.cover_description as cover, " +
+                    "era.era," +
+                    "type_of_literature.type_of_literature," +
+                    "book_size.name as book_size," +
+                    "font_size.name as font_size," +
                     "author.id as author_id, " +
                     "language.id as language_id, " +
                     "genre.id as genre_id," +
                     "publishing_house.id as publishing_house_id, " +
-                    "cover.id as cover_id " +
+                    "cover.id as cover_id, " +
+                    "era.id as era_id, " +
+                    "type_of_literature.id as type_of_literature_id, " +
+                    "book_size.id as book_size_id, " +
+                    "font_size.id as font_size_id " +
                     "from book " +
                     "inner join author on book.id_author = author.id " +
                     "inner join language on book.id_language = language.id " +
                     "inner join genre on book.id_genre = genre.id " +
                     "inner join publishing_house on book.id_publishing_house = publishing_house.id " +
                     "inner join cover on book.id_cover = cover.id " +
+                    "inner join era on book.id_era = era.id " +
+                    "inner join type_of_literature on book.id_type_of_literature = type_of_literature.id " +
+                    "inner join book_size on book.id_book_size = book_size.id " +
+                    "inner join font_size on book.id_font_size = font_size.id " +
                     "WHERE " +
                     "(CONCAT(author.surname, ' ', author.name, ' ', author.patronymic) LIKE '%{0}%') AND " +
                     "(book.title LIKE '%{1}%') AND " +
@@ -274,7 +286,7 @@ namespace АРМ_билиотекаря
             }
         }
 
-        public void issueBookToReader(int readerId, int bookId, DateTime issueDate, DateTime returnDate)
+        public void issueBookToReader(int readerId, int bookId, DateTime issueDate, DateTime returnDate, int librarianId = 2)
         {
             lock (syncLock)
             {
@@ -283,18 +295,24 @@ namespace АРМ_билиотекаря
                     "id_reader," +
                     "id_book," +
                     "issue_date," +
-                    "return_date" +
+                    "return_date," +
+                    "id_librarian" +
                     ") VALUES ('" +
                     readerId + "','" +
                     bookId + "'," +
                     "'" + issueDate.ToString(@"yyyy-MM-dd") + "'," +
-                    "'" + returnDate.ToString(@"yyyy-MM-dd") + "')";
+                    "'" + returnDate.ToString(@"yyyy-MM-dd") + "'," +
+                    librarianId + ")";
                 executeQuery(query);
                 connection.Close();
             }
         }
 
-        public void addBook(string title, int author, int language, int genre, int ph, int cover)
+        public void addBook(string title, int author, int language, int genre, int ph, int cover,
+            int era,
+            int type,
+            int font,
+            int size)
         {
             lock (syncLock)
             {
@@ -306,26 +324,39 @@ namespace АРМ_билиотекаря
                     "id_language," +
                     "id_genre," +
                     "id_publishing_house," +
-                    "id_cover" +
+                    "id_cover," +
+                    "id_era," +
+                    "id_type_of_literature," +
+                    "id_font_size," +
+                    "id_book_size" +
                     ") values ('" + title +
                     "', " + author +
                     ", " + language +
                     ", " + genre +
                     ", " + ph +
                     ", " + cover +
+                    ", " + era +
+                    ", " + type +
+                    ", " + font +
+                    ", " + size +
                     ")";
                 executeQuery(query);
                 connection.Close();
             }
         }
 
-        public void editBook(string title, int author, int language, int genre, int ph, int cover, int id)
+        public void editBook(string title, int author, int language, int genre, int ph, int cover,
+            int era,
+            int type,
+            int font,
+            int size,
+            int id)
         {
             lock (syncLock)
             {
                 connection.Open();
                 String query = String.Format("update book set " +
-                    "title = '{0}', id_author = '{1}', id_language = '{2}', id_genre = '{3}', id_publishing_house = '{4}', id_cover = '{5}' where id = '{6}'", title, author, language, genre, ph, cover, id);
+                    "title = '{0}', id_author = '{1}', id_language = '{2}', id_genre = '{3}', id_publishing_house = '{4}', id_cover = '{5}', id_era = '{6}', id_type_of_literature = '{7}', id_font_size = '{8}', id_book_size = '{9}'  where id = '{10}'", title, author, language, genre, ph, cover, era, type, font, size, id);
 
                 executeQuery(query);
                 connection.Close();

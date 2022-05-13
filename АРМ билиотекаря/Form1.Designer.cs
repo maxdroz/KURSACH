@@ -101,18 +101,6 @@
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
-            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.author_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.language_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.genre_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.publishing_house_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cover_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.button9 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
@@ -169,9 +157,61 @@
             this.button29 = new System.Windows.Forms.Button();
             this.button30 = new System.Windows.Forms.Button();
             this.button31 = new System.Windows.Forms.Button();
+            this.tabPage10 = new System.Windows.Forms.TabPage();
+            this.dataGridView11 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBox13 = new System.Windows.Forms.GroupBox();
+            this.button32 = new System.Windows.Forms.Button();
+            this.button33 = new System.Windows.Forms.Button();
+            this.button34 = new System.Windows.Forms.Button();
+            this.tabPage11 = new System.Windows.Forms.TabPage();
+            this.dataGridView12 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBox14 = new System.Windows.Forms.GroupBox();
+            this.button35 = new System.Windows.Forms.Button();
+            this.button36 = new System.Windows.Forms.Button();
+            this.button37 = new System.Windows.Forms.Button();
+            this.tabPage12 = new System.Windows.Forms.TabPage();
+            this.dataGridView13 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBox15 = new System.Windows.Forms.GroupBox();
+            this.button38 = new System.Windows.Forms.Button();
+            this.button39 = new System.Windows.Forms.Button();
+            this.button40 = new System.Windows.Forms.Button();
+            this.tabPage13 = new System.Windows.Forms.TabPage();
+            this.dataGridView14 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBox16 = new System.Windows.Forms.GroupBox();
+            this.button41 = new System.Windows.Forms.Button();
+            this.button42 = new System.Windows.Forms.Button();
+            this.button43 = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.выбратьДругуюБДToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column22 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column23 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column24 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column25 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.author_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.language_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.genre_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.publishing_house_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cover_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.era_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.type_of_literature_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.book_size_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.font_size_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -204,6 +244,18 @@
             this.tabPage9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView10)).BeginInit();
             this.groupBox12.SuspendLayout();
+            this.tabPage10.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView11)).BeginInit();
+            this.groupBox13.SuspendLayout();
+            this.tabPage11.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView12)).BeginInit();
+            this.groupBox14.SuspendLayout();
+            this.tabPage12.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView13)).BeginInit();
+            this.groupBox15.SuspendLayout();
+            this.tabPage13.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView14)).BeginInit();
+            this.groupBox16.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -221,6 +273,10 @@
             this.tabControl1.Controls.Add(this.tabPage7);
             this.tabControl1.Controls.Add(this.tabPage8);
             this.tabControl1.Controls.Add(this.tabPage9);
+            this.tabControl1.Controls.Add(this.tabPage10);
+            this.tabControl1.Controls.Add(this.tabPage11);
+            this.tabControl1.Controls.Add(this.tabPage12);
+            this.tabControl1.Controls.Add(this.tabPage13);
             this.tabControl1.Location = new System.Drawing.Point(16, 33);
             this.tabControl1.Margin = new System.Windows.Forms.Padding(4);
             this.tabControl1.Name = "tabControl1";
@@ -1028,11 +1084,19 @@
             this.Column15,
             this.Column16,
             this.Column17,
+            this.Column22,
+            this.Column23,
+            this.Column24,
+            this.Column25,
             this.author_id,
             this.language_id,
             this.genre_id,
             this.publishing_house_id,
-            this.cover_id});
+            this.cover_id,
+            this.era_id,
+            this.type_of_literature_id,
+            this.book_size_id,
+            this.font_size_id});
             this.dataGridView3.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dataGridView3.Location = new System.Drawing.Point(4, 4);
             this.dataGridView3.Margin = new System.Windows.Forms.Padding(4);
@@ -1043,107 +1107,6 @@
             this.dataGridView3.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView3.Size = new System.Drawing.Size(1103, 487);
             this.dataGridView3.TabIndex = 1;
-            // 
-            // Column11
-            // 
-            this.Column11.DataPropertyName = "id";
-            this.Column11.HeaderText = "Код";
-            this.Column11.MinimumWidth = 6;
-            this.Column11.Name = "Column11";
-            this.Column11.Width = 62;
-            // 
-            // Column12
-            // 
-            this.Column12.DataPropertyName = "title";
-            this.Column12.HeaderText = "Название";
-            this.Column12.MinimumWidth = 6;
-            this.Column12.Name = "Column12";
-            this.Column12.Width = 101;
-            // 
-            // Column13
-            // 
-            this.Column13.DataPropertyName = "author";
-            this.Column13.HeaderText = "Автор";
-            this.Column13.MinimumWidth = 6;
-            this.Column13.Name = "Column13";
-            this.Column13.Width = 76;
-            // 
-            // Column14
-            // 
-            this.Column14.DataPropertyName = "language";
-            this.Column14.HeaderText = "Язык";
-            this.Column14.MinimumWidth = 6;
-            this.Column14.Name = "Column14";
-            this.Column14.Width = 71;
-            // 
-            // Column15
-            // 
-            this.Column15.DataPropertyName = "genre";
-            this.Column15.HeaderText = "Жанр";
-            this.Column15.MinimumWidth = 6;
-            this.Column15.Name = "Column15";
-            this.Column15.Width = 74;
-            // 
-            // Column16
-            // 
-            this.Column16.DataPropertyName = "publishing_house";
-            this.Column16.HeaderText = "Издательство";
-            this.Column16.MinimumWidth = 6;
-            this.Column16.Name = "Column16";
-            this.Column16.Width = 129;
-            // 
-            // Column17
-            // 
-            this.Column17.DataPropertyName = "cover";
-            this.Column17.HeaderText = "Тип обложки";
-            this.Column17.MinimumWidth = 6;
-            this.Column17.Name = "Column17";
-            this.Column17.Width = 122;
-            // 
-            // author_id
-            // 
-            this.author_id.DataPropertyName = "author_id";
-            this.author_id.HeaderText = "author_id";
-            this.author_id.MinimumWidth = 6;
-            this.author_id.Name = "author_id";
-            this.author_id.Visible = false;
-            this.author_id.Width = 97;
-            // 
-            // language_id
-            // 
-            this.language_id.DataPropertyName = "language_id";
-            this.language_id.HeaderText = "language_id";
-            this.language_id.MinimumWidth = 6;
-            this.language_id.Name = "language_id";
-            this.language_id.Visible = false;
-            this.language_id.Width = 115;
-            // 
-            // genre_id
-            // 
-            this.genre_id.DataPropertyName = "genre_id";
-            this.genre_id.HeaderText = "genre_id";
-            this.genre_id.MinimumWidth = 6;
-            this.genre_id.Name = "genre_id";
-            this.genre_id.Visible = false;
-            this.genre_id.Width = 93;
-            // 
-            // publishing_house_id
-            // 
-            this.publishing_house_id.DataPropertyName = "publishing_house_id";
-            this.publishing_house_id.HeaderText = "publishing_house_id";
-            this.publishing_house_id.MinimumWidth = 6;
-            this.publishing_house_id.Name = "publishing_house_id";
-            this.publishing_house_id.Visible = false;
-            this.publishing_house_id.Width = 167;
-            // 
-            // cover_id
-            // 
-            this.cover_id.DataPropertyName = "cover_id";
-            this.cover_id.HeaderText = "cover_id";
-            this.cover_id.MinimumWidth = 6;
-            this.cover_id.Name = "cover_id";
-            this.cover_id.Visible = false;
-            this.cover_id.Width = 91;
             // 
             // groupBox4
             // 
@@ -1841,6 +1804,414 @@
             this.button31.UseVisualStyleBackColor = true;
             this.button31.Click += new System.EventHandler(this.button31_Click);
             // 
+            // tabPage10
+            // 
+            this.tabPage10.Controls.Add(this.dataGridView11);
+            this.tabPage10.Controls.Add(this.groupBox13);
+            this.tabPage10.Location = new System.Drawing.Point(4, 25);
+            this.tabPage10.Name = "tabPage10";
+            this.tabPage10.Size = new System.Drawing.Size(1119, 713);
+            this.tabPage10.TabIndex = 9;
+            this.tabPage10.Text = "Эпоха";
+            this.tabPage10.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView11
+            // 
+            this.dataGridView11.AllowUserToAddRows = false;
+            this.dataGridView11.AllowUserToDeleteRows = false;
+            this.dataGridView11.AllowUserToResizeColumns = false;
+            this.dataGridView11.AllowUserToResizeRows = false;
+            this.dataGridView11.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView11.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dataGridView11.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dataGridView11.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView11.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn9,
+            this.dataGridViewTextBoxColumn12});
+            this.dataGridView11.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dataGridView11.Location = new System.Drawing.Point(4, 4);
+            this.dataGridView11.Margin = new System.Windows.Forms.Padding(4);
+            this.dataGridView11.MultiSelect = false;
+            this.dataGridView11.Name = "dataGridView11";
+            this.dataGridView11.RowHeadersVisible = false;
+            this.dataGridView11.RowHeadersWidth = 51;
+            this.dataGridView11.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView11.Size = new System.Drawing.Size(1103, 628);
+            this.dataGridView11.TabIndex = 7;
+            // 
+            // dataGridViewTextBoxColumn9
+            // 
+            this.dataGridViewTextBoxColumn9.DataPropertyName = "id";
+            this.dataGridViewTextBoxColumn9.HeaderText = "Column18";
+            this.dataGridViewTextBoxColumn9.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            this.dataGridViewTextBoxColumn9.Visible = false;
+            this.dataGridViewTextBoxColumn9.Width = 77;
+            // 
+            // dataGridViewTextBoxColumn12
+            // 
+            this.dataGridViewTextBoxColumn12.DataPropertyName = "era";
+            this.dataGridViewTextBoxColumn12.HeaderText = "Название эпохи";
+            this.dataGridViewTextBoxColumn12.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
+            this.dataGridViewTextBoxColumn12.Width = 130;
+            // 
+            // groupBox13
+            // 
+            this.groupBox13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox13.Controls.Add(this.button32);
+            this.groupBox13.Controls.Add(this.button33);
+            this.groupBox13.Controls.Add(this.button34);
+            this.groupBox13.Location = new System.Drawing.Point(3, 640);
+            this.groupBox13.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox13.Name = "groupBox13";
+            this.groupBox13.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox13.Size = new System.Drawing.Size(539, 69);
+            this.groupBox13.TabIndex = 6;
+            this.groupBox13.TabStop = false;
+            this.groupBox13.Text = "Операции с эпохами";
+            // 
+            // button32
+            // 
+            this.button32.Location = new System.Drawing.Point(355, 23);
+            this.button32.Margin = new System.Windows.Forms.Padding(4);
+            this.button32.Name = "button32";
+            this.button32.Size = new System.Drawing.Size(172, 32);
+            this.button32.TabIndex = 2;
+            this.button32.Text = "Удалить";
+            this.button32.UseVisualStyleBackColor = true;
+            this.button32.Click += new System.EventHandler(this.button32_Click);
+            // 
+            // button33
+            // 
+            this.button33.Location = new System.Drawing.Point(181, 23);
+            this.button33.Margin = new System.Windows.Forms.Padding(4);
+            this.button33.Name = "button33";
+            this.button33.Size = new System.Drawing.Size(165, 32);
+            this.button33.TabIndex = 1;
+            this.button33.Text = "Редактировать";
+            this.button33.UseVisualStyleBackColor = true;
+            this.button33.Click += new System.EventHandler(this.button33_Click);
+            // 
+            // button34
+            // 
+            this.button34.Location = new System.Drawing.Point(8, 23);
+            this.button34.Margin = new System.Windows.Forms.Padding(4);
+            this.button34.Name = "button34";
+            this.button34.Size = new System.Drawing.Size(165, 32);
+            this.button34.TabIndex = 0;
+            this.button34.Text = "Добавить";
+            this.button34.UseVisualStyleBackColor = true;
+            this.button34.Click += new System.EventHandler(this.button34_Click);
+            // 
+            // tabPage11
+            // 
+            this.tabPage11.Controls.Add(this.dataGridView12);
+            this.tabPage11.Controls.Add(this.groupBox14);
+            this.tabPage11.Location = new System.Drawing.Point(4, 25);
+            this.tabPage11.Name = "tabPage11";
+            this.tabPage11.Size = new System.Drawing.Size(1119, 713);
+            this.tabPage11.TabIndex = 10;
+            this.tabPage11.Text = "Национальность";
+            this.tabPage11.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView12
+            // 
+            this.dataGridView12.AllowUserToAddRows = false;
+            this.dataGridView12.AllowUserToDeleteRows = false;
+            this.dataGridView12.AllowUserToResizeColumns = false;
+            this.dataGridView12.AllowUserToResizeRows = false;
+            this.dataGridView12.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView12.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dataGridView12.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dataGridView12.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView12.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn13,
+            this.dataGridViewTextBoxColumn14});
+            this.dataGridView12.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dataGridView12.Location = new System.Drawing.Point(4, 4);
+            this.dataGridView12.Margin = new System.Windows.Forms.Padding(4);
+            this.dataGridView12.MultiSelect = false;
+            this.dataGridView12.Name = "dataGridView12";
+            this.dataGridView12.RowHeadersVisible = false;
+            this.dataGridView12.RowHeadersWidth = 51;
+            this.dataGridView12.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView12.Size = new System.Drawing.Size(1103, 628);
+            this.dataGridView12.TabIndex = 9;
+            // 
+            // dataGridViewTextBoxColumn13
+            // 
+            this.dataGridViewTextBoxColumn13.DataPropertyName = "id";
+            this.dataGridViewTextBoxColumn13.HeaderText = "Column18";
+            this.dataGridViewTextBoxColumn13.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
+            this.dataGridViewTextBoxColumn13.Visible = false;
+            this.dataGridViewTextBoxColumn13.Width = 77;
+            // 
+            // dataGridViewTextBoxColumn14
+            // 
+            this.dataGridViewTextBoxColumn14.DataPropertyName = "type_of_literature";
+            this.dataGridViewTextBoxColumn14.HeaderText = "Национальность";
+            this.dataGridViewTextBoxColumn14.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
+            this.dataGridViewTextBoxColumn14.Width = 147;
+            // 
+            // groupBox14
+            // 
+            this.groupBox14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox14.Controls.Add(this.button35);
+            this.groupBox14.Controls.Add(this.button36);
+            this.groupBox14.Controls.Add(this.button37);
+            this.groupBox14.Location = new System.Drawing.Point(3, 640);
+            this.groupBox14.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox14.Name = "groupBox14";
+            this.groupBox14.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox14.Size = new System.Drawing.Size(539, 69);
+            this.groupBox14.TabIndex = 8;
+            this.groupBox14.TabStop = false;
+            this.groupBox14.Text = "Операции с национальностями";
+            // 
+            // button35
+            // 
+            this.button35.Location = new System.Drawing.Point(355, 23);
+            this.button35.Margin = new System.Windows.Forms.Padding(4);
+            this.button35.Name = "button35";
+            this.button35.Size = new System.Drawing.Size(172, 32);
+            this.button35.TabIndex = 2;
+            this.button35.Text = "Удалить";
+            this.button35.UseVisualStyleBackColor = true;
+            this.button35.Click += new System.EventHandler(this.button35_Click);
+            // 
+            // button36
+            // 
+            this.button36.Location = new System.Drawing.Point(181, 23);
+            this.button36.Margin = new System.Windows.Forms.Padding(4);
+            this.button36.Name = "button36";
+            this.button36.Size = new System.Drawing.Size(165, 32);
+            this.button36.TabIndex = 1;
+            this.button36.Text = "Редактировать";
+            this.button36.UseVisualStyleBackColor = true;
+            this.button36.Click += new System.EventHandler(this.button36_Click);
+            // 
+            // button37
+            // 
+            this.button37.Location = new System.Drawing.Point(8, 23);
+            this.button37.Margin = new System.Windows.Forms.Padding(4);
+            this.button37.Name = "button37";
+            this.button37.Size = new System.Drawing.Size(165, 32);
+            this.button37.TabIndex = 0;
+            this.button37.Text = "Добавить";
+            this.button37.UseVisualStyleBackColor = true;
+            this.button37.Click += new System.EventHandler(this.button37_Click);
+            // 
+            // tabPage12
+            // 
+            this.tabPage12.Controls.Add(this.dataGridView13);
+            this.tabPage12.Controls.Add(this.groupBox15);
+            this.tabPage12.Location = new System.Drawing.Point(4, 25);
+            this.tabPage12.Name = "tabPage12";
+            this.tabPage12.Size = new System.Drawing.Size(1119, 713);
+            this.tabPage12.TabIndex = 11;
+            this.tabPage12.Text = "Шрифт";
+            this.tabPage12.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView13
+            // 
+            this.dataGridView13.AllowUserToAddRows = false;
+            this.dataGridView13.AllowUserToDeleteRows = false;
+            this.dataGridView13.AllowUserToResizeColumns = false;
+            this.dataGridView13.AllowUserToResizeRows = false;
+            this.dataGridView13.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView13.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dataGridView13.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dataGridView13.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView13.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn15,
+            this.dataGridViewTextBoxColumn16});
+            this.dataGridView13.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dataGridView13.Location = new System.Drawing.Point(4, 4);
+            this.dataGridView13.Margin = new System.Windows.Forms.Padding(4);
+            this.dataGridView13.MultiSelect = false;
+            this.dataGridView13.Name = "dataGridView13";
+            this.dataGridView13.RowHeadersVisible = false;
+            this.dataGridView13.RowHeadersWidth = 51;
+            this.dataGridView13.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView13.Size = new System.Drawing.Size(1103, 628);
+            this.dataGridView13.TabIndex = 9;
+            // 
+            // dataGridViewTextBoxColumn15
+            // 
+            this.dataGridViewTextBoxColumn15.DataPropertyName = "id";
+            this.dataGridViewTextBoxColumn15.HeaderText = "Column18";
+            this.dataGridViewTextBoxColumn15.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn15.Name = "dataGridViewTextBoxColumn15";
+            this.dataGridViewTextBoxColumn15.Visible = false;
+            this.dataGridViewTextBoxColumn15.Width = 77;
+            // 
+            // dataGridViewTextBoxColumn16
+            // 
+            this.dataGridViewTextBoxColumn16.DataPropertyName = "name";
+            this.dataGridViewTextBoxColumn16.HeaderText = "Шрифт";
+            this.dataGridViewTextBoxColumn16.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn16.Name = "dataGridViewTextBoxColumn16";
+            this.dataGridViewTextBoxColumn16.Width = 82;
+            // 
+            // groupBox15
+            // 
+            this.groupBox15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox15.Controls.Add(this.button38);
+            this.groupBox15.Controls.Add(this.button39);
+            this.groupBox15.Controls.Add(this.button40);
+            this.groupBox15.Location = new System.Drawing.Point(3, 640);
+            this.groupBox15.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox15.Name = "groupBox15";
+            this.groupBox15.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox15.Size = new System.Drawing.Size(539, 69);
+            this.groupBox15.TabIndex = 8;
+            this.groupBox15.TabStop = false;
+            this.groupBox15.Text = "Операции со шрифтами";
+            // 
+            // button38
+            // 
+            this.button38.Location = new System.Drawing.Point(355, 23);
+            this.button38.Margin = new System.Windows.Forms.Padding(4);
+            this.button38.Name = "button38";
+            this.button38.Size = new System.Drawing.Size(172, 32);
+            this.button38.TabIndex = 2;
+            this.button38.Text = "Удалить";
+            this.button38.UseVisualStyleBackColor = true;
+            this.button38.Click += new System.EventHandler(this.button38_Click);
+            // 
+            // button39
+            // 
+            this.button39.Location = new System.Drawing.Point(181, 23);
+            this.button39.Margin = new System.Windows.Forms.Padding(4);
+            this.button39.Name = "button39";
+            this.button39.Size = new System.Drawing.Size(165, 32);
+            this.button39.TabIndex = 1;
+            this.button39.Text = "Редактировать";
+            this.button39.UseVisualStyleBackColor = true;
+            this.button39.Click += new System.EventHandler(this.button39_Click);
+            // 
+            // button40
+            // 
+            this.button40.Location = new System.Drawing.Point(8, 23);
+            this.button40.Margin = new System.Windows.Forms.Padding(4);
+            this.button40.Name = "button40";
+            this.button40.Size = new System.Drawing.Size(165, 32);
+            this.button40.TabIndex = 0;
+            this.button40.Text = "Добавить";
+            this.button40.UseVisualStyleBackColor = true;
+            this.button40.Click += new System.EventHandler(this.button40_Click);
+            // 
+            // tabPage13
+            // 
+            this.tabPage13.Controls.Add(this.dataGridView14);
+            this.tabPage13.Controls.Add(this.groupBox16);
+            this.tabPage13.Location = new System.Drawing.Point(4, 25);
+            this.tabPage13.Name = "tabPage13";
+            this.tabPage13.Size = new System.Drawing.Size(1119, 713);
+            this.tabPage13.TabIndex = 12;
+            this.tabPage13.Text = "Размер";
+            this.tabPage13.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView14
+            // 
+            this.dataGridView14.AllowUserToAddRows = false;
+            this.dataGridView14.AllowUserToDeleteRows = false;
+            this.dataGridView14.AllowUserToResizeColumns = false;
+            this.dataGridView14.AllowUserToResizeRows = false;
+            this.dataGridView14.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView14.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dataGridView14.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dataGridView14.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView14.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn17,
+            this.dataGridViewTextBoxColumn18});
+            this.dataGridView14.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dataGridView14.Location = new System.Drawing.Point(4, 4);
+            this.dataGridView14.Margin = new System.Windows.Forms.Padding(4);
+            this.dataGridView14.MultiSelect = false;
+            this.dataGridView14.Name = "dataGridView14";
+            this.dataGridView14.RowHeadersVisible = false;
+            this.dataGridView14.RowHeadersWidth = 51;
+            this.dataGridView14.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView14.Size = new System.Drawing.Size(1103, 628);
+            this.dataGridView14.TabIndex = 9;
+            // 
+            // dataGridViewTextBoxColumn17
+            // 
+            this.dataGridViewTextBoxColumn17.DataPropertyName = "id";
+            this.dataGridViewTextBoxColumn17.HeaderText = "Column18";
+            this.dataGridViewTextBoxColumn17.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn17.Name = "dataGridViewTextBoxColumn17";
+            this.dataGridViewTextBoxColumn17.Visible = false;
+            this.dataGridViewTextBoxColumn17.Width = 77;
+            // 
+            // dataGridViewTextBoxColumn18
+            // 
+            this.dataGridViewTextBoxColumn18.DataPropertyName = "name";
+            this.dataGridViewTextBoxColumn18.HeaderText = "Размер книги";
+            this.dataGridViewTextBoxColumn18.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn18.Name = "dataGridViewTextBoxColumn18";
+            this.dataGridViewTextBoxColumn18.Width = 126;
+            // 
+            // groupBox16
+            // 
+            this.groupBox16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox16.Controls.Add(this.button41);
+            this.groupBox16.Controls.Add(this.button42);
+            this.groupBox16.Controls.Add(this.button43);
+            this.groupBox16.Location = new System.Drawing.Point(3, 640);
+            this.groupBox16.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox16.Name = "groupBox16";
+            this.groupBox16.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox16.Size = new System.Drawing.Size(539, 69);
+            this.groupBox16.TabIndex = 8;
+            this.groupBox16.TabStop = false;
+            this.groupBox16.Text = "Операции с размерами";
+            // 
+            // button41
+            // 
+            this.button41.Location = new System.Drawing.Point(355, 23);
+            this.button41.Margin = new System.Windows.Forms.Padding(4);
+            this.button41.Name = "button41";
+            this.button41.Size = new System.Drawing.Size(172, 32);
+            this.button41.TabIndex = 2;
+            this.button41.Text = "Удалить";
+            this.button41.UseVisualStyleBackColor = true;
+            this.button41.Click += new System.EventHandler(this.button41_Click);
+            // 
+            // button42
+            // 
+            this.button42.Location = new System.Drawing.Point(181, 23);
+            this.button42.Margin = new System.Windows.Forms.Padding(4);
+            this.button42.Name = "button42";
+            this.button42.Size = new System.Drawing.Size(165, 32);
+            this.button42.TabIndex = 1;
+            this.button42.Text = "Редактировать";
+            this.button42.UseVisualStyleBackColor = true;
+            this.button42.Click += new System.EventHandler(this.button42_Click);
+            // 
+            // button43
+            // 
+            this.button43.Location = new System.Drawing.Point(8, 23);
+            this.button43.Margin = new System.Windows.Forms.Padding(4);
+            this.button43.Name = "button43";
+            this.button43.Size = new System.Drawing.Size(165, 32);
+            this.button43.TabIndex = 0;
+            this.button43.Text = "Добавить";
+            this.button43.UseVisualStyleBackColor = true;
+            this.button43.Click += new System.EventHandler(this.button43_Click);
+            // 
             // menuStrip1
             // 
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
@@ -1848,7 +2219,7 @@
             this.файлToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1159, 30);
+            this.menuStrip1.Size = new System.Drawing.Size(1159, 28);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -1857,7 +2228,7 @@
             this.файлToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.выбратьДругуюБДToolStripMenuItem});
             this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
-            this.файлToolStripMenuItem.Size = new System.Drawing.Size(42, 26);
+            this.файлToolStripMenuItem.Size = new System.Drawing.Size(42, 24);
             this.файлToolStripMenuItem.Text = "БД";
             // 
             // выбратьДругуюБДToolStripMenuItem
@@ -1866,6 +2237,175 @@
             this.выбратьДругуюБДToolStripMenuItem.Size = new System.Drawing.Size(228, 26);
             this.выбратьДругуюБДToolStripMenuItem.Text = "Выбрать другую БД";
             this.выбратьДругуюБДToolStripMenuItem.Click += new System.EventHandler(this.ВыбратьДругуюБДToolStripMenuItem_Click);
+            // 
+            // Column11
+            // 
+            this.Column11.DataPropertyName = "id";
+            this.Column11.HeaderText = "Код";
+            this.Column11.MinimumWidth = 6;
+            this.Column11.Name = "Column11";
+            this.Column11.Width = 62;
+            // 
+            // Column12
+            // 
+            this.Column12.DataPropertyName = "title";
+            this.Column12.HeaderText = "Название";
+            this.Column12.MinimumWidth = 6;
+            this.Column12.Name = "Column12";
+            this.Column12.Width = 101;
+            // 
+            // Column13
+            // 
+            this.Column13.DataPropertyName = "author";
+            this.Column13.HeaderText = "Автор";
+            this.Column13.MinimumWidth = 6;
+            this.Column13.Name = "Column13";
+            this.Column13.Width = 76;
+            // 
+            // Column14
+            // 
+            this.Column14.DataPropertyName = "language";
+            this.Column14.HeaderText = "Язык";
+            this.Column14.MinimumWidth = 6;
+            this.Column14.Name = "Column14";
+            this.Column14.Width = 71;
+            // 
+            // Column15
+            // 
+            this.Column15.DataPropertyName = "genre";
+            this.Column15.HeaderText = "Жанр";
+            this.Column15.MinimumWidth = 6;
+            this.Column15.Name = "Column15";
+            this.Column15.Width = 74;
+            // 
+            // Column16
+            // 
+            this.Column16.DataPropertyName = "publishing_house";
+            this.Column16.HeaderText = "Издательство";
+            this.Column16.MinimumWidth = 6;
+            this.Column16.Name = "Column16";
+            this.Column16.Width = 129;
+            // 
+            // Column17
+            // 
+            this.Column17.DataPropertyName = "cover";
+            this.Column17.HeaderText = "Тип обложки";
+            this.Column17.MinimumWidth = 6;
+            this.Column17.Name = "Column17";
+            this.Column17.Width = 122;
+            // 
+            // Column22
+            // 
+            this.Column22.DataPropertyName = "era";
+            this.Column22.HeaderText = "Эра";
+            this.Column22.MinimumWidth = 6;
+            this.Column22.Name = "Column22";
+            this.Column22.Width = 62;
+            // 
+            // Column23
+            // 
+            this.Column23.DataPropertyName = "type_of_literature";
+            this.Column23.HeaderText = "Национальность";
+            this.Column23.MinimumWidth = 6;
+            this.Column23.Name = "Column23";
+            this.Column23.Width = 147;
+            // 
+            // Column24
+            // 
+            this.Column24.DataPropertyName = "font_size";
+            this.Column24.HeaderText = "Шрифт";
+            this.Column24.MinimumWidth = 6;
+            this.Column24.Name = "Column24";
+            this.Column24.Width = 82;
+            // 
+            // Column25
+            // 
+            this.Column25.DataPropertyName = "book_size";
+            this.Column25.HeaderText = "Размер";
+            this.Column25.MinimumWidth = 6;
+            this.Column25.Name = "Column25";
+            this.Column25.Width = 86;
+            // 
+            // author_id
+            // 
+            this.author_id.DataPropertyName = "author_id";
+            this.author_id.HeaderText = "author_id";
+            this.author_id.MinimumWidth = 6;
+            this.author_id.Name = "author_id";
+            this.author_id.Visible = false;
+            this.author_id.Width = 97;
+            // 
+            // language_id
+            // 
+            this.language_id.DataPropertyName = "language_id";
+            this.language_id.HeaderText = "language_id";
+            this.language_id.MinimumWidth = 6;
+            this.language_id.Name = "language_id";
+            this.language_id.Visible = false;
+            this.language_id.Width = 115;
+            // 
+            // genre_id
+            // 
+            this.genre_id.DataPropertyName = "genre_id";
+            this.genre_id.HeaderText = "genre_id";
+            this.genre_id.MinimumWidth = 6;
+            this.genre_id.Name = "genre_id";
+            this.genre_id.Visible = false;
+            this.genre_id.Width = 93;
+            // 
+            // publishing_house_id
+            // 
+            this.publishing_house_id.DataPropertyName = "publishing_house_id";
+            this.publishing_house_id.HeaderText = "publishing_house_id";
+            this.publishing_house_id.MinimumWidth = 6;
+            this.publishing_house_id.Name = "publishing_house_id";
+            this.publishing_house_id.Visible = false;
+            this.publishing_house_id.Width = 167;
+            // 
+            // cover_id
+            // 
+            this.cover_id.DataPropertyName = "cover_id";
+            this.cover_id.HeaderText = "cover_id";
+            this.cover_id.MinimumWidth = 6;
+            this.cover_id.Name = "cover_id";
+            this.cover_id.Visible = false;
+            this.cover_id.Width = 91;
+            // 
+            // era_id
+            // 
+            this.era_id.DataPropertyName = "era_id";
+            this.era_id.HeaderText = "era_id";
+            this.era_id.MinimumWidth = 6;
+            this.era_id.Name = "era_id";
+            this.era_id.Visible = false;
+            this.era_id.Width = 77;
+            // 
+            // type_of_literature_id
+            // 
+            this.type_of_literature_id.DataPropertyName = "type_of_literature_id";
+            this.type_of_literature_id.HeaderText = "type_of_literature_id";
+            this.type_of_literature_id.MinimumWidth = 6;
+            this.type_of_literature_id.Name = "type_of_literature_id";
+            this.type_of_literature_id.Visible = false;
+            this.type_of_literature_id.Width = 167;
+            // 
+            // book_size_id
+            // 
+            this.book_size_id.DataPropertyName = "book_size_id";
+            this.book_size_id.HeaderText = "book_size_id";
+            this.book_size_id.MinimumWidth = 6;
+            this.book_size_id.Name = "book_size_id";
+            this.book_size_id.Visible = false;
+            this.book_size_id.Width = 120;
+            // 
+            // font_size_id
+            // 
+            this.font_size_id.DataPropertyName = "font_size_id";
+            this.font_size_id.HeaderText = "font_size_id";
+            this.font_size_id.MinimumWidth = 6;
+            this.font_size_id.Name = "font_size_id";
+            this.font_size_id.Visible = false;
+            this.font_size_id.Width = 113;
             // 
             // Form1
             // 
@@ -1917,6 +2457,18 @@
             this.tabPage9.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView10)).EndInit();
             this.groupBox12.ResumeLayout(false);
+            this.tabPage10.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView11)).EndInit();
+            this.groupBox13.ResumeLayout(false);
+            this.tabPage11.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView12)).EndInit();
+            this.groupBox14.ResumeLayout(false);
+            this.tabPage12.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView13)).EndInit();
+            this.groupBox15.ResumeLayout(false);
+            this.tabPage13.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView14)).EndInit();
+            this.groupBox16.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -2046,18 +2598,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn city_id;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column14;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column15;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column16;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column17;
-        private System.Windows.Forms.DataGridViewTextBoxColumn author_id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn language_id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn genre_id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn publishing_house_id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cover_id;
         private System.Windows.Forms.DataGridViewTextBoxColumn Name1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
@@ -2069,6 +2609,58 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.TabPage tabPage10;
+        private System.Windows.Forms.DataGridView dataGridView11;
+        private System.Windows.Forms.GroupBox groupBox13;
+        private System.Windows.Forms.Button button32;
+        private System.Windows.Forms.Button button33;
+        private System.Windows.Forms.Button button34;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
+        private System.Windows.Forms.TabPage tabPage11;
+        private System.Windows.Forms.DataGridView dataGridView12;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
+        private System.Windows.Forms.GroupBox groupBox14;
+        private System.Windows.Forms.Button button35;
+        private System.Windows.Forms.Button button36;
+        private System.Windows.Forms.Button button37;
+        private System.Windows.Forms.TabPage tabPage12;
+        private System.Windows.Forms.DataGridView dataGridView13;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn15;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn16;
+        private System.Windows.Forms.GroupBox groupBox15;
+        private System.Windows.Forms.Button button38;
+        private System.Windows.Forms.Button button39;
+        private System.Windows.Forms.Button button40;
+        private System.Windows.Forms.TabPage tabPage13;
+        private System.Windows.Forms.DataGridView dataGridView14;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn17;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn18;
+        private System.Windows.Forms.GroupBox groupBox16;
+        private System.Windows.Forms.Button button41;
+        private System.Windows.Forms.Button button42;
+        private System.Windows.Forms.Button button43;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column14;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column15;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column16;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column17;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column22;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column23;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column24;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column25;
+        private System.Windows.Forms.DataGridViewTextBoxColumn author_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn language_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn genre_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn publishing_house_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cover_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn era_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn type_of_literature_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn book_size_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn font_size_id;
     }
 }
 

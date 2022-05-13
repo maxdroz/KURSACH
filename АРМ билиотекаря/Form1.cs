@@ -182,6 +182,10 @@ namespace АРМ_билиотекаря
             public string data;
             public int dataId;
             public string errorMessage = "";
+            public int era;
+            public int type;
+            public int font;
+            public int size;
 
             public Args(int id, int user_id) : this(id)
             {
@@ -320,6 +324,50 @@ namespace АРМ_билиотекаря
                 errorMessage = "Чтобы удалить обложку, необходимо избавиться от ее использования во всех книгах."
             });
         }
+        private void deleteEra(int id)
+        {
+            var worker = new BackgroundWorker();
+            worker.DoWork += BackgroundWorker1_DoWork;
+            worker.RunWorkerCompleted += BackgroundWorker1_RunWorkerCompleted;
+            worker.RunWorkerAsync(new Args(18, dataGridView11, "era", button33, button32)
+            {
+                user_id = id,
+                errorMessage = "Чтобы удалить эру, необходимо избавиться от ее использования во всех книгах."
+            });
+        }
+        private void deleteType(int id)
+        {
+            var worker = new BackgroundWorker();
+            worker.DoWork += BackgroundWorker1_DoWork;
+            worker.RunWorkerCompleted += BackgroundWorker1_RunWorkerCompleted;
+            worker.RunWorkerAsync(new Args(18, dataGridView12, "type_of_literature", button36, button35)
+            {
+                user_id = id,
+                errorMessage = "Чтобы удалить национальность, необходимо избавиться от ее использования во всех книгах."
+            });
+        }
+        private void deleteFont(int id)
+        {
+            var worker = new BackgroundWorker();
+            worker.DoWork += BackgroundWorker1_DoWork;
+            worker.RunWorkerCompleted += BackgroundWorker1_RunWorkerCompleted;
+            worker.RunWorkerAsync(new Args(18, dataGridView13, "font_size", button39, button38)
+            {
+                user_id = id,
+                errorMessage = "Чтобы удалить шрифт, необходимо избавиться от ее использования во всех книгах."
+            });
+        }
+        private void deleteSize(int id)
+        {
+            var worker = new BackgroundWorker();
+            worker.DoWork += BackgroundWorker1_DoWork;
+            worker.RunWorkerCompleted += BackgroundWorker1_RunWorkerCompleted;
+            worker.RunWorkerAsync(new Args(18, dataGridView14, "book_size", button42, button41)
+            {
+                user_id = id,
+                errorMessage = "Чтобы удалить размер книги, необходимо избавиться от ее использования во всех книгах."
+            });
+        }
 
         private void editPublishingHouse(string text, int id_city, int id)
         {
@@ -392,6 +440,51 @@ namespace АРМ_билиотекаря
                 columnName = "cover_description"
             });
         }
+        private void editEra(string eraName, int id)
+        {
+            var worker = new BackgroundWorker();
+            worker.DoWork += BackgroundWorker1_DoWork;
+            worker.RunWorkerCompleted += BackgroundWorker1_RunWorkerCompleted;
+            worker.RunWorkerAsync(new Args(17, dataGridView11, "era", button33, button32, eraName)
+            {
+                dataId = id,
+                columnName = "era"
+            });
+        }
+
+        private void editType(string name, int id)
+        {
+            var worker = new BackgroundWorker();
+            worker.DoWork += BackgroundWorker1_DoWork;
+            worker.RunWorkerCompleted += BackgroundWorker1_RunWorkerCompleted;
+            worker.RunWorkerAsync(new Args(17, dataGridView12, "type_of_literature", button36, button35, name)
+            {
+                dataId = id,
+                columnName = "type_of_literature"
+            });
+        }
+        private void editFont(string name, int id)
+        {
+            var worker = new BackgroundWorker();
+            worker.DoWork += BackgroundWorker1_DoWork;
+            worker.RunWorkerCompleted += BackgroundWorker1_RunWorkerCompleted;
+            worker.RunWorkerAsync(new Args(17, dataGridView13, "font_size", button39, button38, name)
+            {
+                dataId = id,
+                columnName = "name"
+            });
+        }
+        private void editSize(string name, int id)
+        {
+            var worker = new BackgroundWorker();
+            worker.DoWork += BackgroundWorker1_DoWork;
+            worker.RunWorkerCompleted += BackgroundWorker1_RunWorkerCompleted;
+            worker.RunWorkerAsync(new Args(17, dataGridView14, "book_size", button42, button41, name)
+            {
+                dataId = id,
+                columnName = "name"
+            });
+        }
 
         private void addPublishingHouse(string text, int id_city)
         {
@@ -438,6 +531,34 @@ namespace АРМ_билиотекаря
             worker.RunWorkerCompleted += BackgroundWorker1_RunWorkerCompleted;
             worker.RunWorkerAsync(new Args(16, dataGridView10, "cover", button29, button30, coverName));
         }
+        private void addEra(string eraName)
+        {
+            var worker = new BackgroundWorker();
+            worker.DoWork += BackgroundWorker1_DoWork;
+            worker.RunWorkerCompleted += BackgroundWorker1_RunWorkerCompleted;
+            worker.RunWorkerAsync(new Args(16, dataGridView11, "era", button33, button32, eraName));
+        }
+        private void addType(string name)
+        {
+            var worker = new BackgroundWorker();
+            worker.DoWork += BackgroundWorker1_DoWork;
+            worker.RunWorkerCompleted += BackgroundWorker1_RunWorkerCompleted;
+            worker.RunWorkerAsync(new Args(16, dataGridView12, "type_of_literature", button36, button35, name));
+        }
+        private void addFont(string name)
+        {
+            var worker = new BackgroundWorker();
+            worker.DoWork += BackgroundWorker1_DoWork;
+            worker.RunWorkerCompleted += BackgroundWorker1_RunWorkerCompleted;
+            worker.RunWorkerAsync(new Args(16, dataGridView13, "font_size", button39, button38, name));
+        }
+        private void addSize(string name)
+        {
+            var worker = new BackgroundWorker();
+            worker.DoWork += BackgroundWorker1_DoWork;
+            worker.RunWorkerCompleted += BackgroundWorker1_RunWorkerCompleted;
+            worker.RunWorkerAsync(new Args(16, dataGridView14, "book_size", button42, button41, name));
+        }
 
         private void updateAuthors()
         {
@@ -482,6 +603,34 @@ namespace АРМ_билиотекаря
             worker.DoWork += BackgroundWorker1_DoWork;
             worker.RunWorkerCompleted += BackgroundWorker1_RunWorkerCompleted;
             worker.RunWorkerAsync(new Args(15, dataGridView9, "city", button27, button26));
+        }
+        private void updateEras()
+        {
+            var worker = new BackgroundWorker();
+            worker.DoWork += BackgroundWorker1_DoWork;
+            worker.RunWorkerCompleted += BackgroundWorker1_RunWorkerCompleted;
+            worker.RunWorkerAsync(new Args(15, dataGridView11, "era", button33, button32));
+        }
+        private void updateType()
+        {
+            var worker = new BackgroundWorker();
+            worker.DoWork += BackgroundWorker1_DoWork;
+            worker.RunWorkerCompleted += BackgroundWorker1_RunWorkerCompleted;
+            worker.RunWorkerAsync(new Args(15, dataGridView12, "type_of_literature", button36, button35));
+        }
+        private void updateFont()
+        {
+            var worker = new BackgroundWorker();
+            worker.DoWork += BackgroundWorker1_DoWork;
+            worker.RunWorkerCompleted += BackgroundWorker1_RunWorkerCompleted;
+            worker.RunWorkerAsync(new Args(15, dataGridView13, "font_size", button39, button38));
+        }
+        private void updateSize()
+        {
+            var worker = new BackgroundWorker();
+            worker.DoWork += BackgroundWorker1_DoWork;
+            worker.RunWorkerCompleted += BackgroundWorker1_RunWorkerCompleted;
+            worker.RunWorkerAsync(new Args(15, dataGridView14, "book_size", button42, button41));
         }
 
         //1  - Поиск всех книг
@@ -580,7 +729,11 @@ namespace АРМ_билиотекаря
                             ((Args)e.Argument).language,
                             ((Args)e.Argument).genre,
                             ((Args)e.Argument).ph,
-                            ((Args)e.Argument).cover
+                            ((Args)e.Argument).cover,
+                            ((Args)e.Argument).era,
+                            ((Args)e.Argument).type,
+                            ((Args)e.Argument).font,
+                            ((Args)e.Argument).size
                         );
                         break;
                     case 12:
@@ -591,6 +744,10 @@ namespace АРМ_билиотекаря
                             ((Args)e.Argument).genre,
                             ((Args)e.Argument).ph,
                             ((Args)e.Argument).cover,
+                            ((Args)e.Argument).era,
+                            ((Args)e.Argument).type,
+                            ((Args)e.Argument).font,
+                            ((Args)e.Argument).size,
                             ((Args)e.Argument).user_id);
                         id = 11;
                         break;
@@ -909,6 +1066,18 @@ namespace АРМ_билиотекаря
                 case 8:
                     updateCovers();
                     break;
+                case 9:
+                    updateEras();
+                    break;
+                case 10:
+                    updateType();
+                    break;
+                case 11:
+                    updateFont();
+                    break;
+                case 12:
+                    updateSize();
+                    break;
             }
         }
 
@@ -921,7 +1090,7 @@ namespace АРМ_билиотекаря
             exp.ShowDialog();
         }
 
-        public void addBook(string title, int author, int language, int genre, int ph, int cover)
+        public void addBook(string title, int author, int language, int genre, int ph, int cover, int era, int type, int size, int font)
         {
             var worker = new BackgroundWorker();
             worker.DoWork += BackgroundWorker1_DoWork;
@@ -934,6 +1103,10 @@ namespace АРМ_билиотекаря
                 ph = ph,
                 cover = cover,
                 title = title,
+                era = era,
+                type = type,
+                size = size,
+                font = font
             });
         }
 
@@ -944,7 +1117,21 @@ namespace АРМ_билиотекаря
             DataTable genre = adapter.getCommonData("genre");
             DataTable publishingHouse = adapter.getCommonData("publishing_house");
             DataTable cover = adapter.getCommonData("cover");
-            AddEditBook addEditBook = new AddEditBook(this, authors, "name", languages, "language", genre, "genre", publishingHouse, "title", cover, "cover_description");
+            DataTable era = adapter.getCommonData("era");
+            DataTable type = adapter.getCommonData("type_of_literature");
+            DataTable font = adapter.getCommonData("font_size");
+            DataTable size = adapter.getCommonData("book_size");
+            AddEditBook addEditBook = new AddEditBook(this, 
+                authors, "name", 
+                languages, "language", 
+                genre, "genre", 
+                publishingHouse, "title", 
+                cover, "cover_description",
+                era, "era",
+                type, "type_of_literature",
+                size, "name",
+                font, "name"
+                );
             addEditBook.ShowDialog();
         }
 
@@ -956,12 +1143,30 @@ namespace АРМ_билиотекаря
             DataTable genre = adapter.getCommonData("genre");
             DataTable publishingHouse = adapter.getCommonData("publishing_house");
             DataTable cover = adapter.getCommonData("cover");
-            AddEditBook addEditBook = new AddEditBook(this, authors, "name", languages, "language", genre, "genre", publishingHouse, "title", cover, "cover_description");
+            DataTable era = adapter.getCommonData("era");
+            DataTable type = adapter.getCommonData("type_of_literature");
+            DataTable font = adapter.getCommonData("font_size");
+            DataTable size = adapter.getCommonData("book_size");
+            AddEditBook addEditBook = new AddEditBook(this,
+                authors, "name",
+                languages, "language",
+                genre, "genre",
+                publishingHouse, "title",
+                cover, "cover_description",
+                era, "era",
+                type, "type_of_literature",
+                size, "name",
+                font, "name"
+            ); 
             int authorId = Int32.Parse(dataGridView3["author_id", rowId].Value.ToString());
             int languageId = Int32.Parse(dataGridView3["language_id", rowId].Value.ToString());
             int genreId = Int32.Parse(dataGridView3["genre_id", rowId].Value.ToString());
             int publishingHouseId = Int32.Parse(dataGridView3["publishing_house_id", rowId].Value.ToString());
             int coverId = Int32.Parse(dataGridView3["cover_id", rowId].Value.ToString());
+            int eraId = Int32.Parse(dataGridView3["era_id", rowId].Value.ToString());
+            int typeId = Int32.Parse(dataGridView3["type_of_literature_id", rowId].Value.ToString());
+            int fontId = Int32.Parse(dataGridView3["font_size_id", rowId].Value.ToString());
+            int sizeId = Int32.Parse(dataGridView3["book_size_id", rowId].Value.ToString());
             DataRow ans = authors.Select("id = '" + authorId + "'")[0];
             authorId = authors.Rows.IndexOf(ans);
             ans = languages.Select("id = '" + languageId + "'")[0];
@@ -972,11 +1177,31 @@ namespace АРМ_билиотекаря
             publishingHouseId = publishingHouse.Rows.IndexOf(ans);
             ans = cover.Select("id = '" + coverId + "'")[0];
             coverId = cover.Rows.IndexOf(ans);
-            addEditBook.setBook(Int32.Parse(dataGridView3[0, rowId].Value.ToString()), dataGridView3[1, rowId].Value.ToString(), authorId, languageId, genreId, publishingHouseId, coverId);
+            ans = era.Select("id = '" + eraId + "'")[0];
+            eraId = era.Rows.IndexOf(ans);
+            ans = type.Select("id = '" + typeId + "'")[0];
+            typeId = type.Rows.IndexOf(ans);
+            ans = font.Select("id = '" + fontId + "'")[0];
+            fontId = font.Rows.IndexOf(ans);
+            ans = size.Select("id = '" + sizeId + "'")[0];
+            sizeId = size.Rows.IndexOf(ans);
+            addEditBook.setBook(
+                Int32.Parse(dataGridView3[0, rowId].Value.ToString()), 
+                dataGridView3[1, rowId].Value.ToString(), 
+                authorId, 
+                languageId, 
+                genreId, 
+                publishingHouseId, 
+                coverId,
+                eraId,
+                typeId,
+                sizeId,
+                fontId
+                );
             addEditBook.ShowDialog();
         }
 
-        public void editBook(int id, string title, int author, int language, int genre, int ph, int cover)
+        public void editBook(int id, string title, int author, int language, int genre, int ph, int cover, int era, int type, int size, int font)
         {
             var worker = new BackgroundWorker();
             worker.DoWork += BackgroundWorker1_DoWork;
@@ -989,7 +1214,11 @@ namespace АРМ_билиотекаря
                 ph = ph,
                 cover = cover,
                 title = title,
-                user_id = id
+                user_id = id,
+                era = era,
+                type = type,
+                size = size,
+                font = font
             });
         }
 
@@ -1203,6 +1432,115 @@ namespace АРМ_билиотекаря
         {
             int active = dataGridView5.CurrentCellAddress.Y;
             deleteAuthor(dataGridView5[0, active].Value.ToString().ToInt());
+        }
+
+        private void button34_Click(object sender, EventArgs e)
+        {
+            AddEditSimpleCommon form = new AddEditSimpleCommon("Эпоха", "Добавление эпохи", false, (text) =>
+            {
+                addEra(text);
+            });
+            form.ShowDialog();
+        }
+
+        private void button33_Click(object sender, EventArgs e)
+        {
+            int active = dataGridView11.CurrentCellAddress.Y;
+            AddEditSimpleCommon form = new AddEditSimpleCommon("Эпоха", "Изменение эпохи", true, (text) =>
+            {
+                editEra(text, Int32.Parse(dataGridView11[0, active].Value.ToString()));
+            }, dataGridView11[1, active].Value.ToString());
+            form.ShowDialog();
+        }
+
+        private void button32_Click(object sender, EventArgs e)
+        {
+            int active = dataGridView11.CurrentCellAddress.Y;
+            deleteEra(dataGridView11[0, active].Value.ToString().ToInt());
+        }
+
+        private void button37_Click(object sender, EventArgs e)
+        {
+
+            AddEditSimpleCommon form = new AddEditSimpleCommon("Национальность литературы", "Добавить национальность", false, (text) =>
+            {
+                addType(text);
+            });
+            form.ShowDialog();
+        }
+
+        private void button40_Click(object sender, EventArgs e)
+        {
+
+            AddEditSimpleCommon form = new AddEditSimpleCommon("Размер шрифта", "Добавление размера шрифта", false, (text) =>
+            {
+                addFont(text);
+            });
+            form.ShowDialog();
+        }
+
+        private void button43_Click(object sender, EventArgs e)
+        {
+
+            AddEditSimpleCommon form = new AddEditSimpleCommon("Размер книги", "Добавление размера книги", false, (text) =>
+            {
+                addSize(text);
+            });
+            form.ShowDialog();
+        }
+
+        private void button36_Click(object sender, EventArgs e)
+        {
+
+            int active = dataGridView12.CurrentCellAddress.Y;
+            AddEditSimpleCommon form = new AddEditSimpleCommon("Национальность литературы", "Изменение национальности литературы", true, (text) =>
+            {
+                editType(text, Int32.Parse(dataGridView12[0, active].Value.ToString()));
+            }, dataGridView12[1, active].Value.ToString());
+            form.ShowDialog();
+        }
+
+        private void button39_Click(object sender, EventArgs e)
+        {
+
+            int active = dataGridView13.CurrentCellAddress.Y;
+            AddEditSimpleCommon form = new AddEditSimpleCommon("Размер шрифта", "Изменение размера шрифта", true, (text) =>
+            {
+                editFont(text, Int32.Parse(dataGridView13[0, active].Value.ToString()));
+            }, dataGridView13[1, active].Value.ToString());
+            form.ShowDialog();
+        }
+
+        private void button42_Click(object sender, EventArgs e)
+        {
+
+            int active = dataGridView14.CurrentCellAddress.Y;
+            AddEditSimpleCommon form = new AddEditSimpleCommon("Размер книги", "Изменение размера книги", true, (text) =>
+            {
+                editSize(text, Int32.Parse(dataGridView14[0, active].Value.ToString()));
+            }, dataGridView14[1, active].Value.ToString());
+            form.ShowDialog();
+        }
+
+        private void button35_Click(object sender, EventArgs e)
+        {
+
+            int active = dataGridView12.CurrentCellAddress.Y;
+            deleteType(dataGridView12[0, active].Value.ToString().ToInt());
+        }
+
+        private void button38_Click(object sender, EventArgs e)
+        {
+
+            int active = dataGridView13.CurrentCellAddress.Y;
+            deleteFont (dataGridView13[0, active].Value.ToString().ToInt());
+        }
+
+        private void button41_Click(object sender, EventArgs e)
+        {
+
+            int active = dataGridView14.CurrentCellAddress.Y;
+            deleteSize(dataGridView14[0, active].Value.ToString().ToInt());
         }
     }
 }
