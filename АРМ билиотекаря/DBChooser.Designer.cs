@@ -38,6 +38,12 @@
             this.button1 = new System.Windows.Forms.Button();
             this.name = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.user_password = new System.Windows.Forms.TextBox();
+            this.user_surname = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.user_name = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -95,7 +101,7 @@
             // 
             this.button1.Location = new System.Drawing.Point(13, 203);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(193, 46);
+            this.button1.Size = new System.Drawing.Size(489, 46);
             this.button1.TabIndex = 8;
             this.button1.Text = "Подключится";
             this.button1.UseVisualStyleBackColor = true;
@@ -118,11 +124,71 @@
             this.label2.TabIndex = 10;
             this.label2.Text = "Название БД";
             // 
+            // label5
+            // 
+            this.label5.Location = new System.Drawing.Point(270, 125);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(196, 17);
+            this.label5.TabIndex = 14;
+            this.label5.Text = "Пароль";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // user_password
+            // 
+            this.user_password.Location = new System.Drawing.Point(270, 145);
+            this.user_password.Name = "user_password";
+            this.user_password.Size = new System.Drawing.Size(196, 22);
+            this.user_password.TabIndex = 13;
+            this.user_password.Text = "password";
+            this.user_password.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // user_surname
+            // 
+            this.user_surname.Location = new System.Drawing.Point(270, 100);
+            this.user_surname.Name = "user_surname";
+            this.user_surname.Size = new System.Drawing.Size(196, 22);
+            this.user_surname.TabIndex = 12;
+            this.user_surname.Text = "bbb";
+            this.user_surname.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label6
+            // 
+            this.label6.Location = new System.Drawing.Point(273, 79);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(193, 17);
+            this.label6.TabIndex = 11;
+            this.label6.Text = "Фамилия";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // user_name
+            // 
+            this.user_name.Location = new System.Drawing.Point(270, 55);
+            this.user_name.Name = "user_name";
+            this.user_name.Size = new System.Drawing.Size(196, 22);
+            this.user_name.TabIndex = 16;
+            this.user_name.Text = "aaa";
+            this.user_name.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label7
+            // 
+            this.label7.Location = new System.Drawing.Point(273, 34);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(193, 17);
+            this.label7.TabIndex = 15;
+            this.label7.Text = "Имя";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // DBChooser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(218, 261);
+            this.ClientSize = new System.Drawing.Size(514, 261);
+            this.Controls.Add(this.user_name);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.user_password);
+            this.Controls.Add(this.user_surname);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.name);
             this.Controls.Add(this.button1);
@@ -157,5 +223,11 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox name;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox user_password;
+        private System.Windows.Forms.TextBox user_surname;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox user_name;
+        private System.Windows.Forms.Label label7;
     }
 }

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.OleDb;
+using static АРМ_билиотекаря.DatabaseAdapter;
 
 namespace АРМ_билиотекаря
 {
@@ -16,12 +17,14 @@ namespace АРМ_билиотекаря
         private DataTable empty = null;
 
         private DBChooser chooser;
+        public int librarianId = -1;
+        private bool isAdmin = false;
         private readonly object syncLock = new object();
         private bool isResetButton = false;
-        private DatabaseAdapter adapter;
+        public DatabaseAdapter adapter;
         private bool mouseDown = false;
         private Point startPos;
-
+         
         public void updateConnection(String address, String databaseName, String username, String password)
         {
             adapter.setBDPath(address, databaseName, username, password);
@@ -29,10 +32,19 @@ namespace АРМ_билиотекаря
             updateDebtors();
         }
 
+        public void updateUser(int librarianId, bool isAdmin)
+        {
+            this.librarianId = librarianId;
+            this.isAdmin = isAdmin;
+
+            пользователиToolStripMenuItem.Visible = isAdmin;
+            запросыToolStripMenuItem.Visible = isAdmin;
+        }
+
         public Form1(DBChooser chooser)
         {
-            this.chooser = chooser;
             InitializeComponent();
+            this.chooser = chooser;
             adapter = DatabaseAdapter.getInstance();
         }
 
@@ -160,6 +172,11 @@ namespace АРМ_билиотекаря
             worker.RunWorkerAsync(new Args(4, id));
         }
 
+        public UserResolution getUserId(string name, string surname, string password)
+        {
+            return adapter.resolveUser(name, surname, password);
+        }
+
         public class Args
         {
             public int author2;
@@ -186,6 +203,13 @@ namespace АРМ_билиотекаря
             public int type;
             public int font;
             public int size;
+
+            public bool isAdmin;
+            public string name;
+            public string surname;
+            public string password;
+            public int userAuthorId;
+            public bool isPasswordUpdate;
 
             public Args(int id, int user_id) : this(id)
             {
@@ -633,6 +657,51 @@ namespace АРМ_билиотекаря
             worker.RunWorkerAsync(new Args(15, dataGridView14, "book_size", button42, button41));
         }
 
+        public void updateUser(bool isAdmin, int id, string name, string surname, string password, DataGridView grid, Button edit, Button delete, bool isPasswordUpdate)
+        {
+
+            var worker = new BackgroundWorker();
+            worker.DoWork += BackgroundWorker1_DoWork;
+            worker.RunWorkerCompleted += BackgroundWorker1_RunWorkerCompleted;
+            worker.RunWorkerAsync(new Args(27, grid, "aaaa", edit, delete)
+            {
+                isAdmin = isAdmin,
+                user_id = id,
+                name = name,
+                surname = surname,
+                password = password,
+                isPasswordUpdate = isPasswordUpdate
+            });
+        }
+        public void deleteUser(bool isAdmin, int id, DataGridView grid, Button edit, Button delete)
+        {
+
+            var worker = new BackgroundWorker();
+            worker.DoWork += BackgroundWorker1_DoWork;
+            worker.RunWorkerCompleted += BackgroundWorker1_RunWorkerCompleted;
+            worker.RunWorkerAsync(new Args(28, grid, "aaaa", edit, delete)
+            {
+                isAdmin = isAdmin,
+                user_id = id,
+            });
+        }
+        
+        public void createUser(bool isAdmin, string name, string surname, string password, int authorId, DataGridView grid, Button edit, Button delete)
+        {
+
+            var worker = new BackgroundWorker();
+            worker.DoWork += BackgroundWorker1_DoWork;
+            worker.RunWorkerCompleted += BackgroundWorker1_RunWorkerCompleted;
+            worker.RunWorkerAsync(new Args(29, grid, "aaaa", edit, delete)
+            {
+                isAdmin = isAdmin,
+                name = name,
+                surname = surname,
+                password = password,
+                userAuthorId = authorId,
+            });
+        }
+
         //1  - Поиск всех книг
         //2  - Поиск по читателям
         //3  - Добавление читателя
@@ -658,6 +727,8 @@ namespace АРМ_билиотекаря
         //24 - Добавить автора
         //25 - Изменить автора
         //26 - Удалить  автора
+        //27 - Изменить пользователя
+        //28 - Удалить пользователя
 
         public void BackgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -816,6 +887,48 @@ namespace АРМ_билиотекаря
                     case 25:
                         break;
                     case 26:
+                        break;
+                    case 27:
+                        res.error = !adapter.editUser(
+                            ((Args)e.Argument).isAdmin,
+                            ((Args)e.Argument).user_id,
+                            ((Args)e.Argument).name,
+                            ((Args)e.Argument).surname,
+                            ((Args)e.Argument).password,
+                            ((Args)e.Argument).isPasswordUpdate
+                        );
+                        res.message = "Пользователь с данными данными уже существует";
+                        result = adapter.getAllUsers();
+                        res.dataGridView = ((Args)e.Argument).dataGridView;
+                        res.deleteButton = ((Args)e.Argument).deleteButton;
+                        res.editButton = ((Args)e.Argument).editButton;
+                        id = 15;
+                        break;
+                    case 28:
+                        adapter.deleteUser(
+                            ((Args)e.Argument).isAdmin,
+                            ((Args)e.Argument).user_id
+                        );
+                        result = adapter.getAllUsers();
+                        res.dataGridView = ((Args)e.Argument).dataGridView;
+                        res.deleteButton = ((Args)e.Argument).deleteButton;
+                        res.editButton = ((Args)e.Argument).editButton;
+                        id = 15;
+                        break;
+                    case 29:
+                        res.error = !adapter.addUser(
+                            ((Args)e.Argument).isAdmin,
+                            ((Args)e.Argument).name,
+                            ((Args)e.Argument).surname,
+                            ((Args)e.Argument).password,
+                            ((Args)e.Argument).userAuthorId
+                        );
+                        res.message = "Пользователь с данными данными уже существует";
+                        result = adapter.getAllUsers();
+                        res.dataGridView = ((Args)e.Argument).dataGridView;
+                        res.deleteButton = ((Args)e.Argument).deleteButton;
+                        res.editButton = ((Args)e.Argument).editButton;
+                        id = 15;
                         break;
                 }
                 res.arg = id;
@@ -1541,6 +1654,21 @@ namespace АРМ_билиотекаря
 
             int active = dataGridView14.CurrentCellAddress.Y;
             deleteSize(dataGridView14[0, active].Value.ToString().ToInt());
+        }
+
+        private void выйтиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ВыбратьДругуюБДToolStripMenuItem_Click(sender, e);
+        }
+
+        private void управлениеПользователямиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new Users(this).Show();
+        }
+
+        private void произваольныйЗапросToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new CustomQuery(this).ShowDialog();
         }
     }
 }

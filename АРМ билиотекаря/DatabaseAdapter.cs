@@ -10,7 +10,7 @@ using System.IO;
 
 namespace АРМ_билиотекаря
 {
-    class DatabaseAdapter
+    public class DatabaseAdapter
     {
         private readonly object syncLock = new object();
         private static DatabaseAdapter instance;
@@ -55,7 +55,7 @@ namespace АРМ_билиотекаря
             com.ExecuteNonQuery();
         }
 
-        private DataTable formDataTable(string query)
+        public DataTable formDataTable(string query)
         {
             MySqlDataAdapter da = new MySqlDataAdapter(query, connection);
             DataTable dt = new DataTable();
@@ -440,7 +440,7 @@ namespace АРМ_билиотекаря
                 try
                 {
                     executeQuery(query);
-                } 
+                }
                 catch (Exception ex)
                 {
                     error = true;
@@ -449,7 +449,7 @@ namespace АРМ_билиотекаря
                 {
                     connection.Close();
                 }
-                if(error)
+                if (error)
                 {
                     return null;
                 }
@@ -469,6 +469,172 @@ namespace АРМ_билиотекаря
                 var covers = formDataTable(query);
                 connection.Close();
                 return covers;
+            }
+        }
+
+        public UserResolution resolveUser(string name, string surname, string password)
+        {
+            lock (syncLock)
+            {
+                connection.Open();
+                String query = String.Format("SELECT id, password_hash FROM librarian WHERE name = '{0}' AND surname = '{1}'", name, surname);
+                var users = formDataTable(query);
+                int? librarian = null;
+                for (int i = 0; i < users.Rows.Count; i++)
+                {
+                    var row = users.Rows[i];
+                    if (row.Field<string>("password_hash") == password)
+                    {
+                        librarian = row.Field<int>("id");
+                        break;
+                    }
+                }
+                if (librarian != null)
+                {
+                    connection.Close();
+                    return new Success((int)librarian, false);
+                }
+
+                query = String.Format("SELECT id, password_hash FROM admin WHERE name = '{0}' AND surname = '{1}'", name, surname);
+                var admins = formDataTable(query);
+                connection.Close();
+                int? admin = null;
+                for (int i = 0; i < admins.Rows.Count; i++)
+                {
+                    var row = admins.Rows[i];
+                    if (row.Field<string>("password_hash") == password)
+                    {
+                        admin = row.Field<int>("id");
+                        break;
+                    }
+                }
+                if(admin != null)
+                {
+                    return new Success((int)admin, true);
+                }
+                if(users.Rows.Count + admins.Rows.Count != 0)
+                {
+                    return new WrongPassword();
+                } else
+                {
+                    return new UserNotFound();
+                }
+            }
+        }
+
+        public DataTable getAllUsers()
+        {
+            lock (syncLock)
+            {
+                connection.Open();
+                String query = "SELECT librarian.id, librarian.name, librarian.surname, librarian.password_hash, FALSE as is_admin, CONCAT(librarian.id_admin, ': ' ,admin.name, ' ', admin.surname) as author FROM librarian LEFT JOIN admin ON librarian.id_admin = admin.id UNION SELECT id, name, surname, password_hash, TRUE as is_admin, NULL FROM admin";
+                var users = formDataTable(query);
+                connection.Close();
+                return users;
+            }
+        }
+
+        private bool findUser(string name, string surname)
+        {
+            lock (syncLock)
+            {
+                connection.Open();
+                String query1 = String.Format("SELECT COUNT(*) FROM librarian WHERE name = '{0}' AND surname = '{1}'", name, surname);
+                String query2 = String.Format("SELECT COUNT(*) FROM admin     WHERE name = '{0}' AND surname = '{1}'", name, surname);
+                var count = Int32.Parse(formDataTable(query1).Rows[0][0].ToString()) + Int32.Parse(formDataTable(query2).Rows[0][0].ToString());
+                connection.Close();
+                return count != 0;
+            }
+        }
+
+        public bool editUser(bool isAdmin, int id, string name, string surname, string password, bool isPasswordUpdate)
+        {
+            if(!isPasswordUpdate && findUser(name, surname))
+            {
+                return false;
+            }
+            lock (syncLock)
+            {
+                connection.Open();
+                String table;
+                if (isAdmin)
+                {
+                    table = "admin";
+                } else
+                {
+                    table = "librarian";
+                }
+                String query = String.Format("UPDATE {4} SET name = '{0}', surname = '{1}', password_hash = '{2}' WHERE id = {3}", name, surname, password, id, table);
+                executeQuery(query);
+                connection.Close();
+            }
+            return true;
+        }
+        public void deleteUser(bool isAdmin, int id)
+        {
+            lock (syncLock)
+            {
+                connection.Open();
+                String table;
+                if (isAdmin)
+                {
+                    table = "admin";
+                }
+                else
+                {
+                    table = "librarian";
+                }
+                String query = String.Format("DELETE FROM {1} WHERE id = {0}", id, table);
+                executeQuery(query);
+                connection.Close();
+            }
+        }
+
+        public bool addUser(bool isAdmin, string name, string surname, string password, int userAuthorId)
+        {
+            if (findUser(name, surname))
+            {
+                return false;
+            }
+            lock (syncLock)
+            {
+                connection.Open();
+                String table;
+                if (isAdmin)
+                {
+                    table = String.Format("INSERT INTO admin (name, surname, password_hash) VALUES ('{0}', '{1}', '{2}')", name, surname, password);
+                }
+                else
+                {
+                    table = String.Format("INSERT INTO librarian (name, surname, password_hash, id_admin) VALUES ('{0}', '{1}', '{2}', {3})", name, surname, password, userAuthorId);
+                }
+                executeQuery(table);
+                connection.Close();
+            }
+            return true;
+        }
+
+        public interface UserResolution
+        {
+        }
+
+        public class UserNotFound : UserResolution
+        {
+        }
+
+        public class WrongPassword : UserResolution
+        {
+        }
+
+        public class Success : UserResolution
+        {
+            public readonly int userId;
+            public readonly bool isAdmin;
+
+            public Success(int userId, bool isAdmin)
+            {
+                this.userId = userId;
+                this.isAdmin = isAdmin;
             }
         }
     }

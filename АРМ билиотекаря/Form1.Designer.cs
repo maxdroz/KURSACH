@@ -101,6 +101,26 @@
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column22 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column23 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column24 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column25 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.author_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.language_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.genre_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.publishing_house_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cover_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.era_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.type_of_literature_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.book_size_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.font_size_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.button9 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
@@ -192,26 +212,11 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.выбратьДругуюБДToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column22 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column23 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column24 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column25 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.author_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.language_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.genre_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.publishing_house_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cover_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.era_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.type_of_literature_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.book_size_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.font_size_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.выйтиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.пользователиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.управлениеПользователямиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.запросыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.произваольныйЗапросToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -1107,6 +1112,175 @@
             this.dataGridView3.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView3.Size = new System.Drawing.Size(1103, 487);
             this.dataGridView3.TabIndex = 1;
+            // 
+            // Column11
+            // 
+            this.Column11.DataPropertyName = "id";
+            this.Column11.HeaderText = "Код";
+            this.Column11.MinimumWidth = 6;
+            this.Column11.Name = "Column11";
+            this.Column11.Width = 62;
+            // 
+            // Column12
+            // 
+            this.Column12.DataPropertyName = "title";
+            this.Column12.HeaderText = "Название";
+            this.Column12.MinimumWidth = 6;
+            this.Column12.Name = "Column12";
+            this.Column12.Width = 101;
+            // 
+            // Column13
+            // 
+            this.Column13.DataPropertyName = "author";
+            this.Column13.HeaderText = "Автор";
+            this.Column13.MinimumWidth = 6;
+            this.Column13.Name = "Column13";
+            this.Column13.Width = 76;
+            // 
+            // Column14
+            // 
+            this.Column14.DataPropertyName = "language";
+            this.Column14.HeaderText = "Язык";
+            this.Column14.MinimumWidth = 6;
+            this.Column14.Name = "Column14";
+            this.Column14.Width = 71;
+            // 
+            // Column15
+            // 
+            this.Column15.DataPropertyName = "genre";
+            this.Column15.HeaderText = "Жанр";
+            this.Column15.MinimumWidth = 6;
+            this.Column15.Name = "Column15";
+            this.Column15.Width = 74;
+            // 
+            // Column16
+            // 
+            this.Column16.DataPropertyName = "publishing_house";
+            this.Column16.HeaderText = "Издательство";
+            this.Column16.MinimumWidth = 6;
+            this.Column16.Name = "Column16";
+            this.Column16.Width = 129;
+            // 
+            // Column17
+            // 
+            this.Column17.DataPropertyName = "cover";
+            this.Column17.HeaderText = "Тип обложки";
+            this.Column17.MinimumWidth = 6;
+            this.Column17.Name = "Column17";
+            this.Column17.Width = 122;
+            // 
+            // Column22
+            // 
+            this.Column22.DataPropertyName = "era";
+            this.Column22.HeaderText = "Эра";
+            this.Column22.MinimumWidth = 6;
+            this.Column22.Name = "Column22";
+            this.Column22.Width = 62;
+            // 
+            // Column23
+            // 
+            this.Column23.DataPropertyName = "type_of_literature";
+            this.Column23.HeaderText = "Национальность";
+            this.Column23.MinimumWidth = 6;
+            this.Column23.Name = "Column23";
+            this.Column23.Width = 147;
+            // 
+            // Column24
+            // 
+            this.Column24.DataPropertyName = "font_size";
+            this.Column24.HeaderText = "Шрифт";
+            this.Column24.MinimumWidth = 6;
+            this.Column24.Name = "Column24";
+            this.Column24.Width = 82;
+            // 
+            // Column25
+            // 
+            this.Column25.DataPropertyName = "book_size";
+            this.Column25.HeaderText = "Размер";
+            this.Column25.MinimumWidth = 6;
+            this.Column25.Name = "Column25";
+            this.Column25.Width = 86;
+            // 
+            // author_id
+            // 
+            this.author_id.DataPropertyName = "author_id";
+            this.author_id.HeaderText = "author_id";
+            this.author_id.MinimumWidth = 6;
+            this.author_id.Name = "author_id";
+            this.author_id.Visible = false;
+            this.author_id.Width = 97;
+            // 
+            // language_id
+            // 
+            this.language_id.DataPropertyName = "language_id";
+            this.language_id.HeaderText = "language_id";
+            this.language_id.MinimumWidth = 6;
+            this.language_id.Name = "language_id";
+            this.language_id.Visible = false;
+            this.language_id.Width = 115;
+            // 
+            // genre_id
+            // 
+            this.genre_id.DataPropertyName = "genre_id";
+            this.genre_id.HeaderText = "genre_id";
+            this.genre_id.MinimumWidth = 6;
+            this.genre_id.Name = "genre_id";
+            this.genre_id.Visible = false;
+            this.genre_id.Width = 93;
+            // 
+            // publishing_house_id
+            // 
+            this.publishing_house_id.DataPropertyName = "publishing_house_id";
+            this.publishing_house_id.HeaderText = "publishing_house_id";
+            this.publishing_house_id.MinimumWidth = 6;
+            this.publishing_house_id.Name = "publishing_house_id";
+            this.publishing_house_id.Visible = false;
+            this.publishing_house_id.Width = 167;
+            // 
+            // cover_id
+            // 
+            this.cover_id.DataPropertyName = "cover_id";
+            this.cover_id.HeaderText = "cover_id";
+            this.cover_id.MinimumWidth = 6;
+            this.cover_id.Name = "cover_id";
+            this.cover_id.Visible = false;
+            this.cover_id.Width = 91;
+            // 
+            // era_id
+            // 
+            this.era_id.DataPropertyName = "era_id";
+            this.era_id.HeaderText = "era_id";
+            this.era_id.MinimumWidth = 6;
+            this.era_id.Name = "era_id";
+            this.era_id.Visible = false;
+            this.era_id.Width = 77;
+            // 
+            // type_of_literature_id
+            // 
+            this.type_of_literature_id.DataPropertyName = "type_of_literature_id";
+            this.type_of_literature_id.HeaderText = "type_of_literature_id";
+            this.type_of_literature_id.MinimumWidth = 6;
+            this.type_of_literature_id.Name = "type_of_literature_id";
+            this.type_of_literature_id.Visible = false;
+            this.type_of_literature_id.Width = 167;
+            // 
+            // book_size_id
+            // 
+            this.book_size_id.DataPropertyName = "book_size_id";
+            this.book_size_id.HeaderText = "book_size_id";
+            this.book_size_id.MinimumWidth = 6;
+            this.book_size_id.Name = "book_size_id";
+            this.book_size_id.Visible = false;
+            this.book_size_id.Width = 120;
+            // 
+            // font_size_id
+            // 
+            this.font_size_id.DataPropertyName = "font_size_id";
+            this.font_size_id.HeaderText = "font_size_id";
+            this.font_size_id.MinimumWidth = 6;
+            this.font_size_id.Name = "font_size_id";
+            this.font_size_id.Visible = false;
+            this.font_size_id.Width = 113;
             // 
             // groupBox4
             // 
@@ -2216,7 +2390,9 @@
             // 
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.файлToolStripMenuItem});
+            this.файлToolStripMenuItem,
+            this.пользователиToolStripMenuItem,
+            this.запросыToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1159, 28);
@@ -2226,7 +2402,8 @@
             // файлToolStripMenuItem
             // 
             this.файлToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.выбратьДругуюБДToolStripMenuItem});
+            this.выбратьДругуюБДToolStripMenuItem,
+            this.выйтиToolStripMenuItem});
             this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
             this.файлToolStripMenuItem.Size = new System.Drawing.Size(42, 24);
             this.файлToolStripMenuItem.Text = "БД";
@@ -2238,174 +2415,42 @@
             this.выбратьДругуюБДToolStripMenuItem.Text = "Выбрать другую БД";
             this.выбратьДругуюБДToolStripMenuItem.Click += new System.EventHandler(this.ВыбратьДругуюБДToolStripMenuItem_Click);
             // 
-            // Column11
+            // выйтиToolStripMenuItem
             // 
-            this.Column11.DataPropertyName = "id";
-            this.Column11.HeaderText = "Код";
-            this.Column11.MinimumWidth = 6;
-            this.Column11.Name = "Column11";
-            this.Column11.Width = 62;
+            this.выйтиToolStripMenuItem.Name = "выйтиToolStripMenuItem";
+            this.выйтиToolStripMenuItem.Size = new System.Drawing.Size(228, 26);
+            this.выйтиToolStripMenuItem.Text = "Выйти";
+            this.выйтиToolStripMenuItem.Click += new System.EventHandler(this.выйтиToolStripMenuItem_Click);
             // 
-            // Column12
+            // пользователиToolStripMenuItem
             // 
-            this.Column12.DataPropertyName = "title";
-            this.Column12.HeaderText = "Название";
-            this.Column12.MinimumWidth = 6;
-            this.Column12.Name = "Column12";
-            this.Column12.Width = 101;
+            this.пользователиToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.управлениеПользователямиToolStripMenuItem});
+            this.пользователиToolStripMenuItem.Name = "пользователиToolStripMenuItem";
+            this.пользователиToolStripMenuItem.Size = new System.Drawing.Size(122, 24);
+            this.пользователиToolStripMenuItem.Text = "Пользователи";
             // 
-            // Column13
+            // управлениеПользователямиToolStripMenuItem
             // 
-            this.Column13.DataPropertyName = "author";
-            this.Column13.HeaderText = "Автор";
-            this.Column13.MinimumWidth = 6;
-            this.Column13.Name = "Column13";
-            this.Column13.Width = 76;
+            this.управлениеПользователямиToolStripMenuItem.Name = "управлениеПользователямиToolStripMenuItem";
+            this.управлениеПользователямиToolStripMenuItem.Size = new System.Drawing.Size(297, 26);
+            this.управлениеПользователямиToolStripMenuItem.Text = "Управление пользователями";
+            this.управлениеПользователямиToolStripMenuItem.Click += new System.EventHandler(this.управлениеПользователямиToolStripMenuItem_Click);
             // 
-            // Column14
+            // запросыToolStripMenuItem
             // 
-            this.Column14.DataPropertyName = "language";
-            this.Column14.HeaderText = "Язык";
-            this.Column14.MinimumWidth = 6;
-            this.Column14.Name = "Column14";
-            this.Column14.Width = 71;
+            this.запросыToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.произваольныйЗапросToolStripMenuItem});
+            this.запросыToolStripMenuItem.Name = "запросыToolStripMenuItem";
+            this.запросыToolStripMenuItem.Size = new System.Drawing.Size(84, 24);
+            this.запросыToolStripMenuItem.Text = "Запросы";
             // 
-            // Column15
+            // произваольныйЗапросToolStripMenuItem
             // 
-            this.Column15.DataPropertyName = "genre";
-            this.Column15.HeaderText = "Жанр";
-            this.Column15.MinimumWidth = 6;
-            this.Column15.Name = "Column15";
-            this.Column15.Width = 74;
-            // 
-            // Column16
-            // 
-            this.Column16.DataPropertyName = "publishing_house";
-            this.Column16.HeaderText = "Издательство";
-            this.Column16.MinimumWidth = 6;
-            this.Column16.Name = "Column16";
-            this.Column16.Width = 129;
-            // 
-            // Column17
-            // 
-            this.Column17.DataPropertyName = "cover";
-            this.Column17.HeaderText = "Тип обложки";
-            this.Column17.MinimumWidth = 6;
-            this.Column17.Name = "Column17";
-            this.Column17.Width = 122;
-            // 
-            // Column22
-            // 
-            this.Column22.DataPropertyName = "era";
-            this.Column22.HeaderText = "Эра";
-            this.Column22.MinimumWidth = 6;
-            this.Column22.Name = "Column22";
-            this.Column22.Width = 62;
-            // 
-            // Column23
-            // 
-            this.Column23.DataPropertyName = "type_of_literature";
-            this.Column23.HeaderText = "Национальность";
-            this.Column23.MinimumWidth = 6;
-            this.Column23.Name = "Column23";
-            this.Column23.Width = 147;
-            // 
-            // Column24
-            // 
-            this.Column24.DataPropertyName = "font_size";
-            this.Column24.HeaderText = "Шрифт";
-            this.Column24.MinimumWidth = 6;
-            this.Column24.Name = "Column24";
-            this.Column24.Width = 82;
-            // 
-            // Column25
-            // 
-            this.Column25.DataPropertyName = "book_size";
-            this.Column25.HeaderText = "Размер";
-            this.Column25.MinimumWidth = 6;
-            this.Column25.Name = "Column25";
-            this.Column25.Width = 86;
-            // 
-            // author_id
-            // 
-            this.author_id.DataPropertyName = "author_id";
-            this.author_id.HeaderText = "author_id";
-            this.author_id.MinimumWidth = 6;
-            this.author_id.Name = "author_id";
-            this.author_id.Visible = false;
-            this.author_id.Width = 97;
-            // 
-            // language_id
-            // 
-            this.language_id.DataPropertyName = "language_id";
-            this.language_id.HeaderText = "language_id";
-            this.language_id.MinimumWidth = 6;
-            this.language_id.Name = "language_id";
-            this.language_id.Visible = false;
-            this.language_id.Width = 115;
-            // 
-            // genre_id
-            // 
-            this.genre_id.DataPropertyName = "genre_id";
-            this.genre_id.HeaderText = "genre_id";
-            this.genre_id.MinimumWidth = 6;
-            this.genre_id.Name = "genre_id";
-            this.genre_id.Visible = false;
-            this.genre_id.Width = 93;
-            // 
-            // publishing_house_id
-            // 
-            this.publishing_house_id.DataPropertyName = "publishing_house_id";
-            this.publishing_house_id.HeaderText = "publishing_house_id";
-            this.publishing_house_id.MinimumWidth = 6;
-            this.publishing_house_id.Name = "publishing_house_id";
-            this.publishing_house_id.Visible = false;
-            this.publishing_house_id.Width = 167;
-            // 
-            // cover_id
-            // 
-            this.cover_id.DataPropertyName = "cover_id";
-            this.cover_id.HeaderText = "cover_id";
-            this.cover_id.MinimumWidth = 6;
-            this.cover_id.Name = "cover_id";
-            this.cover_id.Visible = false;
-            this.cover_id.Width = 91;
-            // 
-            // era_id
-            // 
-            this.era_id.DataPropertyName = "era_id";
-            this.era_id.HeaderText = "era_id";
-            this.era_id.MinimumWidth = 6;
-            this.era_id.Name = "era_id";
-            this.era_id.Visible = false;
-            this.era_id.Width = 77;
-            // 
-            // type_of_literature_id
-            // 
-            this.type_of_literature_id.DataPropertyName = "type_of_literature_id";
-            this.type_of_literature_id.HeaderText = "type_of_literature_id";
-            this.type_of_literature_id.MinimumWidth = 6;
-            this.type_of_literature_id.Name = "type_of_literature_id";
-            this.type_of_literature_id.Visible = false;
-            this.type_of_literature_id.Width = 167;
-            // 
-            // book_size_id
-            // 
-            this.book_size_id.DataPropertyName = "book_size_id";
-            this.book_size_id.HeaderText = "book_size_id";
-            this.book_size_id.MinimumWidth = 6;
-            this.book_size_id.Name = "book_size_id";
-            this.book_size_id.Visible = false;
-            this.book_size_id.Width = 120;
-            // 
-            // font_size_id
-            // 
-            this.font_size_id.DataPropertyName = "font_size_id";
-            this.font_size_id.HeaderText = "font_size_id";
-            this.font_size_id.MinimumWidth = 6;
-            this.font_size_id.Name = "font_size_id";
-            this.font_size_id.Visible = false;
-            this.font_size_id.Width = 113;
+            this.произваольныйЗапросToolStripMenuItem.Name = "произваольныйЗапросToolStripMenuItem";
+            this.произваольныйЗапросToolStripMenuItem.Size = new System.Drawing.Size(252, 26);
+            this.произваольныйЗапросToolStripMenuItem.Text = "Произвольный запрос";
+            this.произваольныйЗапросToolStripMenuItem.Click += new System.EventHandler(this.произваольныйЗапросToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -2661,6 +2706,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn type_of_literature_id;
         private System.Windows.Forms.DataGridViewTextBoxColumn book_size_id;
         private System.Windows.Forms.DataGridViewTextBoxColumn font_size_id;
+        private System.Windows.Forms.ToolStripMenuItem выйтиToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem пользователиToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem управлениеПользователямиToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem запросыToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem произваольныйЗапросToolStripMenuItem;
     }
 }
 

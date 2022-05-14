@@ -71,3 +71,6 @@ C:\Users\maxim\Desktop\KURSACH\АРМ билиотекаря\obj\Debug\АРМ_б
 C:\Users\maxim\Desktop\KURSACH\АРМ билиотекаря\obj\Debug\АРМ_билиотекаря.AddEditAuthors.resources
 C:\Users\maxim\Desktop\KURSACH\АРМ билиотекаря\obj\Debug\АРМ_билиотекаря.AddEditPublishingHouses.resources
 C:\Users\maxim\Desktop\KURSACH\АРМ билиотекаря\obj\Debug\АРМ билиотекаря.csproj.CoreCompileInputs.cache
+C:\Users\maxim\Desktop\KURSACH\АРМ билиотекаря\obj\Debug\АРМ_билиотекаря.Users.resources
+C:\Users\maxim\Desktop\KURSACH\АРМ билиотекаря\obj\Debug\АРМ_билиотекаря.AddEditUsers.resources
+C:\Users\maxim\Desktop\KURSACH\АРМ билиотекаря\obj\Debug\АРМ_билиотекаря.CustomQuery.resources

@@ -90,7 +90,7 @@ CREATE TABLE IF NOT EXISTS `librarian` (
   `name` varchar(255) NOT NULL,
   `surname` varchar(255) NOT NULL,
   `password_hash` text NOT NULL,
-  `id_admin` int NOT NULL
+  `id_admin` int
 )
 COLLATE utf8_general_ci;
 
@@ -100,7 +100,9 @@ CREATE TABLE IF NOT EXISTS `admin` (
   `surname` varchar(255) NOT NULL,
   `password_hash` text NOT NULL
 )
-COLLATE utf8_general_ci;
+COLLATE utf8_general_ci
+ENGINE=InnoDB 
+AUTO_INCREMENT=1000000;
 
 CREATE TABLE IF NOT EXISTS `book_size` (
   `id` int PRIMARY KEY NOT NULL AUTO_INCREMENT,
@@ -145,8 +147,27 @@ ALTER TABLE `record` ADD FOREIGN KEY (`id_librarian`) REFERENCES `librarian` (`i
 
 ALTER TABLE `book` ADD FOREIGN KEY (`id_type_of_literature`) REFERENCES `type_of_literature` (`id`);
 
-ALTER TABLE `librarian` ADD FOREIGN KEY (`id_admin`) REFERENCES `admin` (`id`);
+ALTER TABLE `librarian` ADD FOREIGN KEY (`id_admin`) REFERENCES `admin` (`id`) ON DELETE SET NULL;
 
 ALTER TABLE `book` ADD FOREIGN KEY (`id_book_size`) REFERENCES `book_size` (`id`);
 
 ALTER TABLE `book` ADD FOREIGN KEY (`id_font_size`) REFERENCES `font_size` (`id`);
+
+INSERT INTO admin VALUES(0, "aaa", "bbb", "password");
+
+
+delimiter //
+
+DROP PROCEDURE IF EXISTS createInitialUser;
+CREATE PROCEDURE createInitialUser()
+BEGIN
+	SELECT COUNT(*)
+    INTO @count
+    FROM admin LIMIT 1;
+
+    IF @count = 0 THEN
+        INSERT INTO admin (name, surname, password_hash) VALUES ("admin", "admin", "admin");
+    END IF;
+END;// 
+
+CALL createInitialUser();
