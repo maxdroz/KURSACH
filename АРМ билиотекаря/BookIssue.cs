@@ -60,7 +60,7 @@ namespace АРМ_билиотекаря
         private void AddBook_DoWork(object sender, DoWorkEventArgs e)
         {
             int bookId = Convert.ToInt32(dataGridView3[0, dataGridView3.CurrentCellAddress.Y].Value);
-            adapter.issueBookToReader(readerId, bookId, dateTimePicker1.Value, dateTimePicker2.Value);
+            adapter.issueBookToReader(readerId, bookId, dateTimePicker1.Value, dateTimePicker2.Value, form.librarianId);
         }
 
         private void AddBook_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)

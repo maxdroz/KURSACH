@@ -28,8 +28,26 @@ namespace АРМ_билиотекаря
             {
                 connection.Open();
                 MySqlScript script = new MySqlScript(connection, File.ReadAllText(@"create.sql"));
-                script.Delimiter = "$$";
                 script.Execute();
+
+                MySqlScript script1 = new MySqlScript(connection, @"
+                    delimiter //
+
+                    DROP PROCEDURE IF EXISTS createInitialUser;
+                    CREATE PROCEDURE createInitialUser()
+                    BEGIN
+	                    SELECT COUNT(*)
+                        INTO @count
+                        FROM admin LIMIT 1;
+
+                        IF @count = 0 THEN
+                            INSERT INTO admin (name, surname, password_hash) VALUES ('admin', 'admin', 'admin');
+                        END IF;
+                    END;// 
+
+                    CALL createInitialUser(); 
+                ");
+                script1.Execute();
                 connection.Close();
             }
         }
@@ -286,7 +304,7 @@ namespace АРМ_билиотекаря
             }
         }
 
-        public void issueBookToReader(int readerId, int bookId, DateTime issueDate, DateTime returnDate, int librarianId = 2)
+        public void issueBookToReader(int readerId, int bookId, DateTime issueDate, DateTime returnDate, int librarianId)
         {
             lock (syncLock)
             {

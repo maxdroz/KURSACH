@@ -139,7 +139,7 @@
             this.user_password.Name = "user_password";
             this.user_password.Size = new System.Drawing.Size(196, 22);
             this.user_password.TabIndex = 13;
-            this.user_password.Text = "password";
+            this.user_password.Text = "admin";
             this.user_password.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // user_surname
@@ -148,7 +148,7 @@
             this.user_surname.Name = "user_surname";
             this.user_surname.Size = new System.Drawing.Size(196, 22);
             this.user_surname.TabIndex = 12;
-            this.user_surname.Text = "bbb";
+            this.user_surname.Text = "admin";
             this.user_surname.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label6
@@ -166,7 +166,7 @@
             this.user_name.Name = "user_name";
             this.user_name.Size = new System.Drawing.Size(196, 22);
             this.user_name.TabIndex = 16;
-            this.user_name.Text = "aaa";
+            this.user_name.Text = "admin";
             this.user_name.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label7
