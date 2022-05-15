@@ -27,26 +27,19 @@ namespace АРМ_билиотекаря
             lock (syncLock)
             {
                 connection.Open();
-                MySqlScript script = new MySqlScript(connection, File.ReadAllText(@"create.sql"));
-                script.Execute();
+                string text = File.ReadAllText(@"create.sql");
+                string[] texts = text.Split(new[]{ "//"}, StringSplitOptions.RemoveEmptyEntries);
+                foreach(string scr in texts) {
+                    MySqlScript script = new MySqlScript(connection, scr + "//");
+                    script.Delimiter = "//";
+                    script.Execute();
+
+                }
 
                 MySqlScript script1 = new MySqlScript(connection, @"
-                    delimiter //
+                        delimiter //
 
-                    DROP PROCEDURE IF EXISTS createInitialUser;
-                    CREATE PROCEDURE createInitialUser()
-                    BEGIN
-	                    SELECT COUNT(*)
-                        INTO @count
-                        FROM admin LIMIT 1;
-
-                        IF @count = 0 THEN
-                            INSERT INTO admin (name, surname, password_hash) VALUES ('admin', 'admin', 'admin');
-                        END IF;
-                    END;// 
-
-                    CALL createInitialUser(); 
-                ");
+                    ");
                 script1.Execute();
                 connection.Close();
             }

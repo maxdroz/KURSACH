@@ -1685,7 +1685,6 @@ namespace АРМ_билиотекаря
             }
             
             Excel.Application ex = new Excel.Application();
-            //ex.Visible = true;
 
             Excel.Workbook workBook = ex.Workbooks.Add();
             Excel.Worksheet sheet = (Excel.Worksheet)ex.Worksheets.get_Item(1);
