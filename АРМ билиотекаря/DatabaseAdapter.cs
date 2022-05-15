@@ -122,12 +122,9 @@ namespace АРМ_билиотекаря
             }
         }
 
-        public DataTable getFilteredBooks(Book book, string id)
+        private string booksQuery(string author = "", string title = "", string language = "", string id = "")
         {
-            lock (syncLock)
-            {
-                connection.Open();
-                String query = String.Format("select " +
+            return String.Format("select " +
                     "book.id, " +
                     "book.title, " +
                     "CONCAT(author.surname, ' ', author.name, ' ', author.patronymic) as author, " +
@@ -162,7 +159,15 @@ namespace АРМ_билиотекаря
                     "(CONCAT(author.surname, ' ', author.name, ' ', author.patronymic) LIKE '%{0}%') AND " +
                     "(book.title LIKE '%{1}%') AND " +
                     "(language.language LIKE '%{2}%') AND" +
-                    "(book.id LIKE '%{3}%')", book.author, book.title, book.language, id);
+                    "(book.id LIKE '%{3}%')", author, title, language, id);
+        }
+
+        public DataTable getFilteredBooks(Book book, string id)
+        {
+            lock (syncLock)
+            {
+                connection.Open();
+                String query = booksQuery(book.author, book.title, book.language, id);
                 DataTable result = formDataTable(query);
                 connection.Close();
                 return result;
@@ -630,6 +635,24 @@ namespace АРМ_билиотекаря
                 connection.Close();
             }
             return true;
+        }
+
+        public DataTable getExcelBooks()
+        {
+            lock (syncLock)
+            {
+                connection.Open();
+                var booksQueryStr = booksQuery();
+                var query = String.Format("SELECT " +
+                    "sub.id as book_id, title, author, language, genre, publishing_house, cover, era, type_of_literature, book_size, font_size, DATE_FORMAT(issue_date, '%d.%m.%Y') AS issue_date, DATE_FORMAT(return_date, '%d.%m.%Y') AS return_date, name, surname, patronymic, DATE_FORMAT(birthday, '%d.%m.%Y') AS birthday, phone_number, address " +
+                    "FROM ({0}) AS sub " +
+                    "LEFT JOIN record ON sub.id = record.id_book " +
+                    "LEFT JOIN reader ON record.id_reader = reader.id " +
+                    "ORDER BY book_id ASC", booksQueryStr);
+                DataTable result = formDataTable(query);
+                connection.Close();
+                return result;
+            }
         }
 
         public interface UserResolution

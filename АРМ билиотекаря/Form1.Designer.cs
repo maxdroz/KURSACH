@@ -217,6 +217,7 @@
             this.управлениеПользователямиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.запросыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.произваольныйЗапросToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.экспортToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -2402,6 +2403,7 @@
             // файлToolStripMenuItem
             // 
             this.файлToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.экспортToolStripMenuItem,
             this.выбратьДругуюБДToolStripMenuItem,
             this.выйтиToolStripMenuItem});
             this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
@@ -2451,6 +2453,13 @@
             this.произваольныйЗапросToolStripMenuItem.Size = new System.Drawing.Size(252, 26);
             this.произваольныйЗапросToolStripMenuItem.Text = "Произвольный запрос";
             this.произваольныйЗапросToolStripMenuItem.Click += new System.EventHandler(this.произваольныйЗапросToolStripMenuItem_Click);
+            // 
+            // экспортToolStripMenuItem
+            // 
+            this.экспортToolStripMenuItem.Name = "экспортToolStripMenuItem";
+            this.экспортToolStripMenuItem.Size = new System.Drawing.Size(228, 26);
+            this.экспортToolStripMenuItem.Text = "Экспорт в Excel";
+            this.экспортToolStripMenuItem.Click += new System.EventHandler(this.экспортToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -2711,6 +2720,7 @@
         private System.Windows.Forms.ToolStripMenuItem управлениеПользователямиToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem запросыToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem произваольныйЗапросToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem экспортToolStripMenuItem;
     }
 }
 

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.OleDb;
 using static АРМ_билиотекаря.DatabaseAdapter;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace АРМ_билиотекаря
 {
@@ -1670,6 +1671,126 @@ namespace АРМ_билиотекаря
         {
             new CustomQuery(this).ShowDialog();
         }
+
+        private void экспортToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var dialog = new SaveFileDialog();
+            dialog.FileName = "Книги.xlsx";
+            dialog.Filter = "Excel Files|*.xls;*.xlsx;*.xlsm"; 
+            dialog.OverwritePrompt = false;
+
+            if (dialog.ShowDialog() == DialogResult.Cancel)
+            {
+                return;
+            }
+            
+            Excel.Application ex = new Excel.Application();
+            //ex.Visible = true;
+
+            Excel.Workbook workBook = ex.Workbooks.Add();
+            Excel.Worksheet sheet = (Excel.Worksheet)ex.Worksheets.get_Item(1);
+
+
+            sheet.Range["R1", "R1"].EntireColumn.NumberFormat = "@";
+            sheet.Range["L1", "M1"].EntireColumn.NumberFormat = "DD/MM/YYYY";
+            sheet.Range["Q1", "Q1"].EntireColumn.NumberFormat = "DD/MM/YYYY";
+
+            sheet.Range["A1", "A1"].EntireRow.Font.Bold = true;
+            var borders = sheet.Range["A1", "A1"].EntireRow.Borders;
+            borders[Excel.XlBordersIndex.xlEdgeBottom].LineStyle = Excel.XlLineStyle.xlContinuous;
+
+
+            borders = sheet.Range["A1", "A1"].EntireColumn.Borders;
+            borders[Excel.XlBordersIndex.xlEdgeRight].LineStyle = Excel.XlLineStyle.xlContinuous;
+
+            var books = adapter.getExcelBooks();
+            for(int i = 0; i < books.Columns.Count; i++)
+            {
+                string title = books.Columns[i].ColumnName;
+
+                switch(title)
+                {
+                    case "book_id":
+                        title = "Код книги";
+                        break;
+                    case "title":
+                        title = "Название";
+                        break;
+                    case "author":
+                        title = "Автор";
+                        break;
+                    case "language":
+                        title = "Язык";
+                        break;
+                    case "genre":
+                        title = "Жанр";
+                        break;
+                    case "publishing_house":
+                        title = "Издательство";
+                        break;
+                    case "cover":
+                        title = "Обложка";
+                        break;
+                    case "era":
+                        title = "Эра";
+                        break;
+                    case "type_of_literature":
+                        title = "Национальность";
+                        break;
+                    case "book_size":
+                        title = "Размер книги";
+                        break;
+                    case "font_size":
+                        title = "Размер шрифта";
+                        break;
+                    case "issue_date":
+                        title = "Дата выдачи";
+                        break;
+                    case "return_date":
+                        title = "Дата возврата";
+                        break;
+                    case "name":
+                        title = "Имя текущего читателя";
+                        break;
+                    case "surname":
+                        title = "Фамилия";
+                        break;
+                    case "patronymic":
+                        title = "Отчество";
+                        break;
+                    case "birthday":
+                        title = "День рождения";
+                        break;
+                    case "phone_number":
+                        title = "Номер телефона";
+                        break;
+                    case "address":
+                        title = "Адрес";
+                        break;
+                }
+
+                sheet.Cells[1, i + 1] = title;
+                for (int j = 0; j < books.Rows.Count; j++)
+                {
+                    sheet.Cells[j + 2, i + 1] = books.Rows[j][i].ToString();
+                }
+            }
+
+            sheet.Name = "Книги";
+
+            sheet.Columns.AutoFit();
+            try {
+                workBook.SaveAs(dialog.FileName);
+            } 
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                workBook.Close();
+            }
+         }
     }
 }
 
